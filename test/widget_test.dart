@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:intranet_maispet/view/gui/main.dart';
+import 'package:intranet_maispet/view/gui/homeView.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
