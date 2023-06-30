@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class redirectSystemButton extends StatelessWidget{
+class CardAbrirSistemas extends StatelessWidget{
 
-  final String url;
-  final String referencePathImage;
-  final String text;
+  final String urlDoSistema;
+  final String caminhoDoIconeDoSistema;
+  final String nomeDoSistema;
 
-  const redirectSystemButton ({
+  CardAbrirSistemas ({
     super.key,
-    required this.url,
-    required this.referencePathImage,
-    required this.text
+    required this.urlDoSistema,
+    required this.caminhoDoIconeDoSistema,
+    required this.nomeDoSistema,
+
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class redirectSystemButton extends StatelessWidget{
       margin: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () async {
-          if(await canLaunchUrl(Uri.parse(url))){
-            await launchUrl(Uri.parse(url));
+          if(await canLaunchUrl(Uri.parse(urlDoSistema))){
+            await launchUrl(Uri.parse(urlDoSistema));
           }else{
-            throw 'Não foi possível abrir o site $url';
+            throw 'Não foi possível abrir o site $urlDoSistema';
           }
         },
         child: Padding(
@@ -34,10 +36,10 @@ class redirectSystemButton extends StatelessWidget{
             children: <Widget> [
               Row(
                 children: <Widget> [
-                  Image.asset(referencePathImage, height: 100, width: 100),
+                  Image.asset(caminhoDoIconeDoSistema, height: 100, width: 100),
                 ],
               ),
-              Text(text, style: const TextStyle(fontWeight: FontWeight.bold, ),
+              Text(nomeDoSistema, style: const TextStyle(fontWeight: FontWeight.bold, ),
                 textScaleFactor: 1,)
             ],
           ),

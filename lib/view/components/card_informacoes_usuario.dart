@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class infoUserCard extends StatelessWidget{
+class CardInformacoesUsuario extends StatelessWidget{
 
-  final String userName;
-  final String computerName;
+  final String? nomeDoUsuario;
+  final String nomeDoComputador;
 
-  const infoUserCard({
+  const CardInformacoesUsuario({
     super.key,
-    required this.userName,
-    required this.computerName
+    required this.nomeDoUsuario,
+    required this.nomeDoComputador
   });
 
   @override
@@ -24,10 +24,12 @@ class infoUserCard extends StatelessWidget{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget> [
-            Text(userName, style: const TextStyle(fontWeight: FontWeight.bold),
+            Text(nomeDoUsuario!,
+              style: const TextStyle(fontWeight: FontWeight.bold),
               textScaleFactor: 1),
-            Text(computerName, style: const TextStyle(fontWeight: FontWeight.bold),
-                textScaleFactor: 1),
+            Text(nomeDoComputador,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              textScaleFactor: 1),
           ],
         ),
       ),

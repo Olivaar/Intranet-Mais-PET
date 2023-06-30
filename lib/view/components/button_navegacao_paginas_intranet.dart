@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-class appBarButton extends StatelessWidget{
-  final String text;
+class ButtonNavegacaoPaginasIntranet extends StatelessWidget{
+  final String nomeDaPagina;
   final void Function() onPressed;
+  final IconData? iconeDaPagina;
 
-  const appBarButton(
-    {super.key, required this.text,
-      required this.onPressed});
+  const ButtonNavegacaoPaginasIntranet(
+    {super.key, required this.nomeDaPagina,
+      required this.onPressed, this.iconeDaPagina});
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return TextButton.icon(
       onPressed: onPressed,
-      child: Text(text),
+      label: Text(nomeDaPagina),
+      icon: Icon(iconeDaPagina),
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
