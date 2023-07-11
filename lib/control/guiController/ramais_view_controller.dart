@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
+import '../../view/components/card_tabela_de_ramais.dart';
 
 class RamaisViewController{
 
@@ -20,7 +22,6 @@ class RamaisViewController{
     {'local': 'Estoque', 'ramal': '8866',},
     {'local': 'Plantão', 'ramal': '8873',},
   ];
-
 
   List<Map<String, dynamic>> holding = [
     {'local': 'Cobrança', 'ramal': '8867',},
@@ -92,7 +93,109 @@ class RamaisViewController{
   ];
 
   List<DataColumn> myColumns = [
-    DataColumn(label: Text('LOCAL')),
-    DataColumn(label: Text('RAMAL')),
+    const DataColumn(label: Text('LOCAL')),
+    const DataColumn(label: Text('RAMAL')),
   ];
+
+  late Widget widgetListaDeRamais;
+  String nomeDaUnidade = '';
+
+  Widget atualizarCardTableRamais(String selectedValue) {
+    if (selectedValue == '+PET GOIÂNIA') {
+      widgetListaDeRamais = CardTabelaDeRamais(
+        listaDeRamais: goiania,
+        listaDeColunas: myColumns,
+        nomeDaUnidade: 'HOSPITAL GOIÂNIA',
+      );
+
+    } else if (selectedValue == '+PET HOLDING') {
+      widgetListaDeRamais = CardTabelaDeRamais(
+        listaDeRamais: holding,
+        listaDeColunas: myColumns,
+        nomeDaUnidade: 'HOLDING',
+      );
+    } else if (selectedValue == '+PET APARECIDA') {
+      widgetListaDeRamais = CardTabelaDeRamais(
+        listaDeRamais: aparecida,
+        listaDeColunas: myColumns,
+        nomeDaUnidade: '+PET APARECIDA',
+      );
+    } else if (selectedValue == '+PET BRASÍLIA') {
+      widgetListaDeRamais = CardTabelaDeRamais(
+        listaDeRamais: brasilia,
+        listaDeColunas: myColumns,
+        nomeDaUnidade: '+PET BRASÍLIA',
+      );
+    } else if (selectedValue == '+PET CAMPINAS') {
+      widgetListaDeRamais = CardTabelaDeRamais(
+        listaDeRamais: campinas,
+        listaDeColunas: myColumns,
+        nomeDaUnidade: '+PET CAMPINAS',
+      );
+    }
+    return widgetListaDeRamais;
+  }
+
+  void mostrarPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('ERRO!'),
+          content: const Text('Selecione uma Unidade!'),
+          actions: [
+            TextButton(
+              child: const Text('Fechar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  obterNomeDaUnidade(String _nomeDaUnidade){
+    nomeDaUnidade = _nomeDaUnidade;
+  }
+
+  void openPdf(BuildContext context) {
+    if(nomeDaUnidade == '+PET GOIÂNIA'){
+      baixarPdf(
+          'assets/files/ramais_goiania_pdf.pdf',
+          'Ramais Goiânia'
+      );
+    }else if(nomeDaUnidade == '+PET HOLDING'){
+      baixarPdf(
+          'assets/files/holding_pdf.pdf',
+          'Ramais Holding'
+      );
+    }else if(nomeDaUnidade == '+PET APARECIDA'){
+      baixarPdf(
+          'assets/files/ramais_aparecida_pdf.pdf',
+          'Ramais PETSTORE'
+      );
+    }else if(nomeDaUnidade == '+PET BRASÍLIA'){
+      baixarPdf(
+          'assets/files/ramais_brasilia_pdf.pdf',
+          'Ramais Brasília'
+      );
+    }else if(nomeDaUnidade == '+PET CAMPINAS'){
+      baixarPdf(
+          'assets/files/ramais_campinas_pdf.pdf',
+          'Ramais Campinas'
+      );
+    }else {
+      mostrarPopup(context);
+    }
+  }
+
+  void baixarPdf(String caminhoDoPdf, String nomeDoPdf){
+    final filePath = caminhoDoPdf;
+    final anchorElement = html.AnchorElement(href: filePath);
+    anchorElement.download = nomeDoPdf;
+    anchorElement.click();
+  }
+
 }

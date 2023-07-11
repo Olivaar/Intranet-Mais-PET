@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../control/guiController/ramais_view_controller.dart';
 import '../components/appBar_intranet.dart';
 import '../components/dropButton_ramais.dart';
 import '../components/row_logoMaisPet_nomeDaView.dart';
@@ -13,6 +14,8 @@ class BranchesView extends StatefulWidget{
 }
 
 class _BranchesViewState extends State<BranchesView>{
+  RamaisViewController ramais_view_controller = new RamaisViewController();
+
   @override
   Widget build(BuildContext context) {
 
@@ -35,12 +38,22 @@ class _BranchesViewState extends State<BranchesView>{
             child: Column(
               children: <Widget>[
                 const RowLogoMaisPet_NomeView(nomeDaView: 'RAMAIS'),
-                DropButtonRamais(),
+                DropButtonRamais(
+                  onChanged: (value){
+                    ramais_view_controller.obterNomeDaUnidade(value);
+                  }
+                ),
               ],
             ),
           ),
         ],
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ramais_view_controller.openPdf(context);
+        },
+        child: Icon(Icons.print),
+      ),
     );
   }
 }

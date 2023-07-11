@@ -40,7 +40,7 @@ class CardAbrirSistemas extends StatelessWidget{
                 ],
               ),
               Text(nomeDoSistema, style: const TextStyle(fontWeight: FontWeight.bold, ),
-                textScaleFactor: 1,)
+                textScaleFactor: 0.90,)
             ],
           ),
         ),

@@ -1,13 +1,11 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-
-
 import '../../control/guiController/ramais_view_controller.dart';
-import 'card_tabela_de_ramais.dart';
 
 class DropButtonRamais extends StatefulWidget {
-  DropButtonRamais({super.key});
+  final Function(String) onChanged;
 
+  DropButtonRamais({super.key, required this.onChanged});
 
   @override
   _DropButtonRamaisState createState() => _DropButtonRamaisState();
@@ -37,6 +35,7 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
   void initState(){
     super.initState();
     widgetListaDeRamais = Container();
+    ramais_view_controller.obterNomeDaUnidade('');
   }
 
   @override
@@ -72,7 +71,8 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
                   setState(() {
                     selectedValue = value;
                   });
-                  atualizarWidgetListaDeRamais();
+                  atualizarWidgetListaDeRamais(selectedValue!);
+                  widget.onChanged(value!);
                 },
                 buttonStyleData:  ButtonStyleData(
                   padding: EdgeInsets.symmetric(horizontal: 16),
@@ -145,41 +145,26 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
 
   RamaisViewController ramais_view_controller = new RamaisViewController();
 
-  void atualizarWidgetListaDeRamais() {
+  void atualizarWidgetListaDeRamais(String selectedValue) {
     if (selectedValue == '+PET GOIÂNIA') {
       setState(() {
-        widgetListaDeRamais = CardTabelaDeRamais(
-          listaDeRamais: ramais_view_controller.goiania,
-          listaDeColunas: ramais_view_controller.myColumns,
-          nomeDaUnidade: 'HOSPITAL GOIÂNIA',);
+        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET GOIÂNIA');
       });
     } else if (selectedValue == '+PET HOLDING') {
       setState(() {
-        widgetListaDeRamais = CardTabelaDeRamais(
-          listaDeRamais: ramais_view_controller.holding,
-          listaDeColunas: ramais_view_controller.myColumns,
-          nomeDaUnidade: 'HOLDING',);
+        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET HOLDING');
       });
     } else if (selectedValue == '+PET APARECIDA') {
       setState(() {
-        widgetListaDeRamais = CardTabelaDeRamais(
-          listaDeRamais: ramais_view_controller.aparecida,
-          listaDeColunas: ramais_view_controller.myColumns,
-          nomeDaUnidade: 'PET STORE',);
+        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET APARECIDA');
       });
     } else if (selectedValue == '+PET BRASÍLIA') {
       setState(() {
-        widgetListaDeRamais = CardTabelaDeRamais(
-          listaDeRamais: ramais_view_controller.brasilia,
-          listaDeColunas: ramais_view_controller.myColumns,
-          nomeDaUnidade: 'HOSPITAL BRASÍLIA',);
+        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET BRASÍLIA');
       });
     } else if (selectedValue == '+PET CAMPINAS') {
       setState(() {
-        widgetListaDeRamais = CardTabelaDeRamais(
-          listaDeRamais: ramais_view_controller.campinas,
-          listaDeColunas: ramais_view_controller.myColumns,
-          nomeDaUnidade: 'HOSPITAL CAMPINAS',);
+        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET CAMPINAS');
       });
     }
   }
