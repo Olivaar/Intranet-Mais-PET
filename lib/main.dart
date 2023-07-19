@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/components/appBar_intranet.dart';
 import 'package:intranet_maispet/view/components/card_abrir_sistemas.dart';
 import 'package:intranet_maispet/view/gui/ramais_view.dart';
+import 'package:intranet_maispet/view/gui/tecnologia_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
        routes: {
          '/home': (context) => MyHomePage(title: 'Intranet +PET'),
          '/ramais': (context) => BranchesView(),
+         '/tecnologia': (context) => TecnologiaView(),
        },
       theme: ThemeData(
         colorScheme: null,
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {String? _string;
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: const AppBarIntranet(),
+      appBar: AppBarIntranet(color: const Color(0xffFFD200)),
       body: Stack(
         children: [
           Container(

@@ -20,7 +20,7 @@ class _BranchesViewState extends State<BranchesView>{
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: const AppBarIntranet(),
+      appBar: AppBarIntranet(color: const Color(0xffFFD200)),
       body: Stack(
         children: [
           Container(

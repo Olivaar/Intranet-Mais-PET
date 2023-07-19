@@ -5,14 +5,17 @@ import 'button_navegacao_midias_maispet.dart';
 
 class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
-  const AppBarIntranet({
-    super.key
+  Color color;
+
+  AppBarIntranet({
+    super.key,
+    required this.color
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xffFFD200),
+      backgroundColor: color,
       elevation: 0,
 
       title: Row(
