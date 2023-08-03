@@ -154,6 +154,10 @@ class TecnologiaView extends StatelessWidget{
                             urlDoSistema: 'http://intelite.com.br/ai-relatorio',
                             caminhoDoIconeDoSistema: 'images/logo_senhas.png',
                             nomeDoSistema: 'RELATÓRIOS AI'),
+                        CardAbrirSistemas(
+                            urlDoSistema: 'https://www.pivotaltracker.com/n/projects/2623478',
+                            caminhoDoIconeDoSistema: 'images/logo_pivotal.png',
+                            nomeDoSistema: 'PIVOTAL'),
                       ],
                     )
                   ],
