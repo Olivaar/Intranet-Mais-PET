@@ -158,6 +158,10 @@ class TecnologiaView extends StatelessWidget{
                             urlDoSistema: 'https://www.pivotaltracker.com/n/projects/2623478',
                             caminhoDoIconeDoSistema: 'images/logo_pivotal.png',
                             nomeDoSistema: 'PIVOTAL'),
+                        CardAbrirSistemas(
+                            urlDoSistema: 'https://televets.com.br/soulvet',
+                            caminhoDoIconeDoSistema: 'images/logo_televets.png',
+                            nomeDoSistema: 'TELEVETS'),
                       ],
                     )
                   ],
