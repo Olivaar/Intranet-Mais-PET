@@ -4,7 +4,13 @@ import 'package:intranet_maispet/view/components/row_logoMaisPet_nomeDaView.dart
 import '../components/appBar_intranet.dart';
 import '../components/card_abrir_sistemas.dart';
 
-class TecnologiaView extends StatelessWidget{
+class TecnologiaView extends StatefulWidget{
+
+  @override
+  _TecnologiaViewState createState() => _TecnologiaViewState();
+}
+
+class _TecnologiaViewState  extends State<TecnologiaView>{
   @override
   Widget build(BuildContext context) {
 
