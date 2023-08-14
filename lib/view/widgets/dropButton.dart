@@ -2,40 +2,34 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import '../../control/guiController/ramais_view_controller.dart';
 
-class DropButtonRamais extends StatefulWidget {
+class DropButton extends StatefulWidget {
   final Function(String) onChanged;
+  List<String> listaDeItens;
+  String textoHint;
+  String textoHintPesquisar;
 
-  DropButtonRamais({super.key, required this.onChanged});
+  DropButton({
+    super.key,
+    required this.onChanged,
+    required this.listaDeItens,
+    required this.textoHintPesquisar,
+    required this.textoHint
+  });
 
   @override
-  _DropButtonRamaisState createState() => _DropButtonRamaisState();
+  _DropButtonState createState() => _DropButtonState();
 
 }
 
-class _DropButtonRamaisState extends State<DropButtonRamais>{
+class _DropButtonState extends State<DropButton>{
 
-  List<String> listaDeUnidades = [
-    '+PET GOIÂNIA',
-    '+PET HOLDING',
-    '+PET APARECIDA',
-    '+PET BRASÍLIA',
-    '+PET CAMPINAS',
-  ];
   String? selectedValue;
   final TextEditingController textEditingController = TextEditingController();
-  late Widget widgetListaDeRamais;
 
   @override
   void dispose(){
     textEditingController.dispose();
     super.dispose();
-  }
-
-  @override
-  void initState(){
-    super.initState();
-    widgetListaDeRamais = Container();
-    ramais_view_controller.obterNomeDaUnidade('');
   }
 
   @override
@@ -49,13 +43,13 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
               child: DropdownButton2<String>(
                 isExpanded: true,
                 hint: Text(
-                  'Selecione a Unidade',
+                  widget.textoHint,
                   style: TextStyle(
                     fontSize: 14,
                     color: Theme.of(context).hintColor,
                   ),
                 ),
-                items: listaDeUnidades
+                items: widget.listaDeItens
                     .map((item) => DropdownMenuItem(
                   value: item,
                   child: Text(
@@ -71,7 +65,6 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
                   setState(() {
                     selectedValue = value;
                   });
-                  atualizarWidgetListaDeRamais(selectedValue!);
                   widget.onChanged(value!);
                 },
                 buttonStyleData:  ButtonStyleData(
@@ -116,7 +109,7 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
                           horizontal: 10,
                           vertical: 8,
                         ),
-                        hintText: 'Pesquise a Unidade...',
+                        hintText: widget.textoHintPesquisar,
                         hintStyle: const TextStyle(fontSize: 12),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -136,37 +129,10 @@ class _DropButtonRamaisState extends State<DropButtonRamais>{
                 },
               ),
             ),
-            widgetListaDeRamais
           ],
         )
       ],
     );
-  }
-
-  RamaisViewController ramais_view_controller = new RamaisViewController();
-
-  void atualizarWidgetListaDeRamais(String selectedValue) {
-    if (selectedValue == '+PET GOIÂNIA') {
-      setState(() {
-        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET GOIÂNIA');
-      });
-    } else if (selectedValue == '+PET HOLDING') {
-      setState(() {
-        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET HOLDING');
-      });
-    } else if (selectedValue == '+PET APARECIDA') {
-      setState(() {
-        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET APARECIDA');
-      });
-    } else if (selectedValue == '+PET BRASÍLIA') {
-      setState(() {
-        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET BRASÍLIA');
-      });
-    } else if (selectedValue == '+PET CAMPINAS') {
-      setState(() {
-        widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais('+PET CAMPINAS');
-      });
-    }
   }
 
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../control/guiController/ramais_view_controller.dart';
-import '../components/appBar_intranet.dart';
-import '../components/dropButton_ramais.dart';
-import '../components/row_logoMaisPet_nomeDaView.dart';
+import '../widgets/appBar_intranet.dart';
+import '../widgets/dropButton.dart';
+import '../widgets/row_logoMaisPet_nomeDaView.dart';
 
 
 class BranchesView extends StatefulWidget{
@@ -15,6 +15,14 @@ class BranchesView extends StatefulWidget{
 
 class _BranchesViewState extends State<BranchesView>{
   RamaisViewController ramais_view_controller = new RamaisViewController();
+
+  late Widget widgetListaDeRamais;
+
+  @override
+  void initState(){
+    super.initState();
+    widgetListaDeRamais = Container();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +46,18 @@ class _BranchesViewState extends State<BranchesView>{
             child: Column(
               children: <Widget>[
                 const RowLogoMaisPet_NomeView(nomeDaView: 'RAMAIS'),
-                DropButtonRamais(
+                DropButton(
                   onChanged: (value){
                     ramais_view_controller.obterNomeDaUnidade(value);
-                  }
+                    setState(() {
+                      widgetListaDeRamais = ramais_view_controller.atualizarCardTableRamais(value);
+                    });
+                  },
+                  textoHint: 'Selecione a Unidade',
+                  textoHintPesquisar: 'Pesquise a Unidade...',
+                  listaDeItens: ramais_view_controller.listaDeUnidades
                 ),
+                widgetListaDeRamais
               ],
             ),
           ),

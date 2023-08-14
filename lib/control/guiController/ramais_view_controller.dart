@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/view/widgets/widget_todos_ramais.dart';
 import 'dart:html' as html;
 
-import '../../view/components/card_tabela_de_ramais.dart';
+import '../../view/widgets/card_tabela_de_ramais.dart';
+
 
 class RamaisViewController{
+
+  List<String> listaDeUnidades = [
+    '+PET GOIÂNIA',
+    '+PET HOLDING',
+    '+PET APARECIDA',
+    '+PET BRASÍLIA',
+    '+PET CAMPINAS',
+    'TODOS OS RAMAIS'
+  ];
 
   List<Map<String, dynamic>> goiania = [
     {'local': 'Recepção HOSPITAL', 'ramal': '8849',},
@@ -107,7 +118,6 @@ class RamaisViewController{
         listaDeColunas: myColumns,
         nomeDaUnidade: 'HOSPITAL GOIÂNIA',
       );
-
     } else if (selectedValue == '+PET HOLDING') {
       widgetListaDeRamais = CardTabelaDeRamais(
         listaDeRamais: holding,
@@ -132,6 +142,8 @@ class RamaisViewController{
         listaDeColunas: myColumns,
         nomeDaUnidade: '+PET CAMPINAS',
       );
+    } else if (selectedValue == 'TODOS OS RAMAIS') {
+      widgetListaDeRamais = WidgetTodosRamais();
     }
     return widgetListaDeRamais;
   }

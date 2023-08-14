@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/view/components/row_logoMaisPet_nomeDaView.dart';
 
-import '../components/appBar_intranet.dart';
-import '../components/card_abrir_sistemas.dart';
+import '../widgets/appBar_intranet.dart';
+import '../widgets/card_abrir_sistemas.dart';
+
 
 class TecnologiaView extends StatefulWidget{
 

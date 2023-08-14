@@ -9,7 +9,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
   AppBarIntranet({
     super.key,
-    required this.color
+    this.color = const Color(0xffFFD200)
   });
 
   @override

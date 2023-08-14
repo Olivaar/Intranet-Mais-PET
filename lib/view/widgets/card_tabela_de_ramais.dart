@@ -21,9 +21,9 @@ class CardTabelaDeRamais extends StatelessWidget{
         borderRadius: BorderRadius.circular(3.0)
       ),
       color: const Color(0xffffffff),
-      margin: const EdgeInsets.fromLTRB(250, 50, 250, 50),
+      margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
       child: Padding(
-        padding: const EdgeInsets.all(50.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Text(nomeDaUnidade,
