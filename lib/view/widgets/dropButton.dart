@@ -1,27 +1,26 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import '../../control/guiController/ramais_view_controller.dart';
 
-class DropButton extends StatefulWidget {
+class DropButtonIntranet extends StatefulWidget {
   final Function(String) onChanged;
   List<String> listaDeItens;
   String textoHint;
   String textoHintPesquisar;
 
-  DropButton({
+  DropButtonIntranet({
     super.key,
     required this.onChanged,
     required this.listaDeItens,
-    required this.textoHintPesquisar,
+    this.textoHintPesquisar = '',
     required this.textoHint
   });
 
   @override
-  _DropButtonState createState() => _DropButtonState();
+  _DropButtonIntranetState createState() => _DropButtonIntranetState();
 
 }
 
-class _DropButtonState extends State<DropButton>{
+class _DropButtonIntranetState extends State<DropButtonIntranet>{
 
   String? selectedValue;
   final TextEditingController textEditingController = TextEditingController();
@@ -79,9 +78,9 @@ class _DropButtonState extends State<DropButton>{
                 ),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all( color: Colors.black),
-                      color: const Color(0xffFFD200)
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all( color: Colors.black),
+                    color: const Color(0xffFFD200)
                   ),
                   maxHeight: 200,
                 ),

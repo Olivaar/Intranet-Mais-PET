@@ -5,9 +5,12 @@ class ButtonNavegacaoPaginasIntranet extends StatelessWidget{
   final void Function() onPressed;
   final IconData? iconeDaPagina;
 
-  const ButtonNavegacaoPaginasIntranet(
-    {super.key, required this.nomeDaPagina,
-      required this.onPressed, this.iconeDaPagina});
+  const ButtonNavegacaoPaginasIntranet({
+    super.key,
+    required this.nomeDaPagina,
+    required this.onPressed,
+    this.iconeDaPagina
+  });
 
   @override
   Widget build(BuildContext context) {

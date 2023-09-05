@@ -43,6 +43,8 @@ dependencies:
   spreadsheet_decoder: ^2.0.0
   pdf: any
   printing: ^5.5.0
+  hexcolor: ^2.0.4
+  flutter_form_builder: ^5.0.0
 
 
 
@@ -107,6 +109,7 @@ flutter:
     - assets/images/logo_totvs.png
     - assets/images/logo_pivotal.png
     - assets/images/logo_televets.png
+    - assets/files/tutorial_impressao_de_carteirinhas.pdf
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

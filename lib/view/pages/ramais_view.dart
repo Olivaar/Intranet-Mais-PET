@@ -15,7 +15,6 @@ class BranchesView extends StatefulWidget{
 
 class _BranchesViewState extends State<BranchesView>{
   RamaisViewController ramais_view_controller = new RamaisViewController();
-
   late Widget widgetListaDeRamais;
 
   @override
@@ -34,9 +33,9 @@ class _BranchesViewState extends State<BranchesView>{
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/back_teste.png'),
-                  fit: BoxFit.cover,
-              )
+                image: AssetImage('assets/images/back_teste.png'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Container(
@@ -46,7 +45,7 @@ class _BranchesViewState extends State<BranchesView>{
             child: Column(
               children: <Widget>[
                 const RowLogoMaisPet_NomeView(nomeDaView: 'RAMAIS'),
-                DropButton(
+                DropButtonIntranet(
                   onChanged: (value){
                     ramais_view_controller.obterNomeDaUnidade(value);
                     setState(() {

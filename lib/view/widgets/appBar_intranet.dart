@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/control/guiController/treinamento_view_controller.dart';
 
 import 'button_navegacao_paginas_intranet.dart';
 import 'button_navegacao_midias_maispet.dart';
 
 class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
+  TreinamentosViewController treinamentosController = TreinamentosViewController();
   Color color;
 
   AppBarIntranet({
     super.key,
-    this.color = const Color(0xffFFD200)
+    this.color = const Color(0xffFFD400)
   });
 
   @override
@@ -33,11 +35,13 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
               Navigator.pushNamed(context, '/ramais');
           }),
           ButtonNavegacaoPaginasIntranet(
-              nomeDaPagina: "DOCUMENTOS",
-              onPressed: (){},
-              iconeDaPagina: Icons.block_outlined),
-          ButtonNavegacaoPaginasIntranet(
               nomeDaPagina: "TREINAMENTOS",
+              iconeDaPagina: Icons.playlist_play_sharp,
+              onPressed: (){
+                Navigator.pushNamed(context, '/treinamentos');
+              }),
+          ButtonNavegacaoPaginasIntranet(
+              nomeDaPagina: "DOCUMENTOS",
               onPressed: (){},
               iconeDaPagina: Icons.block_outlined),
         ],

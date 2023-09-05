@@ -1,13 +1,18 @@
-
-
 class Treinamento {
-  String titulo;
-  String descricao;
-  int quantidade_de_videos;
+  late String titulo;
+  late String descricao;
+  late List<String> linksVideos;
+
+  //TODO Salvar JSON em arquivo ou em BD
 
   Treinamento({
     required this.titulo,
     required this.descricao,
-    required this.quantidade_de_videos
+    required this.linksVideos
   });
+
+  @override
+  String toString() {
+    return 'Treinamento{titulo: $titulo, descricao: $descricao, linksVideos: $linksVideos}';
+  }
 }

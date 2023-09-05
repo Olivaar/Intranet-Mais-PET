@@ -12,9 +12,7 @@ class CardAbrirSistemas extends StatelessWidget{
     required this.urlDoSistema,
     required this.caminhoDoIconeDoSistema,
     required this.nomeDoSistema,
-
   });
-
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/control/guiController/pdf_controller.dart';
 import 'package:intranet_maispet/view/widgets/widget_todos_ramais.dart';
 import 'dart:html' as html;
 
 import '../../view/widgets/card_tabela_de_ramais.dart';
 
+//TODO Refazer todos os metodos para buscar dados de forma dinamica via DB
 
 class RamaisViewController{
 
@@ -148,66 +150,42 @@ class RamaisViewController{
     return widgetListaDeRamais;
   }
 
-  void mostrarPopup(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('ERRO!'),
-          content: const Text('Selecione uma Unidade!'),
-          actions: [
-            TextButton(
-              child: const Text('Fechar'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   obterNomeDaUnidade(String _nomeDaUnidade){
     nomeDaUnidade = _nomeDaUnidade;
   }
 
+  PdfController pdfController = PdfController();
+
   void openPdf(BuildContext context) {
     if(nomeDaUnidade == '+PET GOIÂNIA'){
-      baixarPdf(
+      pdfController.baixarPdf(
           'assets/files/ramais_goiania_pdf.pdf',
           'Ramais Goiânia'
       );
     }else if(nomeDaUnidade == '+PET HOLDING'){
-      baixarPdf(
+      pdfController.baixarPdf(
           'assets/files/holding_pdf.pdf',
           'Ramais Holding'
       );
     }else if(nomeDaUnidade == '+PET APARECIDA'){
-      baixarPdf(
+      pdfController.baixarPdf(
           'assets/files/ramais_aparecida_pdf.pdf',
           'Ramais PETSTORE'
       );
     }else if(nomeDaUnidade == '+PET BRASÍLIA'){
-      baixarPdf(
+      pdfController.baixarPdf(
           'assets/files/ramais_brasilia_pdf.pdf',
           'Ramais Brasília'
       );
     }else if(nomeDaUnidade == '+PET CAMPINAS'){
-      baixarPdf(
+      pdfController.baixarPdf(
           'assets/files/ramais_campinas_pdf.pdf',
           'Ramais Campinas'
       );
     }else {
-      mostrarPopup(context);
+      pdfController.mostrarPopup(context);
     }
-  }
-
-  void baixarPdf(String caminhoDoPdf, String nomeDoPdf){
-    final filePath = caminhoDoPdf;
-    final anchorElement = html.AnchorElement(href: filePath);
-    anchorElement.download = nomeDoPdf;
-    anchorElement.click();
   }
 
 }
