@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/control/guiController/pdf_controller.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:intranet_maispet/view/widgets/buttonImpressaoPdf.dart';
+import 'package:intranet_maispet/view/widgets/button_assistir_treinamento.dart';
 
 class WidgetTreinamento extends StatelessWidget{
 
   final String nomeDoTreinamento;
   final String resumoDoTreinamento;
-  final String linkDoTreinameto;
-  String caminhoDoPdf;
+  final List<String> links;
+  String? caminhoDoPdf;
   String nomeDoPdf;
   String caminhoDaImagem;
 
@@ -16,18 +16,18 @@ class WidgetTreinamento extends StatelessWidget{
     super.key,
     required this.nomeDoTreinamento,
     required this.resumoDoTreinamento,
-    required this.linkDoTreinameto,
-    this.caminhoDoPdf = '',
+    required this.links,
+    this.caminhoDoPdf,
     this.nomeDoPdf = '',
-    required this.caminhoDaImagem
+    this.caminhoDaImagem = 'assets/images/Logo_Nova-removebg-preview.png',
   });
 
   @override
   Widget build(BuildContext context) {
-    PdfController impressaoPdfController = PdfController();
-    return Container(
-      width: 450,
-      // height: 350,
+
+    return SizedBox(
+      width: 400,
+      // height: 400,
       child: Card(
           color: const Color(0xffffffff).withOpacity(0.90),
           child: Padding(
@@ -39,8 +39,8 @@ class WidgetTreinamento extends StatelessWidget{
                   children: [
                     Image.asset(
                       caminhoDaImagem,
-                      height: 150,
-                      width: 215,
+                      height: 100,
+                      width: 175,
                     ),
                   ],
                 ),
@@ -54,65 +54,31 @@ class WidgetTreinamento extends StatelessWidget{
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 400,
-                      child: Text(
-                        resumoDoTreinamento,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton.icon(
-                      onPressed: () async{
-                        if(await canLaunchUrl(Uri.parse(linkDoTreinameto))){
-                          await launchUrl(Uri.parse(linkDoTreinameto));
-                        } else {
-                          throw 'Não foi possível abrir o vídeo, contate a equipe de T.I!';
-                        }
-                      },
-                      icon: const Icon(Icons.play_arrow),
-                      label: const Text('ASSISTIR TREINAMENTO'),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFD200)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                          textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                              fontWeight: FontWeight.bold
-                          ))
-                      ),
-                    )
-                  ],
-                ),
                 const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextButton.icon(
-                      onPressed: () async{
-                        impressaoPdfController.baixarPdf(
-                            caminhoDoPdf,
-                            nomeDoPdf);
-                      },
-                      icon: const Icon(Icons.picture_as_pdf),
-                      label: const Text('BAIXAR PDF'),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFD200)),
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                        textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                            fontWeight: FontWeight.bold
-                        ))
+                    SizedBox(
+                      width: 350,
+                      height: 50,
+                      child: SingleChildScrollView(
+                        child: Text(
+                          resumoDoTreinamento,
+                          style: const TextStyle(fontSize: 12),
+                        ),
                       ),
-                    )
+                    ),
                   ],
-                )
+                ),
+                const SizedBox(height: 15),
+                for(String link in links)
+                  ButtonAssistirTreinamentos(link: link,),
+                const SizedBox(height: 15),
+                if(caminhoDoPdf != null)
+                  ButtonImpressaoPdf(
+                    caminhoDoPdf: caminhoDoPdf!,
+                    nomeDoTreinamento: nomeDoTreinamento,
+                  ),
               ],
             ),
           )

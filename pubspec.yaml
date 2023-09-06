@@ -44,7 +44,7 @@ dependencies:
   pdf: any
   printing: ^5.5.0
   hexcolor: ^2.0.4
-  flutter_form_builder: ^5.0.0
+  flutter_form_builder: ^9.1.0
 
 
 

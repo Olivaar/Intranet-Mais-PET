@@ -69,7 +69,7 @@ class _DropButtonIntranetState extends State<DropButtonIntranet>{
                 buttonStyleData:  ButtonStyleData(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   height: 40,
-                  width: 200,
+                  width: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all( color: Colors.black),

@@ -66,7 +66,7 @@ class _BranchesViewState extends State<BranchesView>{
         onPressed: () {
           ramais_view_controller.openPdf(context);
         },
-        child: Icon(Icons.print),
+        child: const Icon(Icons.print),
       ),
     );
   }

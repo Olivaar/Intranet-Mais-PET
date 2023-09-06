@@ -15,7 +15,7 @@ class PdfController{
 
   }
 
-  void mostrarPopup(BuildContext context) {
+  void mostrarPopup(BuildContext context,) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

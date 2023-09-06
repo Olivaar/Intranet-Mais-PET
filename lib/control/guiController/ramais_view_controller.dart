@@ -187,5 +187,4 @@ class RamaisViewController{
       pdfController.mostrarPopup(context);
     }
   }
-
 }
