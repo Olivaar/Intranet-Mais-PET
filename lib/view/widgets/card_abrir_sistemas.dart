@@ -6,18 +6,20 @@ class CardAbrirSistemas extends StatelessWidget{
   final String urlDoSistema;
   final String caminhoDoIconeDoSistema;
   final String nomeDoSistema;
+  Color corDeFundo;
 
   CardAbrirSistemas ({
     super.key,
     required this.urlDoSistema,
     required this.caminhoDoIconeDoSistema,
     required this.nomeDoSistema,
+    this.corDeFundo = const Color(0xffFFFFFF)
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xffffffff),
+      color: corDeFundo,
       margin: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () async {
