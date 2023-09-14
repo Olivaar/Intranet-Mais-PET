@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/control/guiController/ramais_view_controller.dart';
+import 'package:intranet_maispet/controller/ramais_view_controller.dart';
 import 'package:intranet_maispet/view/widgets/card_tabela_de_ramais.dart';
 
 class WidgetTodosRamais extends StatelessWidget{

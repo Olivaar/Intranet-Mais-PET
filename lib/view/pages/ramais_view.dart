@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../control/guiController/ramais_view_controller.dart';
+import '../../controller/ramais_view_controller.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/dropButton.dart';
 import '../widgets/row_logoMaisPet_nomeDaView.dart';

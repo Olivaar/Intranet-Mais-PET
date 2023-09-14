@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../control/guiController/pdf_controller.dart';
+import '../../controller/pdf_controller.dart';
 
 class ButtonImpressaoPdf extends StatelessWidget {
   final String caminhoDoPdf;

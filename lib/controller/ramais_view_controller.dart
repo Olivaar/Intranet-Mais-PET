@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/control/guiController/pdf_controller.dart';
+import 'package:intranet_maispet/controller/pdf_controller.dart';
 import 'package:intranet_maispet/view/widgets/widget_todos_ramais.dart';
 import 'dart:html' as html;
 
@@ -29,6 +29,9 @@ class RamaisViewController{
     {'local': 'Consultório 2', 'ramal': '8860',},
     {'local': 'Consultório 3', 'ramal': '8861',},
     {'local': 'Consultório 4', 'ramal': '8862',},
+    {'local': 'Consultório 6', 'ramal': '',},
+    {'local': 'Consultório 7', 'ramal': '',},
+    {'local': 'Consultório 8', 'ramal': '',},
     {'local': 'Administração - Livyane', 'ramal': '8864',},
     {'local': 'Administração - Jheyne', 'ramal': '8874',},
     {'local': 'Internação', 'ramal': '8865',},
@@ -55,6 +58,7 @@ class RamaisViewController{
     {'local': 'Agendamento 7', 'ramal': '8876',},
     {'local': 'Agendamento 8', 'ramal': '8872',},
     {'local': 'Agendamento 9', 'ramal': '8859',},
+    {'local': 'Agendamento 10', 'ramal': '0715',},
     {'local': 'Comercial - Isadora', 'ramal': '8877',},
     {'local': 'Comercial - Beatriz', 'ramal': '2376',},
     {'local': 'Comercial - Amanda', 'ramal': '2375',},
@@ -64,8 +68,6 @@ class RamaisViewController{
   List<Map<String, dynamic>> brasilia = [
     {'local': 'Recepção HOSPITAL', 'ramal': '2356',},
     {'local': 'Recepção HOSPITAL', 'ramal': '2357',},
-    {'local': 'Recepção HOSPITAL', 'ramal': '2358',},
-    {'local': 'Recepção HOSPITAL', 'ramal': '2359',},
     {'local': 'Recepção PETSHOP', 'ramal': '2360',},
     {'local': 'Consultório 1', 'ramal': '2361',},
     {'local': 'Consultório 2', 'ramal': '2362',},
@@ -73,21 +75,21 @@ class RamaisViewController{
     {'local': 'Consultório 4', 'ramal': '2364',},
     {'local': 'Consultório 5', 'ramal': '2365',},
     {'local': 'Consultório 6', 'ramal': '2366',},
-    {'local': 'Administração - Barbara', 'ramal': '2367',},
+    {'local': 'Sala de Reunião', 'ramal': '2367',},
     {'local': 'Internação', 'ramal': '2368',},
     {'local': 'Estoque', 'ramal': '2369',},
     {'local': 'Comercial - Cauan', 'ramal': '2370',},
     {'local': 'Tomografia', 'ramal': '2371',},
+    {'local': 'ADministração', 'ramal': '2358',},
   ];
 
 
   List<Map<String, dynamic>> campinas = [
     {'local': 'Recepção HOSPITAL', 'ramal': '2377',},
-    {'local': 'Recepção HOSPITAL', 'ramal': '711,'},
-    {'local': 'Recepção HOSPITAL', 'ramal': '712',},
+    {'local': 'Recepção HOSPITAL', 'ramal': ''},
+    {'local': 'Recepção HOSPITAL', 'ramal': '',},
     {'local': 'Recepção PETSHOP', 'ramal': '2378',},
-    {'local': 'Recepção PETSHOP', 'ramal': '713',},
-    {'local': 'Recepção PETSHOP', 'ramal': '714',},
+    {'local': 'Recepção PETSHOP', 'ramal': '',},
     {'local': 'Consultório 1', 'ramal': '2379',},
     {'local': 'Consultório 2', 'ramal': '2380',},
     {'local': 'Consultório 3', 'ramal': '2381',},
@@ -103,6 +105,7 @@ class RamaisViewController{
     {'local': 'Plantão', 'ramal': '2391',},
     {'local': 'Estoque', 'ramal': '2392',},
     {'local': 'Comercial Isabela', 'ramal': '2373',},
+    {'local': 'Comercial Luciano', 'ramal': '0716',},
   ];
 
   List<DataColumn> myColumns = [

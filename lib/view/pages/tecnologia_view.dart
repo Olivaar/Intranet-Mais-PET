@@ -143,7 +143,7 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                           nomeDoSistema: 'P4X',
                         ),
                         CardAbrirSistemas(
-                          urlDoSistema: 'https://portal.p4x.srv.br/login',
+                          urlDoSistema: 'https://admin.elosgate.com.br/login',
                           caminhoDoIconeDoSistema: 'images/logo_elosgate.png',
                           nomeDoSistema: 'ELOSGATE',
                         ),

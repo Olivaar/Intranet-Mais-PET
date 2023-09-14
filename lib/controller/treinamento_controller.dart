@@ -1,6 +1,6 @@
-import '../../model/entities/Treinamento.dart';
+import '../model/entities/Treinamento.dart';
 
-class TreinamentosViewController2{
+class TreinamentoController{
   List<Treinamento> listaDeTreinamentos = [];
   List<String> linksVideos = [];
 
@@ -26,4 +26,5 @@ class TreinamentosViewController2{
     listaDeTreinamentos.add(treinamento);
     return treinamento;
   }
+
 }

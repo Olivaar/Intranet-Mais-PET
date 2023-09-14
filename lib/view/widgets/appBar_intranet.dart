@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/control/guiController/treinamento_view_controller.dart';
-
 import 'button_navegacao_paginas_intranet.dart';
 import 'button_navegacao_midias_maispet.dart';
 
 class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
-  TreinamentosViewController treinamentosController = TreinamentosViewController();
   Color color;
 
   AppBarIntranet({
@@ -19,7 +16,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: color,
       elevation: 0,
-
+      automaticallyImplyLeading: false,
       title: Row(
         children: [
           ButtonNavegacaoPaginasIntranet(

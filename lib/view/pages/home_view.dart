@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
+
+//TODO ATUALIZAR NOTAS DE ATUALIZACAO
 
 class MyHomePage extends StatefulWidget {
 
   final String title;
 
-  MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title});
 
 
   @override
@@ -20,6 +20,8 @@ class _MyHomePageState extends State<MyHomePage> {String? _string;
 
 @override
 Widget build(BuildContext context) {
+
+  String versao = '2.1.2';
 
   return Scaffold(
     appBar: AppBarIntranet(),
@@ -160,7 +162,91 @@ Widget build(BuildContext context) {
           ),
         ),
       ],
-    ), // This trailing comma makes auto-formatting nicer for build methods.
+    ),
+    floatingActionButton: FloatingActionButton.extended(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext contex){
+            return AlertDialog(
+              backgroundColor: const Color(0xffFFD400),
+              title: Text(
+                'NOTAS DE ATUALIZAÇÃO $versao',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white,
+                ),
+                textScaleFactor: 1,
+                textAlign: TextAlign.center,
+              ),
+              content: const SizedBox(
+                width: 375,
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '- Notas de Atualização! Aqui te informaremos sobre\n'
+                            'todas as novidades da nossa Intranet.',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '- Nossos treinamentos estão de cara nova,\n'
+                            'confira e ja aproveite para se atualizar!',
+                            style: TextStyle(fontWeight: FontWeight.bold,),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '- Ramais atualizados! Tivemos algumas mudanças\n'
+                            'nos ramais das unidades, você pode encontrar as\n'
+                            'listas atualizadas na aba Ramais.',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFffff)),
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                    textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+                  ),
+                  child: const Text('Fechar'),
+                ),
+              ],
+            );
+          }
+        );
+      },
+      backgroundColor: const Color(0xffFFD400),
+      label: Text(versao),
+      icon: const Icon(Icons.verified_user_outlined),
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,// This trailing comma makes auto-formatting nicer for build methods.
   );
 }
 }
