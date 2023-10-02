@@ -4,7 +4,7 @@ import 'package:intranet_maispet/view/widgets/card_tabela_de_ramais.dart';
 
 class WidgetTodosRamais extends StatelessWidget{
 
-  RamaisViewController ramaisViewController =  new RamaisViewController();
+  RamaisViewController ramaisViewController =  RamaisViewController();
 
   @override
   Widget build(BuildContext context) {

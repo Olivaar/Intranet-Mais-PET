@@ -24,23 +24,38 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
             iconeDaPagina: Icons.home,
             onPressed: (){
               Navigator.pushNamed(context, '/home');
-          }),
+            }
+          ),
+          const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
             nomeDaPagina: "RAMAIS",
             iconeDaPagina: Icons.phone,
             onPressed: (){
               Navigator.pushNamed(context, '/ramais');
-          }),
+            }
+          ),
+          const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
-              nomeDaPagina: "TREINAMENTOS",
-              iconeDaPagina: Icons.playlist_play_sharp,
-              onPressed: (){
-                Navigator.pushNamed(context, '/treinamentos');
-              }),
+            nomeDaPagina: "TREINAMENTOS",
+            iconeDaPagina: Icons.playlist_play_sharp,
+            onPressed: (){
+              Navigator.pushNamed(context, '/treinamentos');
+            }
+          ),
+          const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
-              nomeDaPagina: "DOCUMENTOS",
-              onPressed: (){},
-              iconeDaPagina: Icons.block_outlined),
+            nomeDaPagina: "ANIVERSARIANTES",
+            iconeDaPagina: Icons.cake_outlined,
+            onPressed: (){
+              Navigator.pushNamed(context, '/aniversariantes');
+            }
+          ),
+          const SizedBox(width: 5,),
+          ButtonNavegacaoPaginasIntranet(
+            nomeDaPagina: "DEPARTAMENTOS",
+            iconeDaPagina: Icons.block_outlined,
+            onPressed: (){},
+          ),
         ],
       ),
       actions: const [
@@ -58,6 +73,6 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
 }

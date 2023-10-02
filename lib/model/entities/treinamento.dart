@@ -1,5 +1,3 @@
-
-
 class Treinamento {
   late String titulo;
   late String descricao;
@@ -14,7 +12,7 @@ class Treinamento {
   Treinamento.fromJson(Map<String, dynamic> json)
     : titulo = json['titulo'],
       descricao = json['descricao'],
-        linksVideos = (json['linksVideos'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [];
+      linksVideos = (json['linksVideos'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [];
 
   Map<String, dynamic> toJson(){
     return{
@@ -22,11 +20,6 @@ class Treinamento {
       'descricao': descricao,
       'linksVideos': linksVideos,
     };
-  }
-
-  @override
-  String toString() {
-    return 'Treinamento{titulo: $titulo, descricao: $descricao, linksVideos: $linksVideos}';
   }
 }
 

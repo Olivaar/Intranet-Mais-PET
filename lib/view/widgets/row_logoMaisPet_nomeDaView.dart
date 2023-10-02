@@ -29,10 +29,12 @@ class RowLogoMaisPet_NomeView extends StatelessWidget{
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget> [
-                Text(nomeDaView, style: const TextStyle(
-                  fontWeight: FontWeight.bold),
-                  textScaleFactor: 2),
-                ],
+                Text(
+                  nomeDaView,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  textScaleFactor: 2
+                ),
+              ],
             ),
           ),
         )

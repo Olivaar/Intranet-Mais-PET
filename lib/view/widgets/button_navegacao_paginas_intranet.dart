@@ -19,6 +19,7 @@ class ButtonNavegacaoPaginasIntranet extends StatelessWidget{
       label: Text(nomeDaPagina),
       icon: Icon(iconeDaPagina),
       style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
         foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
           fontWeight: FontWeight.bold

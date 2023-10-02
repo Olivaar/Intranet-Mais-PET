@@ -67,7 +67,7 @@ class _DropButtonIntranetState extends State<DropButtonIntranet>{
                   widget.onChanged(value!);
                 },
                 buttonStyleData:  ButtonStyleData(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(

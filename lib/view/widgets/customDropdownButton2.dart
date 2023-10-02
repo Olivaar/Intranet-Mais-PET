@@ -1,5 +1,4 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropdownButton2 extends StatelessWidget {
@@ -104,7 +103,7 @@ class CustomDropdownButton2 extends StatelessWidget {
           padding: buttonPadding ?? const EdgeInsets.only(left: 14, right: 14),
           decoration: buttonDecoration ??
               BoxDecoration(
-                color: Color(0xffFFD200),
+                color: const Color(0xffFFD200),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: Colors.black45,

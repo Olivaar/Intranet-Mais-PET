@@ -27,7 +27,7 @@ class CardTabelaDeRamais extends StatelessWidget{
         child: Column(
           children: [
             Text(nomeDaUnidade,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             DataTable(
               columns: listaDeColunas,
               rows: listaDeRamais.map((item) {

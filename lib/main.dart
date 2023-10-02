@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/view/pages/admin_aniversariantes_view.dart';
+import 'package:intranet_maispet/view/pages/aniversariantes_view.dart';
 import 'package:intranet_maispet/view/pages/home_view.dart';
 import 'package:intranet_maispet/view/pages/ramais_view.dart';
 import 'package:intranet_maispet/view/pages/tecnologia_view.dart';
@@ -24,10 +26,12 @@ class MyApp extends StatelessWidget {
       title: 'Intranet +PET',
        initialRoute: '/home',
        routes: {
-         '/home': (context) => MyHomePage(title: 'Intranet +PET'),
+         '/home': (context) => const MyHomePage(title: 'Intranet +PET'),
          '/ramais': (context) => BranchesView(),
          '/tecnologia': (context) => TecnologiaView(),
-         '/treinamentos': (context) => TreinamentosView(),
+         '/treinamentos': (context) => const TreinamentosView(),
+         '/rhaniversariantes': (context) => AdminAniversariantesView(),
+         '/aniversariantes': (context) => AniversariantesView(),
        },
       theme: ThemeData(
         colorScheme: null,

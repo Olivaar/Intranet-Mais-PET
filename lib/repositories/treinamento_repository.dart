@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intranet_maispet/controller/treinamento_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../model/entities/Treinamento.dart';
+import '../model/entities/treinamento.dart';
 
 const treinamentosKey = 'treinamentos_list';
 

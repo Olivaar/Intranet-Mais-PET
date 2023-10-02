@@ -52,6 +52,8 @@ dependencies:
   firebase_analytics: ^10.4.5
   cloud_firestore: ^4.9.1
   firebase: ^9.0.0
+  google_fonts:
+  animated_background:
 
 
 

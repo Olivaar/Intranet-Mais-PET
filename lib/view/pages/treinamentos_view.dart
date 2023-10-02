@@ -1,11 +1,11 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/pdf_controller.dart';
 import 'package:intranet_maispet/controller/treinamento_controller.dart';
-import 'package:intranet_maispet/model/entities/Treinamento.dart';
+import 'package:intranet_maispet/model/entities/treinamento.dart';
 import 'package:intranet_maispet/repositories/treinamento_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/show_dialog_erro.dart';
 import 'package:intranet_maispet/view/widgets/widget_treinamento.dart';
 import '../widgets/theme_helper.dart';
 
@@ -200,17 +200,10 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                         showDialog(
                           context: context,
                           builder: (BuildContext contex){
-                            return AlertDialog(
-                              title: const Text('ERRO!'),
-                              content: const Text('O campo titulo não pode estar vazio!'),
-                              actions: [
-                                TextButton(
-                                  child: const Text('Fechar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
+                            return const ShowDialogErro(
+                              title: 'ERRO!',
+                              content: 'O campo titulo não pode estar vazio!',
+                              textButton: 'Fechar',
                             );
                           }
                         );
@@ -220,18 +213,11 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                         showDialog(
                           context: context,
                           builder: (BuildContext contex){
-                            return AlertDialog(
-                              title: const Text('ERRO!'),
-                              content: const Text('O treinamento precisa ter ao '
-                                  'menos 1 video!'),
-                              actions: [
-                                TextButton(
-                                  child: const Text('Fechar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
+                            return const ShowDialogErro(
+                              title: 'ERRO!',
+                              content: 'O treinamento precisa ter ao '
+                                'menos 1 video!',
+                              textButton: 'Fechar',
                             );
                           }
                         );
@@ -247,15 +233,6 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                           tr.linksVideos.add(link2Controller.text);
                         }
                         setState(() {
-                          treinamentosController2.salvarTreinamento(
-                            titulo: tituloController.text,
-                            descricao: descricaoController.text,
-                            link1: link1Controller.text,
-                            link2: link2Controller.text,
-                          );
-                          treinamentoRepository.saveListaDeTreinamentos(
-                              treinamentosController2.listaDeTreinamentos
-                          );
                           treinamentoRepository.saveTreinamento(tr);
                           _carregarTreinamentos();
                         });
@@ -269,17 +246,10 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                         showDialog(
                           context: context,
                           builder: (BuildContext contex){
-                            return AlertDialog(
-                              title: const Text('ERRO!'),
-                              content: const Text('Senha incorreta'),
-                              actions: [
-                                TextButton(
-                                  child: const Text('Fechar'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
+                            return const ShowDialogErro(
+                              title: 'ERRO!',
+                              content: 'Senha incorreta!',
+                              textButton: 'Fechar',
                             );
                           }
                         );

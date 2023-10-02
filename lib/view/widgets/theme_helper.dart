@@ -3,17 +3,17 @@ import 'package:hexcolor/hexcolor.dart';
 
 class ThemeHelper{
 
-  InputDecoration textInputDecoration([String lableText="", String hintText = "",]){
+  InputDecoration textInputDecoration([String lableText="", String hintText = "", Color fillColor = Colors.white,]){
     return InputDecoration(
       labelText: lableText,
       hintText: hintText,
-      fillColor: Colors.white,
+      fillColor: fillColor,
       filled: true,
-      contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: BorderSide(color: Colors.black)),
-      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: BorderSide(color: Colors.black45)),
-      errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-      focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
+      contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: const BorderSide(color: Colors.black)),
+      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: const BorderSide(color: Colors.black)),
+      errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: const BorderSide(color: Colors.red, width: 2.0)),
+      focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0), borderSide: const BorderSide(color: Colors.red, width: 2.0)),
     );
   }
 
@@ -38,13 +38,13 @@ class ThemeHelper{
     }
 
     return BoxDecoration(
-      boxShadow: [
+      boxShadow: const [
         BoxShadow(color: Colors.black, offset: Offset(0, 4), blurRadius: 5.0)
       ],
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        stops: [0.0, 1.0],
+        stops: const [0.0, 1.0],
         colors: [
           c1,
           c2,
@@ -62,7 +62,7 @@ class ThemeHelper{
           borderRadius: BorderRadius.circular(30.0),
         ),
       ),
-      minimumSize: MaterialStateProperty.all(Size(50, 50)),
+      minimumSize: MaterialStateProperty.all(const Size(50, 50)),
       backgroundColor: MaterialStateProperty.all(Colors.transparent),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
     );
@@ -74,15 +74,15 @@ class ThemeHelper{
       content: Text(content),
       actions: [
         TextButton(
-          child: Text(
-            "OK",
-            style: TextStyle(color: Colors.white),
-          ),
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.black)),
           onPressed: () {
             Navigator.of(context).pop();
           },
+          child: const Text(
+            "OK",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ],
     );
