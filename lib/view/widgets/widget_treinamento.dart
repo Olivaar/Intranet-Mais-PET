@@ -27,7 +27,6 @@ class WidgetTreinamento extends StatelessWidget{
 
     return SizedBox(
       width: 400,
-      // height: 400,
       child: Card(
           color: const Color(0xffffffff).withOpacity(0.90),
           child: Padding(

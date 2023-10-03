@@ -9,9 +9,9 @@ class AniversarianteController {
   List<Aniversariante> aniversariantesDoDia = [];
   List<String> listaDeUnidades = [
     'Holding +PET', 'Hospital Goiânia', 'Petshop Goiânia',
-    'Hospital Brasília', 'Petshop Brsília',
+    'Hospital Brasília', 'Petshop Brasília',
     'Hospital Campinas', 'Petshop Campinas', 'Pet Store',
-    'Agendamento +PET'
+    'Agendamento +PET', 'Comercial Goiânia', 'Comercial Brasília', 'Comercial Campinas',
   ];
 
   String dataAniversarioToString(Timestamp dataAniversario) {

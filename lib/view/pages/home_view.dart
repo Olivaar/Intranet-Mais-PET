@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '2.2.2';
+    String versao = '2.2.3';
     AniversarianteController aniversarianteController = AniversarianteController();
 
     return Scaffold(

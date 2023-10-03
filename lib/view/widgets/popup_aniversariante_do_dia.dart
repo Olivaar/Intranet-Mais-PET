@@ -89,7 +89,7 @@ class _PopUpAniversarianteDoDiaState extends State<PopUpAniversarianteDoDia> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 380,
+              width: 410,
               alignment: Alignment.center,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(

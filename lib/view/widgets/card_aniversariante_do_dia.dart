@@ -17,6 +17,7 @@ class CardAniversarianteDoDia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 200,
       margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: const Color(0xffffffff),
@@ -47,9 +48,16 @@ class CardAniversarianteDoDia extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.work),
-                Text(
-                  cargo,
-                  style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      child: Text(
+                        cargo,
+                        style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
