@@ -7,12 +7,7 @@ class AniversarianteController {
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
   List<Aniversariante> aniversariantes = [];
   List<Aniversariante> aniversariantesDoDia = [];
-  List<String> listaDeUnidades = [
-    'Holding +PET', 'Hospital Goiânia', 'Petshop Goiânia',
-    'Hospital Brasília', 'Petshop Brasília',
-    'Hospital Campinas', 'Petshop Campinas', 'Pet Store',
-    'Agendamento +PET', 'Comercial Goiânia', 'Comercial Brasília', 'Comercial Campinas',
-  ];
+  List<String> listaDeUnidades = [];
 
   String dataAniversarioToString(Timestamp dataAniversario) {
     final dateTime = dataAniversario.toDate();
@@ -21,6 +16,15 @@ class AniversarianteController {
     final year = dateTime.year.toString();
 
     return '$day/$month/$year';
+  }
+
+  String dataAniversario2ToString(Timestamp dataAniversario) {
+    final dateTime = dataAniversario.toDate();
+    final day = dateTime.day.toString().padLeft(2, '0');
+    final month = dateTime.month.toString().padLeft(2, '0');
+    final year = dateTime.year.toString();
+
+    return '$day/$month';
   }
 
   Aniversariante createAniversariante(String nome, String data, String cargo, String unidade){

@@ -22,5 +22,3 @@ class Treinamento {
     };
   }
 }
-
-//docSnapshot.data()

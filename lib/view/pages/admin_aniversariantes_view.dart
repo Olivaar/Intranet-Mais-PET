@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
+import 'package:intranet_maispet/model/entities/unidade.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
+import 'package:intranet_maispet/repositories/unidade_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
@@ -21,6 +23,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
 
   AniversarianteController aniversarianteController = AniversarianteController();
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
+  UnidadeRepository unidadeRepository = UnidadeRepository();
 
   TextEditingController nomeController = TextEditingController();
   TextEditingController dataController = TextEditingController();
@@ -31,12 +34,24 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
   void initState() {
     super.initState();
     _carregarAniversariantes();
+    _carregarUnidades();
   }
 
   Future<void> _carregarAniversariantes() async {
     final aniversariantes = await aniversarianteRepository.getListAniversariantes();
     setState(() {
       aniversarianteController.aniversariantes = aniversariantes;
+    });
+  }
+
+  Future<void> _carregarUnidades() async {
+    final unidades = await unidadeRepository.readListUnidades();
+    final List<String> unidasdeString = [];
+    for(Unidade un in unidades){
+      unidasdeString.add(un.nome);
+    }
+    setState(() {
+      aniversarianteController.listaDeUnidades = unidasdeString;
     });
   }
 

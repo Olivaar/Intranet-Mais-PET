@@ -25,7 +25,6 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
     _carregarAniversariantes();
     _carregarAniversariantesDoDia();
 
-
     Future.delayed(const Duration(milliseconds: 3500)).then((_) {
       if(aniversarianteController.aniversariantesDoDia.isNotEmpty){
         showDialog(
@@ -148,7 +147,7 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
                                   height: 20,
                                   width: 150,
                                   child: Text(
-                                    aniversarianteController.dataAniversarioToString(
+                                    aniversarianteController.dataAniversario2ToString(
                                       aniversariante.dataAniversario,
                                     ),
                                   ),
