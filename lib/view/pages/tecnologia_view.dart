@@ -15,7 +15,10 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: AppBarIntranet(color: const Color(0xff34B9D6)),
+        appBar: AppBarIntranet(
+          appBarColor: const Color(0xff34B9D6),
+          buttonColor: Colors.lightBlue.shade700,
+        ),
         body: Stack(
           children: [
             Container(
@@ -127,7 +130,7 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                           corDeFundo: const Color(0xff34B9D6),
                         ),
                         CardAbrirSistemas(
-                          urlDoSistema: 'https://telemed.intelite.com.br/panel',
+                          urlDoSistema: 'https://telemed.s4e.com.br/SYS/',
                           caminhoDoIconeDoSistema: 'images/logo_s4e.jpg',
                           nomeDoSistema: 'S4E TELEMED',
                           corDeFundo: const Color(0xff34B9D6),

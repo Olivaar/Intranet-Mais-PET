@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
+import 'package:intranet_maispet/model/entities/ramal.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
+import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
@@ -41,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     String versao = '2.2.4';
     AniversarianteController aniversarianteController = AniversarianteController();
+    RamalRepository ramalRepository = RamalRepository();
 
     return Scaffold(
       appBar: AppBarIntranet(),
@@ -250,6 +253,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   TextButton(
                     onPressed: () async {
                       Navigator.of(context).pop();
+                      Ramal ramal = Ramal(
+                        unidade: 'Holding',
+                        local: 'Tecnologia',
+                        numero: '7250',
+                      );
+                      ramalRepository.createRamal(ramal);
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFffff)),

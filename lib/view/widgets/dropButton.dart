@@ -6,13 +6,15 @@ class DropButtonIntranet extends StatefulWidget {
   List<String> listaDeItens;
   String textoHint;
   String textoHintPesquisar;
+  Color color;
 
   DropButtonIntranet({
     super.key,
     required this.onChanged,
     required this.listaDeItens,
     this.textoHintPesquisar = '',
-    required this.textoHint
+    required this.textoHint,
+    this.color = const Color(0xffFFD200),
   });
 
   @override
@@ -73,14 +75,14 @@ class _DropButtonIntranetState extends State<DropButtonIntranet>{
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all( color: Colors.black),
-                    color: const Color(0xffFFD200)
+                    color: widget.color,
                   )
                 ),
                 dropdownStyleData: DropdownStyleData(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all( color: Colors.black),
-                    color: const Color(0xffFFD200)
+                    color: widget.color,
                   ),
                   maxHeight: 200,
                 ),

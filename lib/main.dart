@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/pages/admin_aniversariantes_view.dart';
+import 'package:intranet_maispet/view/pages/admin_ramais_view.dart';
 import 'package:intranet_maispet/view/pages/aniversariantes_view.dart';
 import 'package:intranet_maispet/view/pages/home_view.dart';
 import 'package:intranet_maispet/view/pages/ramais_view.dart';
@@ -30,14 +31,14 @@ class MyApp extends StatelessWidget {
          '/ramais': (context) => BranchesView(),
          '/tecnologia': (context) => TecnologiaView(),
          '/treinamentos': (context) => const TreinamentosView(),
-         '/rhaniversariantes': (context) => AdminAniversariantesView(),
-         '/aniversariantes': (context) => AniversariantesView(),
+         '/rhaniversariantes': (context) => const AdminAniversariantesView(),
+         '/aniversariantes': (context) => const AniversariantesView(),
+         '/admramais': (context) => const AdminRamaisView(),
        },
       theme: ThemeData(
         colorScheme: null,
         useMaterial3: true,
       ),
-      // home: MyHomePage(title: 'Home'),
     );
   }
 }

@@ -39,8 +39,11 @@ class CardAbrirSistemas extends StatelessWidget{
                   Image.asset(caminhoDoIconeDoSistema, height: 100, width: 100),
                 ],
               ),
-              Text(nomeDoSistema, style: const TextStyle(fontWeight: FontWeight.bold, ),
-                textScaleFactor: 0.90,)
+              Text(
+                nomeDoSistema,
+                style: const TextStyle(fontWeight: FontWeight.bold, ),
+                textScaleFactor: 0.90,
+              ),
             ],
           ),
         ),

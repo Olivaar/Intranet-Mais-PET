@@ -40,7 +40,6 @@ class AniversarianteRepository{
     return aniversariantesList;
   }
 
-
   void updateAniversariante(String id, Aniversariante updatedAniversariante) {
     final updatedAniversarianteJson = updatedAniversariante.toJson();
     db.collection('aniversariantes').doc(id).update(updatedAniversarianteJson);

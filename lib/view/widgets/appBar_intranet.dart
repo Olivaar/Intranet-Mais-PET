@@ -4,22 +4,26 @@ import 'button_navegacao_midias_maispet.dart';
 
 class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
-  Color color;
+  Color appBarColor;
+  Color buttonColor;
+
 
   AppBarIntranet({
     super.key,
-    this.color = const Color(0xffFFD400),
+    this.appBarColor = const Color(0xffFFD400),
+    this.buttonColor = Colors.amber,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: color,
+      backgroundColor: appBarColor,
       elevation: 0,
       automaticallyImplyLeading: false,
       title: Row(
         children: [
           ButtonNavegacaoPaginasIntranet(
+            color: buttonColor,
             nomeDaPagina: "HOME",
             iconeDaPagina: Icons.home,
             onPressed: (){
@@ -28,6 +32,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
           ),
           const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
+            color: buttonColor,
             nomeDaPagina: "RAMAIS",
             iconeDaPagina: Icons.phone,
             onPressed: (){
@@ -36,6 +41,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
           ),
           const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
+            color: buttonColor,
             nomeDaPagina: "TREINAMENTOS",
             iconeDaPagina: Icons.playlist_play_sharp,
             onPressed: (){
@@ -44,6 +50,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
           ),
           const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
+            color: buttonColor,
             nomeDaPagina: "ANIVERSARIANTES",
             iconeDaPagina: Icons.cake_outlined,
             onPressed: (){
@@ -52,6 +59,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
           ),
           const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
+            color: buttonColor,
             nomeDaPagina: "DEPARTAMENTOS",
             iconeDaPagina: Icons.block_outlined,
             onPressed: (){},

@@ -1,44 +1,126 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/model/entities/ramal.dart';
 
 class CardTabelaDeRamais extends StatelessWidget{
 
-  final List<Map<String, dynamic>> listaDeRamais; // Lista de dados
-  final List<DataColumn> listaDeColunas; // Lista de colunas
+  final List<Ramal> listaDeRamais; // Lista de dados
   final String nomeDaUnidade;
-
 
   const CardTabelaDeRamais({
     super.key,
     required this.listaDeRamais,
-    required this.listaDeColunas,
     required this.nomeDaUnidade
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(3.0)
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
       ),
-      color: const Color(0xffffffff),
-      margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Text(nomeDaUnidade,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            DataTable(
-              columns: listaDeColunas,
-              rows: listaDeRamais.map((item) {
-                return DataRow(cells: [
-                  for (var key in item.keys) DataCell(Text(item[key].toString())),
-                ]);
-              }).toList(),
+      width: 370,
+      child: Column(
+        children: [
+          Text(
+            nomeDaUnidade,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
-          ],
-        )
-      )
+          ),
+          const Divider(color: Colors.black,),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Local',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Ramal',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const Divider(color: Colors.black,),
+          ConstrainedBox(
+            constraints: const BoxConstraints( maxHeight: 320,),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    for(Ramal ramal in listaDeRamais)
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                children: [
+                                  Text(
+                                    ramal.local,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    ramal.numero,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
+              )
+            ),
+          )
+        ],
+      ),
     );
   }
 
