@@ -71,88 +71,33 @@ class _BranchesViewState extends State<BranchesView>{
                 const SizedBox(height: 10,),
                 if(unidadeSelecionada != null)
                   Container(
-                    padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                        )
+                    constraints: const BoxConstraints(
+                      minHeight: 0,
+                      maxHeight: 400,
                     ),
-                    width:320,
-                    child: Column(
-                      children: [
-                        Text(
-                            unidadeSelecionada ?? 'Selecione uma unidade',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            )
-                        ),
-                        const Divider(color: Colors.black,),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'Local',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Ramal',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Divider(color: Colors.black,),
-                      ],
+                    padding: const EdgeInsets.all(10),
+                    width: 320,
+                    decoration:  const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: ListView(
+                      shrinkWrap: true,
+                        children: [
+                          Column(
+                            children: [
+                              for(Ramal ramal in ramalController.ramais)
+                                Column(
+                                  children: [
+                                    RowRamalView(ramal: ramal),
+                                    const SizedBox(height: 2,)
+                                  ],
+                                )
+                            ],
+                          ),
+                        ]
                     ),
                   ),
-                if(unidadeSelecionada != null)
-                  Container(
-                    width: 320,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      )
-                    ),
-                    padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    child: ListView(
-                      children: [
-                        Column(
-                          children: [
-                            for(Ramal ramal in ramalController.ramais)
-                              Column(
-                                children: [
-                                  RowRamalView(ramal: ramal),
-                                  const SizedBox(height: 2,)
-                                ],
-                              )
-                          ],
-                        ),
-                      ]
-                    ),
-                  )
               ],
             ),
           ),
