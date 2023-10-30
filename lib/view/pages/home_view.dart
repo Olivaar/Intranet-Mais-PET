@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '2.2.4';
+    String versao = '2.4.4';
     AniversarianteController aniversarianteController = AniversarianteController();
     RamalRepository ramalRepository = RamalRepository();
 
@@ -210,69 +210,69 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext contex){
-              return AlertDialog(
-                backgroundColor: const Color(0xffFFD400),
-                title: Text(
-                  'NOTAS DE ATUALIZAÇÃO $versao',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white,
-                  ),
-                  textScaleFactor: 1,
-                  textAlign: TextAlign.center,
-                ),
-                content: const SizedBox(
-                  // width: 375,
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '- ANIVERSARIANTES...\n'
-                              'Ja está disponível a aba de aniversariantes,\n'
-                              'fiquem atentos que em breve os aniversarientes do mês\n'
-                              'aparecerão por aqui!',
-                              maxLines: 5,
-                              softWrap: true,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () async {
-                      Navigator.of(context).pop();
-                      Ramal ramal = Ramal(
-                        unidade: 'Holding',
-                        local: 'Tecnologia',
-                        numero: '7250',
-                      );
-                      ramalRepository.createRamal(ramal);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFffff)),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                      textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
-                    ),
-                    child: const Text('Fechar'),
-                  ),
-                ],
-              );
-            }
-          );
+          // showDialog(
+          //   context: context,
+          //   builder: (BuildContext contex){
+          //     return AlertDialog(
+          //       backgroundColor: const Color(0xffFFD400),
+          //       title: Text(
+          //         'NOTAS DE ATUALIZAÇÃO $versao',
+          //         style: const TextStyle(
+          //           fontWeight: FontWeight.bold, color: Colors.white,
+          //         ),
+          //         textScaleFactor: 1,
+          //         textAlign: TextAlign.center,
+          //       ),
+          //       content: const SizedBox(
+          //         // width: 375,
+          //         child: Padding(
+          //           padding: EdgeInsets.all(16),
+          //           child: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             children: [
+          //               Row(
+          //                 mainAxisAlignment: MainAxisAlignment.center,
+          //                 mainAxisSize: MainAxisSize.min,
+          //                 children: [
+          //                   Text(
+          //                     '- ANIVERSARIANTES...\n'
+          //                     'Ja está disponível a aba de aniversariantes,\n'
+          //                     'fiquem atentos que em breve os aniversarientes do mês\n'
+          //                     'aparecerão por aqui!',
+          //                     maxLines: 5,
+          //                     softWrap: true,
+          //                     style: TextStyle(fontWeight: FontWeight.bold),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //       actions: [
+          //         TextButton(
+          //           onPressed: () async {
+          //             Navigator.of(context).pop();
+          //             Ramal ramal = Ramal(
+          //               unidade: 'Holding',
+          //               local: 'Tecnologia',
+          //               numero: '7250',
+          //             );
+          //             ramalRepository.createRamal(ramal);
+          //           },
+          //           style: ButtonStyle(
+          //             backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFffff)),
+          //             foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+          //             textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
+          //               fontWeight: FontWeight.bold,
+          //             )),
+          //           ),
+          //           child: const Text('Fechar'),
+          //         ),
+          //       ],
+          //     );
+          //   }
+          // );
         },
         backgroundColor: const Color(0xffFFD400),
         label: Text(versao),

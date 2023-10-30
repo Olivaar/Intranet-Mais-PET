@@ -22,8 +22,6 @@ class _DialogRamalState extends State<DialogRamal> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RamalController ramalController = RamalController();
 
-  get unidadeSelecionada => null;
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

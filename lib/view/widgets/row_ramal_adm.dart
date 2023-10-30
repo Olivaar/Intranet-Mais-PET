@@ -32,27 +32,23 @@ class _RowRamalAdmState extends State<RowRamalAdm> {
       children: [
         SizedBox(
           width: 150,
-          child: Expanded(
-            child: Text(
-              widget.ramal.local,
-              textAlign: TextAlign.start,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
+          child: Text(
+            widget.ramal.local,
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
             ),
           ),
         ),
         SizedBox(
           width: 150,
-          child: Expanded(
-            child: Text(
-              widget.ramal.numero,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
+          child: Text(
+            widget.ramal.numero,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/controller/ramal_controller.dart';
@@ -8,7 +9,6 @@ import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/dialog_ramal.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
-
 import '../widgets/row_ramal_adm.dart';
 
 class AdminRamaisView extends StatefulWidget {
@@ -173,24 +173,22 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
                                       ),
                                       SizedBox(
                                         width: 150,
-                                        child: Expanded(
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              IconButton(
-                                                onPressed: (){
-                                                  ramalController.deleteRamal(
-                                                    ramal.id,
-                                                    unidadeSelecionada!
-                                                  );
-                                                  setState(() {
-                                                    _carregarRamais(unidadeSelecionada!);
-                                                  });
-                                                },
-                                                icon: const Icon(Icons.delete),
-                                              ),
-                                            ],
-                                          ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              onPressed: (){
+                                                ramalController.deleteRamal(
+                                                  ramal.id,
+                                                  unidadeSelecionada!
+                                                );
+                                                setState(() {
+                                                  _carregarRamais(unidadeSelecionada!);
+                                                });
+                                              },
+                                              icon: const Icon(Icons.delete),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -223,16 +221,28 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
   }
 
   Future<void> _showDialog() async {
-    await showDialog(
+
+    if(unidadeSelecionada != null){
+      await showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return DialogRamal(
+              unidadeSelecionada: unidadeSelecionada!,
+            );
+          }
+      );
+      setState(() {
+        _carregarRamais(unidadeSelecionada!);
+      });
+    } else {
+      await showDialog(
         context: context,
         builder: (BuildContext context){
-          return DialogRamal(
-            unidadeSelecionada: unidadeSelecionada!,
+          return const AlertDialog(
+            title: Text('Selecione uma unidade'),
           );
         }
-    );
-    setState(() {
-      _carregarRamais(unidadeSelecionada!);
-    });
+      );
+    }
   }
 }

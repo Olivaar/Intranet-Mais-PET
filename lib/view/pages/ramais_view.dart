@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/ramal_controller.dart';
 import 'package:intranet_maispet/repositories/ramal_repository.dart';
+import 'package:intranet_maispet/view/widgets/container_ramais.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
-import 'package:intranet_maispet/view/widgets/row_ramal_view.dart';
-import '../../model/entities/ramal.dart';
+import 'package:intranet_maispet/view/widgets/widget_todos_ramais.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/row_logoMaisPet_nomeDaView.dart';
-import '../widgets/row_ramal_adm.dart';
 
 
 class BranchesView extends StatefulWidget{
@@ -60,52 +59,29 @@ class _BranchesViewState extends State<BranchesView>{
                 const RowLogoMaisPet_NomeView(nomeDaView: 'Ramais'),
                 DropButtonIntranet(
                   onChanged: (value){
-                    setState(() {
-                      unidadeSelecionada = value;
-                      _carregarRamais(value);
-                    });
+                    if(value == 'TODOS OS RAMAIS'){
+                      setState(() {
+                        unidadeSelecionada = value;
+                      });
+                    } else{
+                      setState(() {
+                        unidadeSelecionada = value;
+                        _carregarRamais(value);
+                      });
+                    }
                   },
                   listaDeItens: ramalController.listaDeUnidades,
                   textoHint: 'Selecione a Unidade'
                 ),
                 const SizedBox(height: 10,),
-                if(unidadeSelecionada != null)
-                  Container(
-                    constraints: const BoxConstraints(
-                      minHeight: 0,
-                      maxHeight: 400,
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    width: 320,
-                    decoration:  const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: ListView(
-                      shrinkWrap: true,
-                        children: [
-                          Column(
-                            children: [
-                              for(Ramal ramal in ramalController.ramais)
-                                Column(
-                                  children: [
-                                    RowRamalView(ramal: ramal),
-                                    const SizedBox(height: 2,)
-                                  ],
-                                )
-                            ],
-                          ),
-                        ]
-                    ),
-                  ),
+                if(unidadeSelecionada != null && unidadeSelecionada != 'TODOS OS RAMAIS')
+                  ContainerRamais(ramais: ramalController.ramais, unidade: unidadeSelecionada,),
+                if(unidadeSelecionada != null && unidadeSelecionada == 'TODOS OS RAMAIS')
+                  WidgetTodosRamais(),
               ],
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.print),
       ),
     );
   }

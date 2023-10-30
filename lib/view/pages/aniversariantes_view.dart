@@ -35,7 +35,7 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
               contentPadding: EdgeInsets.zero,
               content: Container(
                 width: 470,
-                height: 355,
+                height: 369,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   boxShadow: [

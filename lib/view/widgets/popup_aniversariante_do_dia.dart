@@ -47,7 +47,6 @@ class _PopUpAniversarianteDoDiaState extends State<PopUpAniversarianteDoDia> {
           children: [
             Container(
               alignment: Alignment.center,
-              // width: 380,
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
                 color: const Color(0xffFFD400).withOpacity(0.9),

@@ -33,8 +33,10 @@ class CardAniversarianteDoDia extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.cake, color: Color(0xffFFD400), size: 30,),
@@ -45,26 +47,25 @@ class CardAniversarianteDoDia extends StatelessWidget {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.work),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      child: Text(
-                        cargo,
-                        style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
-                      ),
+                  child: Text(
+                    cargo,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.add_business_outlined, color: Color(0xffFFD400),),
                 Text(
                   unidade,
                   style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),

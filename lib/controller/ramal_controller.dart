@@ -14,6 +14,10 @@ class RamalController {
   ];
 
   List<Ramal> ramais = [];
+  List<Ramal> ramaisGyn = [];
+  List<Ramal> ramaisBsb = [];
+  List<Ramal> ramaisCamp = [];
+  List<Ramal> ramaisAp = [];
 
   void createRamal(Ramal ramal){
     ramalRepository.createRamal(ramal);
