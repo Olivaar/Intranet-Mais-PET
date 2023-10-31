@@ -10,6 +10,7 @@ class RamalController {
     '+PET APARECIDA',
     '+PET BRASÍLIA',
     '+PET CAMPINAS',
+    'TELEMED +PET',
     'TODOS OS RAMAIS'
   ];
 

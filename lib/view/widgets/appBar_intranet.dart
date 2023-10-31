@@ -6,12 +6,14 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
 
   Color appBarColor;
   Color buttonColor;
+  bool leading;
 
 
   AppBarIntranet({
     super.key,
     this.appBarColor = const Color(0xffFFD400),
     this.buttonColor = Colors.amber,
+    this.leading = false,
   });
 
   @override
@@ -19,7 +21,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: appBarColor,
       elevation: 0,
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: leading,
       title: Row(
         children: [
           ButtonNavegacaoPaginasIntranet(

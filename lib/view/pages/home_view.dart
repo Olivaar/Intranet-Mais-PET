@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
-import 'package:intranet_maispet/model/entities/ramal.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
 import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import '../widgets/appBar_intranet.dart';
@@ -41,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '2.4.4';
+    String versao = '2.5.4';
     AniversarianteController aniversarianteController = AniversarianteController();
     RamalRepository ramalRepository = RamalRepository();
 
@@ -147,6 +146,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       nomeDoSistema: 'P4X',
                     ),
                     CardAbrirSistemas(
+                      urlDoSistema: 'https://admin.elosgate.com.br/login',
+                      caminhoDoIconeDoSistema: 'images/logo_elosgate.png',
+                      nomeDoSistema: 'ELOSGATE',
+                    ),
+                    CardAbrirSistemas(
                       urlDoSistema: 'https://www.microsoft.com/pt-br/microsoft-teams/log-in',
                       caminhoDoIconeDoSistema: 'images/logo_teams.png',
                       nomeDoSistema: 'TEAMS',
@@ -201,6 +205,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       caminhoDoIconeDoSistema: 'images/logo_seneago.png',
                       nomeDoSistema: 'SENEAGO',
                     ),
+                    CardAbrirSistemas(
+                      urlDoSistema: 'https://sincronizador.gefis.com.br/login',
+                      caminhoDoIconeDoSistema: 'images/logo_gefis.jpg',
+                      nomeDoSistema: 'GEFIS',
+                    ),
+
                   ],
                 ),
               ],

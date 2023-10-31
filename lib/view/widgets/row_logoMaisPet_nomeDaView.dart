@@ -17,7 +17,8 @@ class RowLogoMaisPet_NomeView extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget> [
         Image.asset('images/Logo_Nova-removebg-preview.png',
-          height: 110, width: 110,),
+          height: 110, width: 110,
+        ),
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0)

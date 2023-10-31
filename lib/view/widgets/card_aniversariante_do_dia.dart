@@ -17,7 +17,7 @@ class CardAniversarianteDoDia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+        width: 220,
       margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: const Color(0xffffffff),

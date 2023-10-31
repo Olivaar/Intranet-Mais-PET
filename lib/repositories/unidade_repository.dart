@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intranet_maispet/model/entities/unidade.dart';
+import 'package:intranet_maispet/model/entities/departamento.dart';
 
-class UnidadeRepository{
+class DepartamentoRepository{
   final db = FirebaseFirestore.instance;
 
-  Future<List<Unidade>> readListUnidades() async{
-    final unidades = await db.collection('unidades').get();
+  Future<List<Departamento>> readListUnidades() async{
+    final departamentos = await db.collection('departamentos').get();
 
-    final unidadesList = unidades.docs
-      .map((doc) => Unidade.fromJson(doc.data() as Map<String, dynamic>))
+    final departamentosList = departamentos.docs
+      .map((doc) => Departamento.fromJson(doc.data() as Map<String, dynamic>))
       .toList();
 
-    unidadesList.sort((a, b) => a.nome.compareTo(b.nome));
+    departamentosList.sort((a, b) => a.nome.compareTo(b.nome));
 
-    return unidadesList.isEmpty ? [] : unidadesList;
+    return departamentosList.isEmpty ? [] : departamentosList;
   }
 }

@@ -7,6 +7,7 @@ import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/repositories/unidade_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/dialog_ramal.dart';
+import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
 import '../widgets/row_ramal_adm.dart';
@@ -23,7 +24,7 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
   RamalController ramalController = RamalController();
   RamalRepository ramalRepository = RamalRepository();
   AniversarianteController aniversarianteController = AniversarianteController();
-  UnidadeRepository unidadeRepository = UnidadeRepository();
+  DepartamentoRepository unidadeRepository = DepartamentoRepository();
 
   String? unidadeSelecionada;
 
@@ -45,6 +46,7 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
       appBar: AppBarIntranet(
         appBarColor: const Color(0xff34B9D6),
         buttonColor: Colors.lightBlue.shade700,
+        leading: true,
       ),
       body: Stack(
         children: [
@@ -217,6 +219,7 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
         backgroundColor: const Color(0xff34B9D6),
         child: const Icon(Icons.add),
       ),
+      drawer: const DrawerTecnologia(),
     );
   }
 

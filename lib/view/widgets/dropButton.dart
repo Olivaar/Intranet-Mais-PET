@@ -7,6 +7,7 @@ class DropButtonIntranet extends StatefulWidget {
   String textoHint;
   String textoHintPesquisar;
   Color color;
+  double width;
 
   DropButtonIntranet({
     super.key,
@@ -15,6 +16,7 @@ class DropButtonIntranet extends StatefulWidget {
     this.textoHintPesquisar = '',
     required this.textoHint,
     this.color = const Color(0xffFFD200),
+    this.width = 300,
   });
 
   @override
@@ -71,7 +73,7 @@ class _DropButtonIntranetState extends State<DropButtonIntranet>{
                 buttonStyleData:  ButtonStyleData(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   height: 40,
-                  width: 300,
+                  width: widget.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all( color: Colors.black),

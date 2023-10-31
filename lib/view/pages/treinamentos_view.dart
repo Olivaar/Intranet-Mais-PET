@@ -8,6 +8,7 @@ import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
 import 'package:intranet_maispet/view/widgets/show_dialog_erro.dart';
 import 'package:intranet_maispet/view/widgets/widget_treinamento.dart';
 import '../widgets/theme_helper.dart';
+import 'package:intranet_maispet/view/colors.dart';
 
 class TreinamentosView extends StatefulWidget {
   const TreinamentosView({super.key});
@@ -93,7 +94,7 @@ class _TreinamentosViewState extends State<TreinamentosView> {
             context: context,
             builder: (BuildContext context){
               return AlertDialog(
-                backgroundColor: const Color(0xffFFD400),
+                backgroundColor: azulClaro,
                 content: SizedBox(
                   width: 500,
                   child: Padding(

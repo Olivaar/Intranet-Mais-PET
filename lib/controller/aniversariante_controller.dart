@@ -7,7 +7,7 @@ class AniversarianteController {
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
   List<Aniversariante> aniversariantes = [];
   List<Aniversariante> aniversariantesDoDia = [];
-  List<String> listaDeUnidades = [];
+  List<String> listaDeDepartamentos = [];
 
   String dataAniversarioToString(Timestamp dataAniversario) {
     final dateTime = dataAniversario.toDate();

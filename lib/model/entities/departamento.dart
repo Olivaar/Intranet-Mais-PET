@@ -1,11 +1,11 @@
-class Unidade{
+class Departamento{
   late String nome;
 
-  Unidade({
+  Departamento({
     required this.nome,
   });
 
-  Unidade.fromJson(Map<String, dynamic> json)
+  Departamento.fromJson(Map<String, dynamic> json)
     : nome = json['nome'];
 
   Map<String, dynamic> toJson(){

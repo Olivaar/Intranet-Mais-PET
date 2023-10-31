@@ -79,7 +79,7 @@ class _PopUpAniversarianteDoDiaState extends State<PopUpAniversarianteDoDia> {
               CardAniversarianteDoDia(
                 nome: an.nomeSobrenome,
                 cargo: an.cargo,
-                unidade: an.unidade,
+                unidade: an.departamento,
               ),
           ],
         ),

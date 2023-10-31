@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intranet_maispet/model/entities/ramal.dart';
 
-import '../model/entities/unidade.dart';
+import '../model/entities/departamento.dart';
 
 class RamalRepository{
   final db = FirebaseFirestore.instance;
@@ -22,11 +22,11 @@ class RamalRepository{
     return ramaisList.isEmpty ? [] : ramaisList;
   }
 
-  Future<List<Unidade>> readListUnidades() async{
+  Future<List<Departamento>> readListUnidades() async{
     final unidades = await db.collection('telefonia').get();
 
     final unidadesList = unidades.docs
-      .map((doc) => Unidade.fromJson(doc.data() as Map<String, dynamic>))
+      .map((doc) => Departamento.fromJson(doc.data() as Map<String, dynamic>))
       .toList();
 
     unidadesList.sort((a, b) => a.nome.compareTo(b.nome));

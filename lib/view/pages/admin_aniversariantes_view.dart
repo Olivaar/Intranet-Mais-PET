@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
-import 'package:intranet_maispet/model/entities/unidade.dart';
+import 'package:intranet_maispet/model/entities/departamento.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
 import 'package:intranet_maispet/repositories/unidade_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import '../colors.dart';
 import '../widgets/theme_helper.dart';
 
 class AdminAniversariantesView extends StatefulWidget {
@@ -22,7 +24,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
 
   AniversarianteController aniversarianteController = AniversarianteController();
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
-  UnidadeRepository unidadeRepository = UnidadeRepository();
+  DepartamentoRepository unidadeRepository = DepartamentoRepository();
 
   TextEditingController nomeController = TextEditingController();
   TextEditingController dataController = TextEditingController();
@@ -33,7 +35,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
   void initState() {
     super.initState();
     _carregarAniversariantes();
-    _carregarUnidades();
+    _carregarDepartamentos();
   }
 
   Future<void> _carregarAniversariantes() async {
@@ -43,21 +45,25 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
     });
   }
 
-  Future<void> _carregarUnidades() async {
-    final unidades = await unidadeRepository.readListUnidades();
-    final List<String> unidasdeString = [];
-    for(Unidade un in unidades){
-      unidasdeString.add(un.nome);
+  Future<void> _carregarDepartamentos() async {
+    final departamentos = await unidadeRepository.readListUnidades();
+    final List<String> departamentosString = [];
+    for(Departamento dep in departamentos){
+      departamentosString.add(dep.nome);
     }
     setState(() {
-      aniversarianteController.listaDeUnidades = unidasdeString;
+      aniversarianteController.listaDeDepartamentos = departamentosString;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarIntranet(),
+      appBar: AppBarIntranet(
+        appBarColor: azulClaro,
+        buttonColor: azulEscuro,
+        leading: true,
+      ),
       body: Stack(
         children: [
           Container(
@@ -74,12 +80,11 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
               children: [
                 const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Aniversariantes'),
                 Container(
-                  // height: 325,
                   margin: const EdgeInsets.only(left: 175, right: 175),
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffFFD400),
+                    color: azulClaro,
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -120,7 +125,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                                 SizedBox(
                                   height: 20,
                                   width: 200,
-                                  child: Text(aniversariante.unidade),
+                                  child: Text(aniversariante.departamento),
                                 ),
                                 const SizedBox(width: 6,),
                                 IconButton(
@@ -159,7 +164,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                           decoration: ThemeHelper().textInputDecoration(
                             'Nome',
                             'Nome do Aniversariante...',
-                            const Color(0xffFFD400),
+                            azulClaro,
                           ),
                         ),
                       ),
@@ -178,7 +183,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                           decoration: ThemeHelper().textInputDecoration(
                             'Data',
                             'dd/mm/aaaa',
-                            const Color(0xffFFD400),
+                            azulClaro,
                           ),
                         ),
                       ),
@@ -191,7 +196,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                           decoration: ThemeHelper().textInputDecoration(
                             'Cargo',
                             'Cargo do Aniversariante...',
-                            const Color(0xffFFD400),
+                            azulClaro,
                           ),
                         ),
                       ),
@@ -200,8 +205,10 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                         onChanged: (value){
                           unidadeController = value;
                         },
-                        listaDeItens: aniversarianteController.listaDeUnidades,
+                        listaDeItens: aniversarianteController.listaDeDepartamentos,
                         textoHint: 'Selecione a Unidade',
+                        color: azulClaro,
+                        width: 190,
                       ),
                       const SizedBox(width: 6,),
                       TextButton(
@@ -221,7 +228,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                           cargoController.clear();
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFD400)),
+                          backgroundColor: MaterialStateProperty.all<Color>(azulClaro),
                           foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
                           textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -257,6 +264,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
           ),
         ],
       ),
+      drawer: const DrawerTecnologia(),
     );
   }
 }

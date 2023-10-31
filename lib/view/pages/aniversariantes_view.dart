@@ -162,7 +162,7 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
                                 SizedBox(
                                   height: 20,
                                   width: 200,
-                                  child: Text(aniversariante.unidade),
+                                  child: Text(aniversariante.departamento),
                                 ),
                               ],
                             ),
