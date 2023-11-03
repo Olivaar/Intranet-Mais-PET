@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '2.5.4';
+    String versao = '2.5.5';
     AniversarianteController aniversarianteController = AniversarianteController();
     RamalRepository ramalRepository = RamalRepository();
 

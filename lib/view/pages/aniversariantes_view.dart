@@ -139,30 +139,37 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
                               children: [
                                 SizedBox(
                                   height: 20,
-                                  width: 200,
+                                  width: 250,
                                   child: Text(aniversariante.nomeSobrenome),
                                 ),
                                 const SizedBox(width: 6,),
                                 SizedBox(
                                   height: 20,
-                                  width: 150,
+                                  width: 100,
                                   child: Text(
                                     aniversarianteController.dataAniversario2ToString(
                                       aniversariante.dataAniversario,
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                                 const SizedBox(width: 6,),
                                 SizedBox(
                                   height: 20,
                                   width: 250,
-                                  child: Text(aniversariante.cargo),
+                                  child: Text(
+                                    aniversariante.cargo,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                                 const SizedBox(width: 6,),
                                 SizedBox(
                                   height: 20,
                                   width: 200,
-                                  child: Text(aniversariante.departamento),
+                                  child: Text(
+                                    aniversariante.departamento,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ],
                             ),
