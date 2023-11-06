@@ -4,7 +4,7 @@ import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/controller/ramal_controller.dart';
 import 'package:intranet_maispet/model/entities/ramal.dart';
 import 'package:intranet_maispet/repositories/ramal_repository.dart';
-import 'package:intranet_maispet/repositories/unidade_repository.dart';
+import 'package:intranet_maispet/repositories/departamento_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/dialog_ramal.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
