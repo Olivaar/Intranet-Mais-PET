@@ -1,11 +1,11 @@
-import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/view/widgets/alert_aniversariante_do_dia_background.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_view_aniversariante.dart';
 import '../../controller/aniversariante_controller.dart';
 import '../../model/entities/aniversariante.dart';
 import '../../repositories/aniversariante_repository.dart';
-import '../widgets/popup_aniversariante_do_dia.dart';
 
 class AniversariantesView extends StatefulWidget {
   const AniversariantesView({super.key});
@@ -30,48 +30,7 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
         showDialog(
           context: context,
           builder: (BuildContext contex){
-            return AlertDialog(
-              elevation: 16.0,
-              contentPadding: EdgeInsets.zero,
-              content: Container(
-                width: 470,
-                height: 369,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.6), // Cor da sombra
-                      blurRadius: 5.0, // Raio do desfoque da sombra
-                      offset: const Offset(0, 8), // Deslocamento da sombra (horizontal, vertical)
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(15.0),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xffFFD400),
-                      Color(0xffffffff),
-                    ],
-                  ),
-                ),
-                child: AnimatedBackground(
-                  vsync: this,
-                  behaviour: RandomParticleBehaviour(
-                    options: ParticleOptions(
-                      spawnMaxRadius: 40,
-                      particleCount: 30,
-                      spawnOpacity: 0.1,
-                      spawnMinSpeed: 10,
-                      spawnMaxSpeed: 50,
-                      baseColor: Colors.black,
-                      image: Image.asset('assets/images/bolo-de-aniversario.png'),
-                    ),
-                  ),
-                  child: const PopUpAniversarianteDoDia(),
-                ),
-              ),
-            );
+            return const AlertAniversarianteDoDiaBackground();
           }
         );
       }
@@ -110,23 +69,32 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
             child: Column(
               children: [
                 const RowLogoMaisPet_NomeView(nomeDaView: 'Aniversariantes'),
-                Container(
-                  margin: const EdgeInsets.only(left: 175, right: 175),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffFFD400),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 1664,
+                    maxHeight: 450,
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 175, right: 175),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xffFFD400),
+                    ),
+                    child: ListView(
+                      shrinkWrap: true,
                       children: [
                         const Text(
                           'Aniversariantes +PET',
                           style: TextStyle(fontWeight: FontWeight.bold),
-                          textScaleFactor: 2
+                          textScaleFactor: 2,
+                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 5,),
-                        for(Aniversariante aniversariante in aniversarianteController.aniversariantes)
+                        for(
+                          Aniversariante aniversariante in
+                          aniversarianteController.aniversariantes
+                        )
                           Container(
                             padding: const EdgeInsets.all(8),
                             margin: const EdgeInsets.only(bottom: 5),
@@ -134,44 +102,8 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white,
                             ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                  width: 250,
-                                  child: Text(aniversariante.nomeSobrenome),
-                                ),
-                                const SizedBox(width: 6,),
-                                SizedBox(
-                                  height: 20,
-                                  width: 100,
-                                  child: Text(
-                                    aniversarianteController.dataAniversario2ToString(
-                                      aniversariante.dataAniversario,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                const SizedBox(width: 6,),
-                                SizedBox(
-                                  height: 20,
-                                  width: 250,
-                                  child: Text(
-                                    aniversariante.cargo,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                const SizedBox(width: 6,),
-                                SizedBox(
-                                  height: 20,
-                                  width: 200,
-                                  child: Text(
-                                    aniversariante.departamento,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ],
+                            child: RowViewAniversariante(
+                              aniversariante: aniversariante,
                             ),
                           ),
                       ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../colors.dart';
+
 class ThemeHelper{
 
   InputDecoration textInputDecoration([String lableText="", String hintText = "", Color fillColor = Colors.white,]){
@@ -68,6 +70,24 @@ class ThemeHelper{
     );
   }
 
+  ButtonStyle buttonStyle2() {
+    return ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(azulClaro),
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
+        fontWeight: FontWeight.bold,
+      )),
+    );
+  }
+
+  TextStyle textStyleAdmRamais() {
+    return const TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+    );
+  }
+
   AlertDialog alartDialog(String title, String content, BuildContext context) {
     return AlertDialog(
       title: Text(title),
@@ -75,7 +95,8 @@ class ThemeHelper{
       actions: [
         TextButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black)),
+            backgroundColor: MaterialStateProperty.all(Colors.black)
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },

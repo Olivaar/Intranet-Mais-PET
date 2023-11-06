@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/controller/ramal_controller.dart';
@@ -10,6 +9,7 @@ import 'package:intranet_maispet/view/widgets/dialog_ramal.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 import '../widgets/row_ramal_adm.dart';
 
 class AdminRamaisView extends StatefulWidget {
@@ -92,53 +92,26 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
                         Text(
                           unidadeSelecionada ?? 'Selecione uma unidade',
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          )
+                          style: ThemeHelper().textStyleAdmRamais(),
                         ),
                         const Divider(color: Colors.black,),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'Local',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Local',
+                              textAlign: TextAlign.center,
+                              style: ThemeHelper().textStyleAdmRamais(),
                             ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Ramal',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Ramal',
+                              textAlign: TextAlign.center,
+                              style: ThemeHelper().textStyleAdmRamais(),
                             ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Ações',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Ações',
+                              textAlign: TextAlign.center,
+                              style: ThemeHelper().textStyleAdmRamais(),
                             ),
                           ],
                         ),
@@ -160,49 +133,44 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
                       ),
                       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                       width: 470,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            for(Ramal ramal in ramalController.ramais)
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      RowRamalAdm(
-                                        ramal: ramal,
-                                        unidadeSelecionada: unidadeSelecionada!,
-                                        carregarRamais: _carregarRamais,
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          for(Ramal ramal in ramalController.ramais)
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    RowRamalAdm(
+                                      ramal: ramal,
+                                      unidadeSelecionada: unidadeSelecionada!,
+                                      carregarRamais: _carregarRamais,
+                                    ),
+                                    SizedBox(
+                                      width: 150,
+                                      child: IconButton(
+                                        alignment: Alignment.centerRight,
+                                        onPressed: (){
+                                          ramalController.deleteRamal(
+                                              ramal.id,
+                                              unidadeSelecionada!
+                                          );
+                                          setState(() {
+                                            _carregarRamais(unidadeSelecionada!);
+                                          });
+                                        },
+                                        icon: const Icon(Icons.delete),
                                       ),
-                                      SizedBox(
-                                        width: 150,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            IconButton(
-                                              onPressed: (){
-                                                ramalController.deleteRamal(
-                                                  ramal.id,
-                                                  unidadeSelecionada!
-                                                );
-                                                setState(() {
-                                                  _carregarRamais(unidadeSelecionada!);
-                                                });
-                                              },
-                                              icon: const Icon(Icons.delete),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Divider(
-                                    color: Colors.black.withOpacity(0.2),
-                                    height: 0.1,
-                                  ),
-                                ],
-                              ),
-                          ],
-                        ),
+                                    ),
+                                  ],
+                                ),
+                                Divider(
+                                  color: Colors.black.withOpacity(0.2),
+                                  height: 0.1,
+                                ),
+                              ],
+                            ),
+                        ]
                       ),
                     ),
                   )
@@ -224,7 +192,6 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
   }
 
   Future<void> _showDialog() async {
-
     if(unidadeSelecionada != null){
       await showDialog(
           context: context,

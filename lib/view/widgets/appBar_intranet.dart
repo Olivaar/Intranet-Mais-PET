@@ -20,7 +20,8 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: appBarColor,
-      elevation: 0,
+      elevation: 2,
+      shadowColor: Colors.black,
       automaticallyImplyLeading: leading,
       title: Row(
         children: [

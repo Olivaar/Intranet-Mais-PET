@@ -62,7 +62,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarIntranet(
-        appBarColor: azulClaro,n
+        appBarColor: azulClaro,
         buttonColor: azulEscuro,
         leading: true,
       ),
@@ -81,7 +81,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
               const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Aniversariantes'),
               ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxHeight: 400,
+                  maxHeight: 350,
                 ),
                 child: Container(
                   width: 900,
@@ -212,13 +212,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
                         dataController.clear();
                         cargoController.clear();
                       },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(azulClaro),
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                        textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                      ),
+                      style: ThemeHelper().buttonStyle2(),
                       child: const Text('SALVAR'),
                     ),
                   ],
@@ -226,13 +220,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
               ),
               const SizedBox(height: 10,),
               TextButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                  textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-                ),
+                style: ThemeHelper().buttonStyle2(),
                 onPressed: () async{
                   setState(() {
                     for(Aniversariante an in aniversarianteController.aniversariantes){
@@ -272,7 +260,7 @@ class DataInputFormatter extends TextInputFormatter {
     input = input.replaceAll(RegExp(r'[^0-9]'), ''); // remove caracteres não numéricos
 
     if (input.length > 2) {
-      return input.substring(0, 2) + '/' + input.substring(2, min(4, input.length)) + '/' + input.substring(4, min(8, input.length));
+      return '${input.substring(0, 2)}/${input.substring(2, min(4, input.length))}/${input.substring(4, min(8, input.length))}';
     } else {
       return input;
     }

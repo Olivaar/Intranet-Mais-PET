@@ -5,14 +5,14 @@ import '../../controller/aniversariante_controller.dart';
 import '../../model/entities/aniversariante.dart';
 import '../../repositories/aniversariante_repository.dart';
 
-class PopUpAniversarianteDoDia extends StatefulWidget {
-  const PopUpAniversarianteDoDia({super.key});
+class AlertAniversarianteDoDia extends StatefulWidget {
+  const AlertAniversarianteDoDia({super.key});
 
   @override
-  State<PopUpAniversarianteDoDia> createState() => _PopUpAniversarianteDoDiaState();
+  State<AlertAniversarianteDoDia> createState() => _AlertAniversarianteDoDiaState();
 }
 
-class _PopUpAniversarianteDoDiaState extends State<PopUpAniversarianteDoDia> {
+class _AlertAniversarianteDoDiaState extends State<AlertAniversarianteDoDia> {
 
   AniversarianteController aniversarianteController = AniversarianteController();
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
