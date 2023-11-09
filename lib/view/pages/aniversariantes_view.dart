@@ -65,53 +65,51 @@ class _AniversariantesViewState extends State<AniversariantesView> with TickerPr
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                const RowLogoMaisPet_NomeView(nomeDaView: 'Aniversariantes'),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 1664,
-                    maxHeight: 450,
+          Column(
+            children: [
+              const RowLogoMaisPet_NomeView(nomeDaView: 'Aniversariantes'),
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 1664,
+                  maxHeight: 450,
+                ),
+                child: Container(
+                  margin: const EdgeInsets.only(left: 175, right: 175),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xffFFD400),
                   ),
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 175, right: 175),
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xffFFD400),
-                    ),
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        const Text(
-                          'Aniversariantes +PET',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textScaleFactor: 2,
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 5,),
-                        for(
-                          Aniversariante aniversariante in
-                          aniversarianteController.aniversariantes
-                        )
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            margin: const EdgeInsets.only(bottom: 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: RowViewAniversariante(
-                              aniversariante: aniversariante,
-                            ),
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const Text(
+                        'Aniversariantes +PET',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        textScaleFactor: 2,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 5,),
+                      for(
+                        Aniversariante aniversariante in
+                        aniversarianteController.aniversariantes
+                      )
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          margin: const EdgeInsets.only(bottom: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
                           ),
-                      ],
-                    ),
+                          child: RowViewAniversariante(
+                            aniversariante: aniversariante,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           )
         ],
       ),

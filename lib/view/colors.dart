@@ -5,3 +5,4 @@ const Color amareloEscuro = Colors.amber;
 const Color azulClaro = Color(0xff34B9D6);
 const Color azulEscuro = Color(0xFF03A9F4);
 const Color branco = Colors.white;
+const Color preto = Colors.black;

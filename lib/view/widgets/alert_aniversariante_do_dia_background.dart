@@ -1,6 +1,8 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/view/widgets/alert_aniversariante_do_dia.dart';
+import 'package:intranet_maispet/view/widgets/alert_aniversariante_do_dia_body.dart';
+
+//TODO Corririgir bug de height do container
 
 class AlertAniversarianteDoDiaBackground extends StatefulWidget {
   const AlertAniversarianteDoDiaBackground({super.key});
@@ -16,15 +18,12 @@ class _AlertAniversarianteDoDiaBackgroundState extends State<AlertAniversariante
       elevation: 16.0,
       contentPadding: EdgeInsets.zero,
       content: Container(
-        width: 470,
-        height: 369,
-        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.6), // Cor da sombra
-              blurRadius: 5.0, // Raio do desfoque da sombra
-              offset: const Offset(0, 8), // Deslocamento da sombra (horizontal, vertical)
+              color: Colors.black.withOpacity(0.6),
+              blurRadius: 5.0,
+              offset: const Offset(0, 8),
             ),
           ],
           borderRadius: BorderRadius.circular(15.0),
@@ -37,21 +36,7 @@ class _AlertAniversarianteDoDiaBackgroundState extends State<AlertAniversariante
             ],
           ),
         ),
-        child: AnimatedBackground(
-          vsync: this,
-          behaviour: RandomParticleBehaviour(
-            options: ParticleOptions(
-              spawnMaxRadius: 40,
-              particleCount: 30,
-              spawnOpacity: 0.1,
-              spawnMinSpeed: 10,
-              spawnMaxSpeed: 50,
-              baseColor: Colors.black,
-              image: Image.asset('assets/images/bolo-de-aniversario.png'),
-            ),
-          ),
-          child: const AlertAniversarianteDoDia(),
-        ),
+        child: const AlertAniversarianteDoDiaBody(),
       ),
     );
   }

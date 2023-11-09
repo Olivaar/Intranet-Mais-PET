@@ -16,64 +16,49 @@ class CardAniversarianteDoDia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 220,
-      margin: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: const Color(0xffffffff),
-          borderRadius: BorderRadius.circular(6),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2), // Cor da sombra
-              blurRadius: 5.0, // Raio do desfoque da sombra
-              offset: const Offset(0, 6), // Deslocamento da sombra (horizontal, vertical)
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.cake, color: Color(0xffFFD400), size: 30,),
-                Text(
-                  nome,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxWidth: 250,
+      ),
+      child: Container(
+        margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: const Color(0xffffffff),
+            borderRadius: BorderRadius.circular(6),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 5.0,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                nome,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20,),
+              Text(
+                cargo,
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: Text(
-                    cargo,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 15,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  unidade,
-                  style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
-                ),
-              ],
-            ),
-          ],
-        )
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                unidade,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            ],
+          )
+      ),
     );
   }
 }

@@ -27,7 +27,7 @@ class TreinamentoRepository{
 
   void saveTreinamento(Treinamento treinamento){
     final treinamentoJson = treinamento.toJson();
-    db.collection('treinamentos').add(treinamentoJson);
+    db.collection('treinamentos').doc(treinamento.id).set(treinamentoJson);
   }
 
   Future<List<Treinamento>>getTreinamentos() async {
@@ -40,4 +40,12 @@ class TreinamentoRepository{
     return treinamentosList.isEmpty ? [] : treinamentosList;
   }
 
+  void deleteTreinamento(String id) async {
+    await db.collection('treinamentos').doc(id).delete();
+  }
+
+  void updateTreinamento(String id, Treinamento updatedTreinamento) {
+    final updatedTreinamentoJson = updatedTreinamento.toJson();
+    db.collection('treinamentos').doc(id).update(updatedTreinamentoJson);
+  }
 }
