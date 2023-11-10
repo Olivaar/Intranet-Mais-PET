@@ -4,7 +4,7 @@ import 'package:intranet_maispet/model/entities/treinamento.dart';
 import 'package:intranet_maispet/repositories/treinamento_repository.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
-import 'package:intranet_maispet/view/widgets/widget_treinamento.dart';
+import 'package:intranet_maispet/view/widgets/card_treinamento.dart';
 
 
 class TreinamentosView extends StatefulWidget {
@@ -62,7 +62,7 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                     children: [
                      for(Treinamento treinamento in
                      treinamentosController2.listaDeTreinamentos)
-                      WidgetTreinamento(
+                      CardTreinamento(
                         nomeDoTreinamento: treinamento.titulo,
                         resumoDoTreinamento: treinamento.descricao,
                         links: treinamento.linksVideos,

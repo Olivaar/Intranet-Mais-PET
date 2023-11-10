@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/colors.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import '../../controller/treinamento_controller.dart';
 import '../../model/entities/treinamento.dart';
 import '../../repositories/treinamento_repository.dart';
@@ -289,7 +290,7 @@ class _AdminTreinamentosViewState extends State<AdminTreinamentosView> {
                             _carregarTreinamentos();
                             _clearAllCampos();
                           });
-                        } else {
+                        } else if (_formKey.currentState!.validate()){
                           List<String> links = [link1Controller.text,];
                           if(link2Controller.text != ''){
                             links.add(link2Controller.text);
@@ -325,6 +326,7 @@ class _AdminTreinamentosViewState extends State<AdminTreinamentosView> {
           ),
         ],
       ),
+      drawer: const DrawerTecnologia(),
     );
   }
   void _clearAllCampos(){

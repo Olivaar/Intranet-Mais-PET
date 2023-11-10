@@ -73,10 +73,13 @@ class _BranchesViewState extends State<BranchesView>{
                   listaDeItens: ramalController.listaDeUnidades,
                   textoHint: 'Selecione a Unidade'
                 ),
-                const SizedBox(height: 10,),
-                if(unidadeSelecionada != null && unidadeSelecionada != 'TODOS OS RAMAIS')
-                  ContainerRamais(ramais: ramalController.ramais, unidade: unidadeSelecionada,),
-                if(unidadeSelecionada != null && unidadeSelecionada == 'TODOS OS RAMAIS')
+                if(unidadeSelecionada != null &&
+                    unidadeSelecionada != 'TODOS OS RAMAIS')
+                  ContainerRamais(
+                    ramais: ramalController.ramais, unidade: unidadeSelecionada,
+                  ),
+                if(unidadeSelecionada != null &&
+                    unidadeSelecionada == 'TODOS OS RAMAIS')
                   WidgetTodosRamais(),
               ],
             ),
