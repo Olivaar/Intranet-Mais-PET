@@ -84,13 +84,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget> [
-                    Image.asset('images/Logo_Nova-removebg-preview.png',
-                      height: 140, width: 140,
-                    ),
-                  ],
+                Image.asset('images/Logo_Nova-removebg-preview.png',
+                  height: 140, width: 140,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
