@@ -1,0 +1,4 @@
+enum SistemaPage{
+  home,
+  tecnologia,
+}

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/pages/admin_aniversariantes_view.dart';
 import 'package:intranet_maispet/view/pages/admin_ramais_view.dart';
+import 'package:intranet_maispet/view/pages/admin_sistemas.dart';
 import 'package:intranet_maispet/view/pages/admin_treinamentos_view.dart';
 import 'package:intranet_maispet/view/pages/aniversariantes_view.dart';
 import 'package:intranet_maispet/view/pages/home_view.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
          '/aniversariantes': (context) => const AniversariantesView(),
          '/admramais': (context) => const AdminRamaisView(),
          '/admtreinamentos': (context) => const AdminTreinamentosView(),
+         '/admsistemas': (context) => const AdminSistemas(),
        },
       theme: ThemeData(
         colorScheme: null,

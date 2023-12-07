@@ -63,9 +63,7 @@ class _TreinamentosViewState extends State<TreinamentosView> {
                      for(Treinamento treinamento in
                      treinamentosController2.listaDeTreinamentos)
                       CardTreinamento(
-                        nomeDoTreinamento: treinamento.titulo,
-                        resumoDoTreinamento: treinamento.descricao,
-                        links: treinamento.linksVideos,
+                        treinamento: treinamento,
                       ),
                     ],
                   ),

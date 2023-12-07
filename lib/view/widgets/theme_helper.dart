@@ -70,9 +70,9 @@ class ThemeHelper{
     );
   }
 
-  ButtonStyle buttonStyle2() {
+  ButtonStyle buttonStyle2({Color colorButton = azulClaro}) {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(azulClaro),
+      backgroundColor: MaterialStateProperty.all<Color>(colorButton),
       foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
       textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
         fontWeight: FontWeight.bold,
@@ -88,7 +88,7 @@ class ThemeHelper{
     );
   }
 
-  AlertDialog alartDialog(String title, String content, BuildContext context) {
+  AlertDialog alertDialog(String title, String content, BuildContext context) {
     return AlertDialog(
       title: Text(title),
       content: Text(content),
@@ -106,6 +106,18 @@ class ThemeHelper{
           ),
         ),
       ],
+    );
+  }
+
+  Decoration containerDecoration() {
+    return BoxDecoration(
+      color: azulClaro.withOpacity(0.7),
+      boxShadow: [ BoxShadow(
+        color: azulClaro.withOpacity(0.5),
+        blurRadius: 10
+      )],
+      borderRadius: BorderRadius.circular(10.0),
+      border: Border.all(color: preto),
     );
   }
 

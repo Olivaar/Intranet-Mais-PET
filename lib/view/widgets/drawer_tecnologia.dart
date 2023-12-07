@@ -62,6 +62,15 @@ class DrawerTecnologia extends StatelessWidget {
           ),
           ListTile(
             title: const Text(
+              'ADM SISTEMAS',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, '/admsistemas');
+            },
+          ),
+          ListTile(
+            title: const Text(
               'TECNOLOGIA',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),

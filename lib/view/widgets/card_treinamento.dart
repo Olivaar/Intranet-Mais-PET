@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/model/entities/treinamento.dart';
 import 'package:intranet_maispet/view/widgets/buttonImpressaoPdf.dart';
 import 'package:intranet_maispet/view/widgets/button_assistir_treinamento.dart';
 
 class CardTreinamento extends StatelessWidget{
 
-  final String nomeDoTreinamento;
-  final String resumoDoTreinamento;
-  final List<String> links;
-  String? caminhoDoPdf;
-  String nomeDoPdf;
-  String caminhoDaImagem;
-
+  Treinamento treinamento;
 
   CardTreinamento({
     super.key,
-    required this.nomeDoTreinamento,
-    required this.resumoDoTreinamento,
-    required this.links,
-    this.caminhoDoPdf,
-    this.nomeDoPdf = '',
-    this.caminhoDaImagem = 'assets/images/Logo_Nova-removebg-preview.png',
+    required this.treinamento,
   });
 
   @override
@@ -31,13 +21,13 @@ class CardTreinamento extends StatelessWidget{
           padding: const EdgeInsets.all(10),
           child: Column(
             children: <Widget>[
-              Image.asset(
-                caminhoDaImagem,
+              Image.network(
+                treinamento.urlImage!,
                 height: 100,
                 width: 175,
               ),
               Text(
-                nomeDoTreinamento,
+                treinamento.titulo,
                 style: const TextStyle(fontWeight: FontWeight.bold),
                 textScaleFactor: 2,
               ),
@@ -47,20 +37,20 @@ class CardTreinamento extends StatelessWidget{
                 height: 50,
                 child: SingleChildScrollView(
                   child: Text(
-                    resumoDoTreinamento,
+                    treinamento.descricao,
                     style: const TextStyle(fontSize: 12),
                   ),
                 ),
               ),
               const SizedBox(height: 15),
-              for(String link in links)
+              for(String link in treinamento.linksVideos)
                 ButtonAssistirTreinamentos(link: link,),
               const SizedBox(height: 15),
-              if(caminhoDoPdf != null)
-                ButtonImpressaoPdf(
-                  caminhoDoPdf: caminhoDoPdf!,
-                  nomeDoTreinamento: nomeDoTreinamento,
-                ),
+              // if(treinamento.urlPdf != null)
+              //   ButtonImpressaoPdf(
+              //     caminhoDoPdf: treinamento.urlPdf!,
+              //     nomeDoTreinamento: treinamento.titulo,
+              //   ),
             ],
           ),
         )
