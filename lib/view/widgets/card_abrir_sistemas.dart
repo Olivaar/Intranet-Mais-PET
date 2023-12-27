@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:intranet_maispet/view/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../model/enums/sistema_background.dart';
+import '../../model/enums/sistema_page.dart';
 
 class CardAbrirSistemas extends StatelessWidget{
 
-  final String urlDoSistema;
-  final String caminhoDoIconeDoSistema;
   final String nomeDoSistema;
-  Color corDeFundo;
+  final String urlDoSistema;
+  final String urlImage;
+  SistemaBackground sistemaBackground;
+  SistemaPage sistemaPage;
 
   CardAbrirSistemas ({
     super.key,
     required this.urlDoSistema,
-    required this.caminhoDoIconeDoSistema,
+    required this.urlImage,
     required this.nomeDoSistema,
-    this.corDeFundo = const Color(0xffFFFFFF)
+    required this.sistemaBackground,
+    required this.sistemaPage,
   });
+
+ Color _backGroundColor(){
+    late Color backGroundColor;
+    if(sistemaBackground == SistemaBackground.normal) backGroundColor = branco;
+    if(sistemaBackground == SistemaBackground.maispet) backGroundColor = amareloClaro;
+    if(sistemaBackground == SistemaBackground.telemed) backGroundColor = azulClaro;
+    return backGroundColor;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: corDeFundo,
+      color: _backGroundColor(),
       margin: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () async {
@@ -36,7 +49,7 @@ class CardAbrirSistemas extends StatelessWidget{
             children: <Widget> [
               Row(
                 children: <Widget> [
-                  Image.asset(caminhoDoIconeDoSistema, height: 100, width: 100),
+                  Image.asset(urlImage, height: 100, width: 100),
                 ],
               ),
               Text(

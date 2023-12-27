@@ -1,5 +1,6 @@
-import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intranet_maispet/controller/sistema_controller.dart';
 import 'package:intranet_maispet/model/entities/sistema.dart';
 import 'package:intranet_maispet/model/enums/sistema_background.dart';
 import 'package:intranet_maispet/model/enums/sistema_page.dart';
@@ -8,8 +9,7 @@ import 'package:intranet_maispet/view/colors.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase/firebase.dart' as fb;
+
 
 class AdminSistemas extends StatefulWidget {
   const AdminSistemas({super.key});
@@ -21,50 +21,17 @@ class AdminSistemas extends StatefulWidget {
 class _AdminSistemasState extends State<AdminSistemas> {
 
   SistemaRepository sistemaRepository = SistemaRepository();
+  SistemaController sistemaController = SistemaController();
 
-  Color colorIcons = vermelho;
-  late String imagePath;
-  SistemaBackground? _sistemaBackground = SistemaBackground.normal;
-  SistemaPage? _sistemaPage = SistemaPage.home;
   TextEditingController nomeController = TextEditingController();
   TextEditingController linkController = TextEditingController();
+  String? urlImage;
 
-  final fireStorage = FirebaseStorage.instance;
+  SistemaBackground? _sistemaBackground = SistemaBackground.normal;
+  SistemaPage? _sistemaPage = SistemaPage.home;
 
+  Color colorIcons = vermelho;
 
-  void uploadImage({required Function(File file) onSelected}) {
-    FileUploadInputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
-    uploadInput.click();
-
-    uploadInput.onChange.listen((event) {
-      final files = uploadInput.files;
-
-      if(files != null && files.isNotEmpty){
-        final file = files.first;
-        final reader = FileReader();
-        reader.readAsDataUrl(file);
-
-        reader.onLoadEnd.listen((event) {
-          onSelected(file);
-          print('done');
-          setState(() {
-            colorIcons = verde;
-          });
-        });
-      }
-    });
-  }
-
-  void uploadToStorage() {
-    final dateTime = DateTime.now();
-    final path = 'images/$dateTime';
-    uploadImage(onSelected: (file) async {
-      final storageRef = fb.storage().ref(path);
-      final snapshot = await storageRef.put(file).future;
-      final downloadURL = await snapshot.ref.getDownloadURL();
-      print('File uploaded to: $downloadURL');
-    },);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +94,19 @@ class _AdminSistemasState extends State<AdminSistemas> {
                         ),
                         const SizedBox(height: 5,),
                         ElevatedButton(
-                          onPressed: uploadToStorage,
+                          onPressed: () async {
+                            PickedFile? pickedImage = await ImagePicker()
+                                .getImage(source: ImageSource.gallery);
+                            if(pickedImage == null) return;
+
+                            urlImage = await sistemaController.uploadImage(pickedImage);
+
+                            if(urlImage != null){
+                              setState(() {
+                                colorIcons = verde;
+                              });
+                            }
+                          },
                           style: ThemeHelper().buttonStyle2(colorButton: branco),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,7 +138,7 @@ class _AdminSistemasState extends State<AdminSistemas> {
                                 ),
                               ),
                               ListTile(
-                                title: const Text('Normal'),
+                                title: const Text('Branco'),
                                 leading: Radio<SistemaBackground>(
                                   value: SistemaBackground.normal,
                                   groupValue: _sistemaBackground,
@@ -248,16 +227,24 @@ class _AdminSistemasState extends State<AdminSistemas> {
                             Sistema sistema = Sistema(
                               nome:  nomeController.text,
                               link: linkController.text,
-                              imagem: imagePath,
+                              urlImage: urlImage!,
                               sistemaBackground: _sistemaBackground!,
                               sistemaPage: _sistemaPage!,
                             );
                             sistemaRepository.createSistema(sistema);
+                            setState(() {
+                              nomeController.clear();
+                              linkController.clear();
+                              colorIcons = vermelho;
+                            });
                           },
                           icon: const Icon(Icons.save),
                           label: const Text(
                             'Salvar',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: preto),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: preto,
+                            ),
                           ),
                         )
                       ],
