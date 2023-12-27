@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
+import '../../controller/sistema_controller.dart';
+import '../../model/entities/sistema.dart';
+import '../../model/enums/sistema_page.dart';
+import '../../repositories/sistema_repository.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
@@ -11,6 +15,22 @@ class TecnologiaView extends StatefulWidget{
 }
 
 class _TecnologiaViewState  extends State<TecnologiaView>{
+
+  SistemaRepository sistemaRepository = SistemaRepository();
+  SistemaController sistemaController = SistemaController();
+
+  @override
+  void initState() {
+    super.initState();
+    _carregarSistemas();
+  }
+
+  Future<void> _carregarSistemas() async {
+    final sistemas = await sistemaRepository.readSistemas();
+    setState(() {
+      sistemaController.sistemas = sistemas;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +80,27 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                     ],
                   ),
                   SizedBox.fromSize(),
+                  Container(
+                      width: 900,
+                      padding: const EdgeInsets.all(16),
+                      // margin: const EdgeInsets.all(32),
+                      child: Wrap(
+                        runSpacing: 6,
+                        spacing:  6,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          for(Sistema sis in sistemaController.sistemas)
+                            if(sis.sistemaPage == SistemaPage.tecnologia)
+                              CardAbrirSistemas(
+                                urlDoSistema: sis.link,
+                                urlImage: sis.urlImage,
+                                nomeDoSistema: sis.nome,
+                                sistemaBackground: sis.sistemaBackground,
+                                sistemaPage: sis.sistemaPage,
+                              )
+                        ],
+                      )
+                  )
                 ],
               ),
             ),

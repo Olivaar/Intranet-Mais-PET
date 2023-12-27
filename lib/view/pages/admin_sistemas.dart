@@ -7,6 +7,7 @@ import 'package:intranet_maispet/model/enums/sistema_page.dart';
 import 'package:intranet_maispet/repositories/sistema_repository.dart';
 import 'package:intranet_maispet/view/colors.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/card_abrir_sistemas.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 
@@ -32,6 +33,18 @@ class _AdminSistemasState extends State<AdminSistemas> {
 
   Color colorIcons = vermelho;
 
+  @override
+  void initState(){
+    super.initState();
+    _carregarSistemas();
+  }
+
+  Future<void> _carregarSistemas() async {
+    final sistemas = await sistemaRepository.readSistemas();
+    setState(() {
+      sistemaController.sistemas = sistemas;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +72,23 @@ class _AdminSistemasState extends State<AdminSistemas> {
                   padding: const EdgeInsets.all(16),
                   margin: const EdgeInsets.all(32),
                   decoration: ThemeHelper().containerDecoration(),
+                  child: GridView(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 6,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
+                    ),
+                    children: [
+                      for(Sistema sis in sistemaController.sistemas)
+                        CardAbrirSistemas(
+                          urlDoSistema: sis.link,
+                          urlImage: sis.urlImage,
+                          nomeDoSistema: sis.nome,
+                          sistemaBackground: sis.sistemaBackground,
+                          sistemaPage: sis.sistemaPage,
+                        ),
+                    ],
+                  )
                 )
               ),
               Expanded(
@@ -115,7 +145,7 @@ class _AdminSistemasState extends State<AdminSistemas> {
                               const SizedBox(width: 5,),
                               const Text('Escolher Imagem'),
                               const SizedBox(width: 5,),
-                              Icon(Icons.check_circle_outline, color: colorIcons,)
+                              Icon(Icons.check_circle_outline, color: colorIcons),
                             ],
                           )
                         ),
@@ -236,6 +266,7 @@ class _AdminSistemasState extends State<AdminSistemas> {
                               nomeController.clear();
                               linkController.clear();
                               colorIcons = vermelho;
+                              _carregarSistemas();
                             });
                           },
                           icon: const Icon(Icons.save),

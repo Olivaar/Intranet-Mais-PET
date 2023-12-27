@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intranet_maispet/model/entities/sistema.dart';
-import 'dart:html';
-
 
 class SistemaRepository{
   final firestore = FirebaseFirestore.instance;
@@ -31,6 +29,5 @@ class SistemaRepository{
   void deleteSistema(String id) async{
     await firestore.collection(collectionKey).doc(id).delete();
   }
-
 
 }

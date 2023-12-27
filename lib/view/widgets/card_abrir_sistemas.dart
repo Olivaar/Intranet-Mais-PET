@@ -31,9 +31,13 @@ class CardAbrirSistemas extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: _backGroundColor(),
-      margin: const EdgeInsets.all(8.0),
+    return Container(
+      width: 120,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: _backGroundColor(),
+      ),
+      margin: const EdgeInsets.all(6.0),
       child: InkWell(
         onTap: () async {
           if(await canLaunchUrl(Uri.parse(urlDoSistema))){
@@ -47,15 +51,34 @@ class CardAbrirSistemas extends StatelessWidget{
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget> [
-              Row(
-                children: <Widget> [
-                  Image.asset(urlImage, height: 100, width: 100),
-                ],
+              FutureBuilder<void>(
+                future: precacheImage(NetworkImage(urlImage), context),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Image.network(
+                      urlImage,
+                      height: 100,
+                      width: 100,
+                    );
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
+                },
               ),
-              Text(
-                nomeDoSistema,
-                style: const TextStyle(fontWeight: FontWeight.bold, ),
-                textScaleFactor: 0.90,
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxHeight: 20
+                ),
+                child: ListView(
+                  children: [
+                    Text(
+                      nomeDoSistema,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontWeight: FontWeight.bold, ),
+                      textScaleFactor: 0.90,
+                    ),
+                  ]
+                ),
               ),
             ],
           ),

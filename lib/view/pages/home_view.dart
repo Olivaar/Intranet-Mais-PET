@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
-import 'package:intranet_maispet/model/enums/sistema_background.dart';
 import 'package:intranet_maispet/model/enums/sistema_page.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
 import 'package:intranet_maispet/repositories/ramal_repository.dart';
+import 'package:intranet_maispet/view/colors.dart';
+import '../../controller/sistema_controller.dart';
+import '../../model/entities/sistema.dart';
+import '../../repositories/sistema_repository.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
@@ -21,12 +24,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
   AniversarianteController aniversarianteController = AniversarianteController();
+  SistemaRepository sistemaRepository = SistemaRepository();
+  SistemaController sistemaController = SistemaController();
   List<String> nomes = [];
 
   @override
   void initState() {
     super.initState();
     _carregarAniversariantesDoDia();
+    _carregarSistemas();
   }
 
   Future<void> _carregarAniversariantesDoDia() async{
@@ -36,6 +42,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       for(Aniversariante an in aniversarianteController.aniversariantesDoDia){
         nomes.add(an.nomeSobrenome);
       }
+    });
+  }
+
+  Future<void> _carregarSistemas() async {
+    final sistemas = await sistemaRepository.readSistemas();
+    setState(() {
+      sistemaController.sistemas = sistemas;
     });
   }
 
@@ -69,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         padding: const EdgeInsets.all(16),
                         margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: branco,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Row(
@@ -79,7 +92,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             const SizedBox(width: 5,),
                             Text(
                               nomes[i],
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
                             ),
                           ],
                         ),
@@ -89,109 +105,39 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Image.asset('images/Logo_Nova-removebg-preview.png',
                   height: 140, width: 140,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget> [
-                    CardAbrirSistemas(
-                      urlDoSistema: 'https://app.onepet.com.br/index.php',
-                      urlImage: 'images/logo_onepet.png',
-                      nomeDoSistema: 'ONEPET',
-                      sistemaBackground: SistemaBackground.telemed,
-                      sistemaPage: SistemaPage.home,
-                    ),
-                    CardAbrirSistemas(
-                      urlDoSistema: 'https://app.onepet.com.br/index.php',
-                      urlImage: 'images/logo_onepet.png',
-                      nomeDoSistema: 'ONEPET',
-                      sistemaBackground: SistemaBackground.maispet,
-                      sistemaPage: SistemaPage.home,
-                    ),
-                    CardAbrirSistemas(
-                      urlDoSistema: 'https://app.onepet.com.br/index.php',
-                      urlImage: 'images/logo_onepet.png',
-                      nomeDoSistema: 'ONEPET',
-                      sistemaBackground: SistemaBackground.normal,
-                      sistemaPage: SistemaPage.home,
-                    ),
-
-                  ],
-                ),
+                Container(
+                  width: 900,
+                  padding: const EdgeInsets.all(16),
+                  // margin: const EdgeInsets.all(32),
+                  child: Wrap(
+                    runSpacing: 6,
+                    spacing:  6,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      for(Sistema sis in sistemaController.sistemas)
+                        if(sis.sistemaPage == SistemaPage.home)
+                          CardAbrirSistemas(
+                            urlDoSistema: sis.link,
+                            urlImage: sis.urlImage,
+                            nomeDoSistema: sis.nome,
+                            sistemaBackground: sis.sistemaBackground,
+                            sistemaPage: sis.sistemaPage,
+                          )
+                    ],
+                  )
+                )
               ],
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // showDialog(
-          //   context: context,
-          //   builder: (BuildContext contex){
-          //     return AlertDialog(
-          //       backgroundColor: const Color(0xffFFD400),
-          //       title: Text(
-          //         'NOTAS DE ATUALIZAÇÃO $versao',
-          //         style: const TextStyle(
-          //           fontWeight: FontWeight.bold, color: Colors.white,
-          //         ),
-          //         textScaleFactor: 1,
-          //         textAlign: TextAlign.center,
-          //       ),
-          //       content: const SizedBox(
-          //         // width: 375,
-          //         child: Padding(
-          //           padding: EdgeInsets.all(16),
-          //           child: Column(
-          //             mainAxisSize: MainAxisSize.min,
-          //             children: [
-          //               Row(
-          //                 mainAxisAlignment: MainAxisAlignment.center,
-          //                 mainAxisSize: MainAxisSize.min,
-          //                 children: [
-          //                   Text(
-          //                     '- ANIVERSARIANTES...\n'
-          //                     'Ja está disponível a aba de aniversariantes,\n'
-          //                     'fiquem atentos que em breve os aniversarientes do mês\n'
-          //                     'aparecerão por aqui!',
-          //                     maxLines: 5,
-          //                     softWrap: true,
-          //                     style: TextStyle(fontWeight: FontWeight.bold),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //       actions: [
-          //         TextButton(
-          //           onPressed: () async {
-          //             Navigator.of(context).pop();
-          //             Ramal ramal = Ramal(
-          //               unidade: 'Holding',
-          //               local: 'Tecnologia',
-          //               numero: '7250',
-          //             );
-          //             ramalRepository.createRamal(ramal);
-          //           },
-          //           style: ButtonStyle(
-          //             backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffFFffff)),
-          //             foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-          //             textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
-          //               fontWeight: FontWeight.bold,
-          //             )),
-          //           ),
-          //           child: const Text('Fechar'),
-          //         ),
-          //       ],
-          //     );
-          //   }
-          // );
-        },
+        onPressed: () {},
         backgroundColor: const Color(0xffFFD400),
         label: Text(versao),
         icon: const Icon(Icons.verified_user_outlined),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,// This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
