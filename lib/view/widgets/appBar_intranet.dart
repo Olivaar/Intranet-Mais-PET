@@ -63,7 +63,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
           const SizedBox(width: 5,),
           ButtonNavegacaoPaginasIntranet(
             color: buttonColor,
-            nomeDaPagina: "DEPARTAMENTOS",
+            nomeDaPagina: "+PET",
             iconeDaPagina: Icons.block_outlined,
             onPressed: (){},
           ),
