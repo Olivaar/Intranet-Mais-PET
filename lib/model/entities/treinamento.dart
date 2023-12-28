@@ -6,14 +6,14 @@ class Treinamento {
   late List<String> linksVideos;
   String id = Random().nextInt(1000000).toString();
   String? urlImage;
-  String? pdf;
+  String? urlPdf;
 
   Treinamento({
     required this.titulo,
     required this.descricao,
     required this.linksVideos,
     this.urlImage,
-    this.pdf,
+    this.urlPdf,
   });
 
   Treinamento.fromJson(Map<String, dynamic> json)
@@ -22,7 +22,7 @@ class Treinamento {
       linksVideos = (json['linksVideos'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
       id = json['id'],
       urlImage = json['urlImage'],
-      pdf = json['pdf'];
+      urlPdf = json['urlPdf'];
 
   Map<String, dynamic> toJson(){
     return{
@@ -31,7 +31,7 @@ class Treinamento {
       'linksVideos': linksVideos,
       'id': id,
       'urlImage': urlImage,
-      'pdf': pdf,
+      'urlPdf': urlPdf,
     };
   }
 }
