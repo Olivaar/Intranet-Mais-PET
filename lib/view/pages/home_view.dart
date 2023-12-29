@@ -1,12 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
 import 'package:intranet_maispet/model/enums/sistema_page.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
 import 'package:intranet_maispet/view/colors.dart';
-import '../../controller/sistema_controller.dart';
 import '../../model/entities/sistema.dart';
-import '../../repositories/sistema_repository.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
@@ -23,15 +22,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
   AniversarianteController aniversarianteController = AniversarianteController();
-  SistemaRepository sistemaRepository = SistemaRepository();
-  SistemaController sistemaController = SistemaController();
   List<String> nomes = [];
 
   @override
   void initState() {
     super.initState();
     _carregarAniversariantesDoDia();
-    _carregarSistemas();
   }
 
   Future<void> _carregarAniversariantesDoDia() async{
@@ -44,17 +40,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
-  Future<void> _carregarSistemas() async {
-    final sistemas = await sistemaRepository.readSistemas();
-    setState(() {
-      sistemaController.sistemas = sistemas;
-    });
-  }
+  final Stream<QuerySnapshot> _sistemasStream =
+      FirebaseFirestore.instance.collection('sistemas').snapshots();
 
   @override
   Widget build(BuildContext context) {
 
-    String versao = '3.2.1';
+    String versao = '3.3.1';
 
     return Scaffold(
       appBar: AppBarIntranet(),
@@ -102,25 +94,40 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Image.asset('images/Logo_Nova-removebg-preview.png',
                   height: 140, width: 140,
                 ),
-                Container(
+                SizedBox(
                   width: 900,
-                  padding: const EdgeInsets.all(16),
-                  // margin: const EdgeInsets.all(32),
-                  child: Wrap(
-                    runSpacing: 6,
-                    spacing:  6,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      for(Sistema sis in sistemaController.sistemas)
-                        if(sis.sistemaPage == SistemaPage.home)
-                          CardAbrirSistemas(
-                            urlDoSistema: sis.link,
-                            urlImage: sis.urlImage,
-                            nomeDoSistema: sis.nome,
-                            sistemaBackground: sis.sistemaBackground,
-                            sistemaPage: sis.sistemaPage,
-                          )
-                    ],
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: _sistemasStream,
+                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                      if(snapshot.hasError){
+                        return const Text('Erro ao recuperar sistemas!');
+                      }
+
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return const CircularProgressIndicator();
+                      }
+
+                      return Wrap(
+                        runSpacing: 4,
+                        spacing: 4,
+                        alignment: WrapAlignment.center,
+                        children: snapshot.data!.docs.map((DocumentSnapshot document){
+                          Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                          Sistema sistema = Sistema.fromJson(data);
+                          if(sistema.sistemaPage == SistemaPage.home){
+                            return CardAbrirSistemas(
+                              urlDoSistema: sistema.link,
+                              urlImage: sistema.urlImage,
+                              nomeDoSistema: sistema.nome,
+                              sistemaBackground: sistema.sistemaBackground,
+                              sistemaPage: sistema.sistemaPage,
+                            );
+                          }else{
+                            return Container();
+                          }
+                        }).toList().cast(),
+                      );
+                    },
                   )
                 )
               ],

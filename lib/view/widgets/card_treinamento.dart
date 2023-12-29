@@ -14,10 +14,9 @@ class CardTreinamento extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(10),
         color: const Color(0xffffffff).withOpacity(0.90),
       ),
       width: 380,
@@ -35,7 +34,8 @@ class CardTreinamento extends StatelessWidget{
             Text(
               treinamento.titulo,
               style: const TextStyle(fontWeight: FontWeight.bold),
-              textScaleFactor: 2,
+              textScaleFactor: 1.5,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 15),
             ConstrainedBox(

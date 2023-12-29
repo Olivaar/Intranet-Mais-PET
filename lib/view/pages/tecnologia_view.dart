@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import '../../controller/sistema_controller.dart';
@@ -19,18 +20,9 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
   SistemaRepository sistemaRepository = SistemaRepository();
   SistemaController sistemaController = SistemaController();
 
-  @override
-  void initState() {
-    super.initState();
-    _carregarSistemas();
-  }
 
-  Future<void> _carregarSistemas() async {
-    final sistemas = await sistemaRepository.readSistemas();
-    setState(() {
-      sistemaController.sistemas = sistemas;
-    });
-  }
+  final Stream<QuerySnapshot> _sistemasStream =
+  FirebaseFirestore.instance.collection('sistemas').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -80,26 +72,41 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                     ],
                   ),
                   SizedBox.fromSize(),
-                  Container(
-                      width: 900,
-                      padding: const EdgeInsets.all(16),
-                      // margin: const EdgeInsets.all(32),
-                      child: Wrap(
-                        runSpacing: 6,
-                        spacing:  6,
-                        alignment: WrapAlignment.center,
-                        children: [
-                          for(Sistema sis in sistemaController.sistemas)
-                            if(sis.sistemaPage == SistemaPage.tecnologia)
-                              CardAbrirSistemas(
-                                urlDoSistema: sis.link,
-                                urlImage: sis.urlImage,
-                                nomeDoSistema: sis.nome,
-                                sistemaBackground: sis.sistemaBackground,
-                                sistemaPage: sis.sistemaPage,
-                              )
-                        ],
-                      )
+                  SizedBox(
+                    width: 900,
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: _sistemasStream,
+                      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                        if(snapshot.hasError){
+                          return const Text('Erro ao recuperar sistemas!');
+                        }
+
+                        if(snapshot.connectionState == ConnectionState.waiting){
+                          return const CircularProgressIndicator();
+                        }
+
+                        return Wrap(
+                          runSpacing: 4,
+                          spacing: 4,
+                          alignment: WrapAlignment.center,
+                          children: snapshot.data!.docs.map((DocumentSnapshot document){
+                            Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                            Sistema sistema = Sistema.fromJson(data);
+                            if(sistema.sistemaPage == SistemaPage.tecnologia){
+                              return CardAbrirSistemas(
+                                urlDoSistema: sistema.link,
+                                urlImage: sistema.urlImage,
+                                nomeDoSistema: sistema.nome,
+                                sistemaBackground: sistema.sistemaBackground,
+                                sistemaPage: sistema.sistemaPage,
+                              );
+                            }else{
+                              return Container();
+                            }
+                          }).toList().cast(),
+                        );
+                      },
+                    )
                   )
                 ],
               ),
