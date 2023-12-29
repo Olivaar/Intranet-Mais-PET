@@ -1,9 +1,8 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
 import 'package:intranet_maispet/model/enums/sistema_page.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
-import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/view/colors.dart';
 import '../../controller/sistema_controller.dart';
 import '../../model/entities/sistema.dart';
@@ -55,9 +54,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '3.0.0';
-    AniversarianteController aniversarianteController = AniversarianteController();
-    RamalRepository ramalRepository = RamalRepository();
+    String versao = '3.2.1';
 
     return Scaffold(
       appBar: AppBarIntranet(),

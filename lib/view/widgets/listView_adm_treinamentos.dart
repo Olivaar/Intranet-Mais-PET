@@ -23,7 +23,7 @@ class _ListViewAdmTreinamentosState extends State<ListViewAdmTreinamentos> {
     return AlertDialog(
       backgroundColor: Colors.transparent,
       contentPadding: EdgeInsets.zero,
-      content: Container(
+      content: SizedBox(
         width: 500,
         child: ContainerNovoTreinamento(updateTreinamento: tr,),
       ),
@@ -73,7 +73,7 @@ class _ListViewAdmTreinamentosState extends State<ListViewAdmTreinamentos> {
                   stream: _treinamentosStream,
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
                     if(snapshot.hasError){
-                      return const Text('Something went wrong');
+                      return const Text('Erro ao recuperar treinamentos!');
                     }
 
                     if(snapshot.connectionState == ConnectionState.waiting){

@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
-
-import '../../controller/pdf_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ButtonImpressaoPdf extends StatelessWidget {
   final String caminhoDoPdf;
-  final String nomeDoTreinamento;
 
   const ButtonImpressaoPdf({
     super.key,
     required this.caminhoDoPdf,
-    required this.nomeDoTreinamento
   });
 
   @override
   Widget build(BuildContext context) {
-    PdfController impressaoPdfController = PdfController();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton.icon(
           onPressed: () async{
-            impressaoPdfController.baixarPdf(
-              caminhoDoPdf,
-              nomeDoTreinamento
-            );
+            if(await canLaunchUrl(Uri.parse(caminhoDoPdf))){
+              await launchUrl(Uri.parse(caminhoDoPdf));
+            } else {
+              throw 'Não foi possível abrir o vídeo, contate a equipe de T.I!';
+            }
           },
           icon: const Icon(Icons.picture_as_pdf),
           label: const Text('BAIXAR PDF'),

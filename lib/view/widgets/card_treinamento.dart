@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/model/entities/treinamento.dart';
-import 'package:intranet_maispet/view/widgets/buttonImpressaoPdf.dart';
+import 'package:intranet_maispet/view/widgets/button_impressao_pdf.dart';
 import 'package:intranet_maispet/view/widgets/button_assistir_treinamento.dart';
 
 class CardTreinamento extends StatelessWidget{
@@ -15,45 +15,59 @@ class CardTreinamento extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
         color: const Color(0xffffffff).withOpacity(0.90),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              Image.network(
-                treinamento.urlImage!,
-                height: 100,
-                width: 175,
+      ),
+      width: 380,
+      height: 290,
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            Image.network(
+              treinamento.urlImage != null ? treinamento.urlImage! :
+              'https://firebasestorage.googleapis.com/v0/b/maispet-testes.appspot.com/o/treinamentos%2Fimages%2FLogo_Nova-removebg-preview.png?alt=media&token=32a9dceb-148f-4705-9cb7-85670a35cb05',
+              height: 100,
+              width: 175,
+            ),
+            Text(
+              treinamento.titulo,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              textScaleFactor: 2,
+            ),
+            const SizedBox(height: 15),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: 350,
+                maxHeight: 50
               ),
-              Text(
-                treinamento.titulo,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-                textScaleFactor: 2,
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                width: 350,
-                height: 50,
-                child: SingleChildScrollView(
-                  child: Text(
-                    treinamento.descricao,
-                    style: const TextStyle(fontSize: 12),
-                  ),
+              child: SingleChildScrollView(
+                child: Text(
+                  treinamento.descricao,
+                  style: const TextStyle(fontSize: 12),
                 ),
               ),
-              const SizedBox(height: 15),
-              for(String link in treinamento.linksVideos)
-                ButtonAssistirTreinamentos(link: link,),
-              const SizedBox(height: 15),
-              // if(treinamento.urlPdf != null)
-              //   ButtonImpressaoPdf(
-              //     caminhoDoPdf: treinamento.urlPdf!,
-              //     nomeDoTreinamento: treinamento.titulo,
-              //   ),
-            ],
-          ),
-        )
+            ),
+            const SizedBox(height: 15),
+            FittedBox(
+              fit: BoxFit.fill,
+              child: Row(
+                children: [
+                  for(String link in treinamento.linksVideos)
+                    ButtonAssistirTreinamentos(link: link,),
+                  const SizedBox(width: 15),
+                  if(treinamento.urlPdf != null)
+                    ButtonImpressaoPdf(
+                      caminhoDoPdf: treinamento.urlPdf!,
+                    ),
+                ],
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 
