@@ -5,6 +5,7 @@ import '../model/entities/aniversariante.dart';
 
 class AniversarianteController {
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
+
   List<Aniversariante> aniversariantes = [];
   List<Aniversariante> aniversariantesDoDia = [];
   List<String> listaDeDepartamentos = [];
@@ -27,24 +28,18 @@ class AniversarianteController {
     return '$day/$month';
   }
 
-  Aniversariante createAniversariante(String nome, String data, String cargo, String unidade){
-    Aniversariante aniversariante = Aniversariante.fromStrings(
-        nome, data, cargo, unidade,
-    );
-    aniversarianteRepository.saveAndUpdateAniversariante(aniversariante);
-    return aniversariante;
+  Future<void> carregarAniversariantes() async {
+    final aniversariantesDb =
+      await aniversarianteRepository.getListAniversariantes();
+    aniversariantes.clear();
+    aniversariantes = aniversariantesDb;
   }
 
-  void updateAniversariente(String id, Aniversariante aniversariante){
-    aniversarianteRepository.updateAniversariante(id, aniversariante);
+  Future<void> carregarAniversariantesDoDia() async {
+    final aniversariantesDoDiaDb =
+      await aniversarianteRepository.getAniversariantesDoDia();
+    aniversariantesDoDia.clear();
+    aniversariantesDoDia = aniversariantesDoDiaDb;
   }
 
-  void deleteAniversariante(String id){
-    aniversarianteRepository.deleteAniversariante(id);
-  }
-
-  String selectUnidade(String value){
-    String unidade = value;
-    return unidade;
-  }
 }

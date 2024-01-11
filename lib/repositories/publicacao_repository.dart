@@ -21,6 +21,7 @@ class PublicacaoRepository{
   }
 
   void updatePublicacao(String id, Publicacao updatePublicacao){
+    updatePublicacao.id = id;
     final updatePublicacaoJson = updatePublicacao.toJson();
     firestore.collection(collectionKey).doc(id).update(updatePublicacaoJson);
   }

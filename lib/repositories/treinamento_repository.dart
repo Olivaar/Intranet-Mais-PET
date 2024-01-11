@@ -43,6 +43,7 @@ class TreinamentoRepository{
   }
 
   void updateTreinamento(String id, Treinamento updatedTreinamento) {
+    updatedTreinamento.id = id;
     final updatedTreinamentoJson = updatedTreinamento.toJson();
     db.collection('treinamentos').doc(id).update(updatedTreinamentoJson);
   }

@@ -44,6 +44,13 @@ class AniversarianteRepository{
     db.collection('aniversariantes').doc(id).update(updatedAniversarianteJson);
   }
 
+  void clearAniversariantes() async {
+     final clearAniversariantes = await getListAniversariantes();
+     for(Aniversariante an in clearAniversariantes){
+       deleteAniversariante(an.id);
+     }
+  }
+
   void deleteAniversariante(String id) {
     db.collection('aniversariantes').doc(id).delete();
   }

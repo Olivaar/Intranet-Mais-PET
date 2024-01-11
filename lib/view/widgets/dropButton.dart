@@ -47,6 +47,7 @@ class _DropButtonIntranetState extends State<DropButtonIntranet>{
                 isExpanded: true,
                 hint: Text(
                   widget.textoHint,
+                  maxLines: 1,
                   style: TextStyle(
                     fontSize: 14,
                     color: Theme.of(context).hintColor,

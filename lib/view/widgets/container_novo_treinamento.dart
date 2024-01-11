@@ -298,6 +298,10 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                     widget.updateTreinamento!.id, tr
                 );
                 _clearAllCampos();
+                if(update){
+                  Navigator.pop(context);
+                }
+                update = false;
               });
             }
 
@@ -317,6 +321,10 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
           onPressed: () async{
             setState(() {
               _clearAllCampos();
+              if(update){
+                Navigator.pop(context);
+              }
+              update = false;
             });
           },
           icon: const Icon(Icons.cancel_outlined, color: preto,),

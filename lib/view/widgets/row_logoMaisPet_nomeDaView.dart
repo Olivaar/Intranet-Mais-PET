@@ -17,25 +17,20 @@ class RowLogoMaisPet_NomeView extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget> [
         Image.asset('images/Logo_Nova-removebg-preview.png',
-          height: 110, width: 110,
+          height: 100, width: 100,
         ),
         Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0)
+            borderRadius: BorderRadius.circular(10.0)
           ),
           color: const Color(0xffffffff),
-          margin: const EdgeInsets.all(5.0),
+          margin: const EdgeInsets.only(right: 10),
           child: Padding(
             padding: const EdgeInsets.all(7.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget> [
-                Text(
-                  nomeDaView,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  textScaleFactor: 2
-                ),
-              ],
+            child: Text(
+              nomeDaView,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              textScaleFactor: 2
             ),
           ),
         )

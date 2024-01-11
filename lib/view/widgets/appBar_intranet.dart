@@ -34,6 +34,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
             }
           ),
           const SizedBox(width: 5,),
+
           ButtonNavegacaoPaginasIntranet(
             color: buttonColor,
             nomeDaPagina: "RAMAIS",
@@ -43,6 +44,7 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
             }
           ),
           const SizedBox(width: 5,),
+
           ButtonNavegacaoPaginasIntranet(
             color: buttonColor,
             nomeDaPagina: "TREINAMENTOS",
@@ -52,33 +54,32 @@ class AppBarIntranet extends StatelessWidget implements PreferredSizeWidget{
             }
           ),
           const SizedBox(width: 5,),
-          ButtonNavegacaoPaginasIntranet(
-            color: buttonColor,
-            nomeDaPagina: "ANIVERSARIANTES",
-            iconeDaPagina: Icons.cake_outlined,
-            onPressed: (){
-              Navigator.pushNamed(context, '/aniversariantes');
-            }
-          ),
-          const SizedBox(width: 5,),
+
           ButtonNavegacaoPaginasIntranet(
             color: buttonColor,
             nomeDaPagina: "+PET",
-            iconeDaPagina: Icons.block_outlined,
-            onPressed: (){},
+            iconeDaPagina: Icons.pets,
+            onPressed: (){
+              Navigator.pushNamed(context, '/acontece');
+            },
           ),
         ],
       ),
       actions: const [
         ButtonNavegacaoMidiasMaispet(
-            urlDaMidia: 'https://maispetoficial.com.br',
-            iconeDaMidia: Icons.pets),
+          urlDaMidia: 'https://maispetoficial.com.br',
+          iconeDaMidia: Icons.pets,
+        ),
+
         ButtonNavegacaoMidiasMaispet(
-            urlDaMidia: 'https://instagram.com/maispetoficial?igshid=MmJiY2I4NDBkZg==',
-            iconeDaMidia: Icons.alternate_email),
+          urlDaMidia: 'https://instagram.com/maispetoficial?igshid=MmJiY2I4NDBkZg==',
+          iconeDaMidia: Icons.alternate_email,
+        ),
+
         ButtonNavegacaoMidiasMaispet(
-            urlDaMidia: 'https://www.facebook.com/maispetoficial',
-            iconeDaMidia: Icons.facebook)
+          urlDaMidia: 'https://www.facebook.com/maispetoficial',
+          iconeDaMidia: Icons.facebook,
+        ),
       ],
     );
   }

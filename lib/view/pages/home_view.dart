@@ -9,7 +9,6 @@ import '../../model/entities/sistema.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
-
 class MyHomePage extends StatefulWidget {
   final String title;
   const MyHomePage({super.key, required this.title});
@@ -46,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    String versao = '3.3.1';
+    String versao = '3.4.1';
 
     return Scaffold(
       appBar: AppBarIntranet(),

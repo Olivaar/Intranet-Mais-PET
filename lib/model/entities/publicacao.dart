@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Publicacao{
@@ -7,7 +6,6 @@ class Publicacao{
   String descricao;
   String urlImage;
   Timestamp dataPublicacao;
-  int likes;
   String id = Random().nextInt(1000000).toString();
 
   Publicacao({
@@ -15,7 +13,6 @@ class Publicacao{
     required this.descricao,
     required this.urlImage,
     required this.dataPublicacao,
-    required this.likes,
   });
 
   Publicacao.fromJson(Map<String, dynamic> json)
@@ -23,7 +20,6 @@ class Publicacao{
       descricao = json['descricao'],
       urlImage = json['urlImage'],
       dataPublicacao = json['dataPublicacao'],
-      likes = json['likes'],
       id = json['id'];
 
   Map<String, dynamic> toJson(){
@@ -32,7 +28,6 @@ class Publicacao{
       'descricao': descricao,
       'urlImage': urlImage,
       'dataPublicacao': dataPublicacao,
-      'likes': likes,
       'id': id,
     };
   }

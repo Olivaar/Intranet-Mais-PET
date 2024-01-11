@@ -1,15 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:intranet_maispet/controller/sistema_controller.dart';
-import 'package:intranet_maispet/model/entities/sistema.dart';
-import 'package:intranet_maispet/model/enums/sistema_background.dart';
-import 'package:intranet_maispet/model/enums/sistema_page.dart';
-import 'package:intranet_maispet/repositories/sistema_repository.dart';
 import 'package:intranet_maispet/view/colors.dart';
 import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/card_abrir_sistemas.dart';
+import 'package:intranet_maispet/view/widgets/container_novo_sistema.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
+import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
+import '../../model/entities/sistema.dart';
 
 
 class AdminSistemas extends StatefulWidget {
@@ -21,30 +19,8 @@ class AdminSistemas extends StatefulWidget {
 
 class _AdminSistemasState extends State<AdminSistemas> {
 
-  SistemaRepository sistemaRepository = SistemaRepository();
-  SistemaController sistemaController = SistemaController();
-
-  TextEditingController nomeController = TextEditingController();
-  TextEditingController linkController = TextEditingController();
-  String? urlImage;
-
-  SistemaBackground? _sistemaBackground = SistemaBackground.normal;
-  SistemaPage? _sistemaPage = SistemaPage.home;
-
-  Color colorIcons = vermelho;
-
-  @override
-  void initState(){
-    super.initState();
-    _carregarSistemas();
-  }
-
-  Future<void> _carregarSistemas() async {
-    final sistemas = await sistemaRepository.readSistemas();
-    setState(() {
-      sistemaController.sistemas = sistemas;
-    });
-  }
+  final Stream<QuerySnapshot> _sistemasStream =
+    FirebaseFirestore.instance.collection('sistemas').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -64,226 +40,61 @@ class _AdminSistemasState extends State<AdminSistemas> {
               )
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.all(32),
-                  decoration: ThemeHelper().containerDecoration(),
-                  child: GridView(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 6,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                    ),
-                    children: [
-                      for(Sistema sis in sistemaController.sistemas)
-                        CardAbrirSistemas(
-                          urlDoSistema: sis.link,
-                          urlImage: sis.urlImage,
-                          nomeDoSistema: sis.nome,
-                          sistemaBackground: sis.sistemaBackground,
-                          sistemaPage: sis.sistemaPage,
-                        ),
-                    ],
-                  )
-                )
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.all(32),
-                  decoration: ThemeHelper().containerDecoration(),
-                  child: Form(
-                    child: ListView(
-                      children:  [
-                        const Text(
-                          'NOVO SISTEMA',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                          ),
-                        ),
-                        const SizedBox(height: 20,),
-                        TextFormField(
-                          controller: nomeController,
-                          decoration: ThemeHelper().textInputDecoration(
-                            'Nome', 'Digite o nome do Sistema...',
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        TextFormField(
-                          controller: linkController,
-                          decoration: ThemeHelper().textInputDecoration(
-                            'Link', 'Cole o link do Sistema...',
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        ElevatedButton(
-                          onPressed: () async {
-                            PickedFile? pickedImage = await ImagePicker()
-                                .getImage(source: ImageSource.gallery);
-                            if(pickedImage == null) return;
+          SingleChildScrollView(
+            child: Column(
+              children: [
 
-                            urlImage = await sistemaController.uploadImage(pickedImage);
+                const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Sistemas'),
 
-                            if(urlImage != null){
-                              setState(() {
-                                colorIcons = verde;
-                              });
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+                        decoration: ThemeHelper().containerDecoration(),
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: _sistemasStream,
+                          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                            if(snapshot.hasError){
+                              return const Text('Erro ao recuperar sistemas');
                             }
-                          },
-                          style: ThemeHelper().buttonStyle2(colorButton: branco),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.image_outlined, color: colorIcons,),
-                              const SizedBox(width: 5,),
-                              const Text('Escolher Imagem'),
-                              const SizedBox(width: 5,),
-                              Icon(Icons.check_circle_outline, color: colorIcons),
-                            ],
-                          )
-                        ),
-                        const SizedBox(height: 5,),
-                        Container(
-                          width: 200,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: branco,
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(color: preto),
-                          ),
-                          child: Column(
-                            children: [
-                              const Text(
-                                'Cor do BackGround',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('Branco'),
-                                leading: Radio<SistemaBackground>(
-                                  value: SistemaBackground.normal,
-                                  groupValue: _sistemaBackground,
-                                  onChanged: (SistemaBackground? value) {
-                                    setState(() {
-                                      _sistemaBackground = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('Maispet'),
-                                leading: Radio<SistemaBackground>(
-                                  value: SistemaBackground.maispet,
-                                  groupValue: _sistemaBackground,
-                                  onChanged: (SistemaBackground? value) {
-                                    setState(() {
-                                      _sistemaBackground = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('Telemed'),
-                                leading: Radio<SistemaBackground>(
-                                  value: SistemaBackground.telemed,
-                                  groupValue: _sistemaBackground,
-                                  onChanged: (SistemaBackground? value) {
-                                    setState(() {
-                                      _sistemaBackground = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        Container(
-                          width: 200,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: branco,
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(color: preto),
-                          ),
-                          child: Column(
-                            children: [
-                              const Text(
-                                'Pagina de Exibição',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('Home'),
-                                leading: Radio<SistemaPage>(
-                                  value: SistemaPage.home,
-                                  groupValue: _sistemaPage,
-                                  onChanged: (SistemaPage? value) {
-                                    setState(() {
-                                      _sistemaPage = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                              ListTile(
-                                title: const Text('Tecnologia'),
-                                leading: Radio<SistemaPage>(
-                                  value: SistemaPage.tecnologia,
-                                  groupValue: _sistemaPage,
-                                  onChanged: (SistemaPage? value) {
-                                    setState(() {
-                                      _sistemaPage = value;
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 5,),
-                        ElevatedButton.icon(
-                          onPressed: (){
-                            Sistema sistema = Sistema(
-                              nome:  nomeController.text,
-                              link: linkController.text,
-                              urlImage: urlImage!,
-                              sistemaBackground: _sistemaBackground!,
-                              sistemaPage: _sistemaPage!,
+
+                            if(snapshot.connectionState == ConnectionState.waiting){
+                              return const CircularProgressIndicator();
+                            }
+
+                            return Wrap(
+                              runSpacing: 10,
+                              spacing: 10,
+                              alignment: WrapAlignment.center,
+                              children: snapshot.data!.docs.map((DocumentSnapshot document){
+                                Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                                Sistema sistema = Sistema.fromJson(data);
+                                return CardAbrirSistemas(
+                                  urlDoSistema: sistema.link,
+                                  urlImage: sistema.urlImage,
+                                  nomeDoSistema: sistema.nome,
+                                  sistemaBackground: sistema.sistemaBackground,
+                                  sistemaPage: sistema.sistemaPage,
+                                );
+                              }).toList().cast(),
                             );
-                            sistemaRepository.createSistema(sistema);
-                            setState(() {
-                              nomeController.clear();
-                              linkController.clear();
-                              colorIcons = vermelho;
-                              _carregarSistemas();
-                            });
                           },
-                          icon: const Icon(Icons.save),
-                          label: const Text(
-                            'Salvar',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: preto,
-                            ),
-                          ),
                         )
-                      ],
+                      )
                     ),
-                  ),
-                )
-              ),
-            ],
+
+                    const Expanded(
+                      flex: 1,
+                      child: ContainerNovoSistema(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

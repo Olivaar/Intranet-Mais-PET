@@ -46,6 +46,7 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
             SingleChildScrollView(
               child: Column(
                 children: <Widget> [
+                  const SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget> [
@@ -57,15 +58,10 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                         margin: const EdgeInsets.all(5.0),
                         child: const Padding(
                           padding: EdgeInsets.all(7.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget> [
-                              Text(
-                                'TECNOLOGIA +PET',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                                textScaleFactor: 2,
-                              ),
-                            ],
+                          child: Text(
+                            'TECNOLOGIA +PET',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textScaleFactor: 2,
                           ),
                         ),
                       )

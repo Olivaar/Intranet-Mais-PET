@@ -5,7 +5,6 @@ class SistemaRepository{
   final firestore = FirebaseFirestore.instance;
   final collectionKey = 'sistemas';
 
-
   Future<void> createSistema(Sistema sistema,) async {
     final sistemaJson = sistema.toJson();
     await firestore.collection(collectionKey).doc(sistema.id).set(sistemaJson);
@@ -29,5 +28,4 @@ class SistemaRepository{
   void deleteSistema(String id) async{
     await firestore.collection(collectionKey).doc(id).delete();
   }
-
 }
