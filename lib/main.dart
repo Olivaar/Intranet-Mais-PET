@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:intranet_maispet/view/pages/acontece_na_pet.dart';
-import 'package:intranet_maispet/view/pages/admin_acontece.dart';
+import 'package:intranet_maispet/view/pages/acontece_na_pet_view.dart';
+import 'package:intranet_maispet/view/pages/admin_acontece_view.dart';
 import 'package:intranet_maispet/view/pages/admin_aniversariantes_view.dart';
 import 'package:intranet_maispet/view/pages/admin_ramais_view.dart';
 import 'package:intranet_maispet/view/pages/admin_sistemas.dart';

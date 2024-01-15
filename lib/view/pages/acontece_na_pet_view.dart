@@ -81,8 +81,8 @@ class _AconteceNaPetState extends State<AconteceNaPet> {
                       const Text(
                         'Acontece na +PET',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20
                         ),
                       ),
                     ],

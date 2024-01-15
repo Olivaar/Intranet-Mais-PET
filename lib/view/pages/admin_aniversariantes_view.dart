@@ -44,9 +44,11 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
               ),
             ),
           ),
+
           Column(
             children: [
               const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Aniversariantes'),
+
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxHeight: 350,

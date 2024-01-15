@@ -33,10 +33,12 @@ class _TreinamentosViewState extends State<TreinamentosView> {
               ),
             ),
           ),
+
           SingleChildScrollView(
             child: Column(
               children: [
                 const RowLogoMaisPet_NomeView(nomeDaView: 'TREINAMENTOS',),
+
                 SizedBox(
                   width: 1200,
                   child: StreamBuilder<QuerySnapshot>(

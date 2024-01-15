@@ -8,7 +8,6 @@ import '../../repositories/sistema_repository.dart';
 import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
-
 class TecnologiaView extends StatefulWidget{
 
   @override
@@ -19,7 +18,6 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
 
   SistemaRepository sistemaRepository = SistemaRepository();
   SistemaController sistemaController = SistemaController();
-
 
   final Stream<QuerySnapshot> _sistemasStream =
   FirebaseFirestore.instance.collection('sistemas').snapshots();
@@ -43,6 +41,7 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                 )
               ),
             ),
+
             SingleChildScrollView(
               child: Column(
                 children: <Widget> [
@@ -68,6 +67,7 @@ class _TecnologiaViewState  extends State<TecnologiaView>{
                     ],
                   ),
                   SizedBox.fromSize(),
+
                   SizedBox(
                     width: 900,
                     child: StreamBuilder<QuerySnapshot>(

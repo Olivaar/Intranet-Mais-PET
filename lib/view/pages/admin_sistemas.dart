@@ -9,7 +9,6 @@ import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 import '../../model/entities/sistema.dart';
 
-
 class AdminSistemas extends StatefulWidget {
   const AdminSistemas({super.key});
 
@@ -40,6 +39,7 @@ class _AdminSistemasState extends State<AdminSistemas> {
               )
             ),
           ),
+
           SingleChildScrollView(
             child: Column(
               children: [

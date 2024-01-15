@@ -62,119 +62,119 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
             mainAxisSize: MainAxisSize.max,
             children: [
               const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Ramais'),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  DropButtonIntranet(
-                    color: const Color(0xff34B9D6),
-                    onChanged: (value){
-                      setState(() {
-                        _carregarRamais(value);
-                        unidadeSelecionada = value;
-                      });
-                    },
-                    listaDeItens: ramalController.listaDeUnidades,
-                    textoHint: 'Selecione a Unidade'
-                  ),
-                  const SizedBox(height: 10,),
-                  Container(
-                    padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                      )
+
+              DropButtonIntranet(
+                color: const Color(0xff34B9D6),
+                onChanged: (value){
+                  setState(() {
+                    _carregarRamais(value);
+                    unidadeSelecionada = value;
+                  });
+                },
+                listaDeItens: ramalController.listaDeUnidades,
+                textoHint: 'Selecione a Unidade'
+              ),
+              const SizedBox(height: 10,),
+
+              Container(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  )
+                ),
+                width:470,
+                child: Column(
+                  children: [
+                    Text(
+                      unidadeSelecionada ?? 'Selecione uma unidade',
+                      textAlign: TextAlign.center,
+                      style: ThemeHelper().textStyleAdmRamais(),
                     ),
-                    width:470,
-                    child: Column(
+                    const Divider(color: Colors.black,),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          unidadeSelecionada ?? 'Selecione uma unidade',
+                          'Local',
                           textAlign: TextAlign.center,
                           style: ThemeHelper().textStyleAdmRamais(),
                         ),
-                        const Divider(color: Colors.black,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Local',
-                              textAlign: TextAlign.center,
-                              style: ThemeHelper().textStyleAdmRamais(),
-                            ),
-                            Text(
-                              'Ramal',
-                              textAlign: TextAlign.center,
-                              style: ThemeHelper().textStyleAdmRamais(),
-                            ),
-                            Text(
-                              'Ações',
-                              textAlign: TextAlign.center,
-                              style: ThemeHelper().textStyleAdmRamais(),
-                            ),
-                          ],
+                        Text(
+                          'Ramal',
+                          textAlign: TextAlign.center,
+                          style: ThemeHelper().textStyleAdmRamais(),
                         ),
-                        const Divider(color: Colors.black,),
+                        Text(
+                          'Ações',
+                          textAlign: TextAlign.center,
+                          style: ThemeHelper().textStyleAdmRamais(),
+                        ),
                       ],
                     ),
+                    const Divider(color: Colors.black,),
+                  ],
+                ),
+              ),
+
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxHeight: 320,
+                ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    )
                   ),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxHeight: 320,
-                    ),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
-                        )
-                      ),
-                      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                      width: 470,
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          for(Ramal ramal in ramalController.ramais)
-                            Column(
+                  padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  width: 470,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      for(Ramal ramal in ramalController.ramais)
+                        Column(
+                          children: [
+                            Row(
                               children: [
-                                Row(
-                                  children: [
-                                    RowRamalAdm(
-                                      ramal: ramal,
-                                      unidadeSelecionada: unidadeSelecionada!,
-                                      carregarRamais: _carregarRamais,
-                                    ),
-                                    SizedBox(
-                                      width: 150,
-                                      child: IconButton(
-                                        alignment: Alignment.centerRight,
-                                        onPressed: (){
-                                          ramalController.deleteRamal(
-                                              ramal.id,
-                                              unidadeSelecionada!
-                                          );
-                                          setState(() {
-                                            _carregarRamais(unidadeSelecionada!);
-                                          });
-                                        },
-                                        icon: const Icon(Icons.delete),
-                                      ),
-                                    ),
-                                  ],
+                                RowRamalAdm(
+                                  ramal: ramal,
+                                  unidadeSelecionada: unidadeSelecionada!,
+                                  carregarRamais: _carregarRamais,
                                 ),
-                                Divider(
-                                  color: Colors.black.withOpacity(0.2),
-                                  height: 0.1,
+
+                                SizedBox(
+                                  width: 150,
+                                  child: IconButton(
+                                    alignment: Alignment.centerRight,
+                                    onPressed: (){
+                                      ramalController.deleteRamal(
+                                        ramal.id,
+                                        unidadeSelecionada!
+                                      );
+                                      setState(() {
+                                        _carregarRamais(unidadeSelecionada!);
+                                      });
+                                    },
+                                    icon: const Icon(Icons.delete),
+                                  ),
                                 ),
                               ],
                             ),
-                        ]
-                      ),
-                    ),
-                  )
-                ],
+                            Divider(
+                              color: Colors.black.withOpacity(0.2),
+                              height: 0.1,
+                            ),
+                          ],
+                        ),
+                    ]
+                  ),
+                ),
               ),
             ],
           ),

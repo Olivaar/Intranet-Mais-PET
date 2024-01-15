@@ -46,9 +46,11 @@ class _BranchesViewState extends State<BranchesView>{
               ),
             ),
           ),
+
           Container(
             color: const Color(0xffffffff).withOpacity(0.20),
           ),
+
           ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight: MediaQuery.of(context).size.height - 20,
@@ -57,6 +59,7 @@ class _BranchesViewState extends State<BranchesView>{
               mainAxisSize: MainAxisSize.min,
               children: [
                 const RowLogoMaisPet_NomeView(nomeDaView: 'Ramais'),
+
                 DropButtonIntranet(
                   onChanged: (value){
                     if(value == 'TODOS OS RAMAIS'){
@@ -73,11 +76,13 @@ class _BranchesViewState extends State<BranchesView>{
                   listaDeItens: ramalController.listaDeUnidades,
                   textoHint: 'Selecione a Unidade'
                 ),
+
                 if(unidadeSelecionada != null &&
                     unidadeSelecionada != 'TODOS OS RAMAIS')
                   ContainerRamais(
                     ramais: ramalController.ramais, unidade: unidadeSelecionada,
                   ),
+
                 if(unidadeSelecionada != null &&
                     unidadeSelecionada == 'TODOS OS RAMAIS')
                   WidgetTodosRamais(),

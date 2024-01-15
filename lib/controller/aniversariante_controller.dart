@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
-
 import '../model/entities/aniversariante.dart';
 
 class AniversarianteController {
@@ -9,6 +8,7 @@ class AniversarianteController {
   List<Aniversariante> aniversariantes = [];
   List<Aniversariante> aniversariantesDoDia = [];
   List<String> listaDeDepartamentos = [];
+  List<String> nomes = [];
 
   String dataAniversarioToString(Timestamp dataAniversario) {
     final dateTime = dataAniversario.toDate();
@@ -36,10 +36,14 @@ class AniversarianteController {
   }
 
   Future<void> carregarAniversariantesDoDia() async {
-    final aniversariantesDoDiaDb =
-      await aniversarianteRepository.getAniversariantesDoDia();
-    aniversariantesDoDia.clear();
+    final aniversariantesDoDiaDb = await aniversarianteRepository
+        .getAniversariantesDoDia();
+
     aniversariantesDoDia = aniversariantesDoDiaDb;
+
+    for (Aniversariante an in aniversariantesDoDia) {
+      nomes.add(an.nomeSobrenome);
+    }
   }
 
 }
