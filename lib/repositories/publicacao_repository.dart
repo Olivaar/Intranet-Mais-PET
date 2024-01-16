@@ -10,16 +10,6 @@ class PublicacaoRepository{
     await firestore.collection(collectionKey).doc(publicacao.id).set(publicacaoJson);
   }
 
-  Future<List<Publicacao>>readPublicacoes() async{
-    final publicacoes = await firestore.collection(collectionKey).get();
-
-    final publicacoesList = publicacoes.docs
-      .map((doc) => Publicacao.fromJson(doc.data() as Map<String, dynamic>))
-      .toList();
-
-    return publicacoesList.isEmpty ? [] : publicacoesList;
-  }
-
   void updatePublicacao(String id, Publicacao updatePublicacao){
     updatePublicacao.id = id;
     final updatePublicacaoJson = updatePublicacao.toJson();

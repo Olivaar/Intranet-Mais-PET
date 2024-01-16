@@ -30,14 +30,14 @@ class AniversarianteController {
 
   Future<void> carregarAniversariantesDoMes() async {
     final aniversariantesDb =
-      await aniversarianteRepository.getListAniversariantes();
+      await aniversarianteRepository.readAniversariantesDoMes();
     aniversariantesDoMes.clear();
     aniversariantesDoMes = aniversariantesDb;
   }
 
   Future<void> carregarAniversariantesDoDia() async {
     final aniversariantesDoDiaDb = await aniversarianteRepository
-        .getAniversariantesDoDia();
+        .readAniversariantesDoDia();
 
     aniversariantesDoDia = aniversariantesDoDiaDb;
 

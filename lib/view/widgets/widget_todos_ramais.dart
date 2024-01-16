@@ -20,10 +20,10 @@ class _WidgetTodosRamaisState extends State<WidgetTodosRamais> {
   }
 
   Future<void> _carregarTodosRamais() async{
-    final ramaisGyn = await ramalRepository.readListRamalByUnidade('+PET GOIÂNIA');
-    final ramaisBsb = await ramalRepository.readListRamalByUnidade('+PET BRASÍLIA');
-    final ramaisCamp = await ramalRepository.readListRamalByUnidade('+PET CAMPINAS');
-    final ramaisAp = await ramalRepository.readListRamalByUnidade('+PET APARECIDA');
+    final ramaisGyn = await ramalRepository.readRamalByUnidade('+PET GOIÂNIA');
+    final ramaisBsb = await ramalRepository.readRamalByUnidade('+PET BRASÍLIA');
+    final ramaisCamp = await ramalRepository.readRamalByUnidade('+PET CAMPINAS');
+    final ramaisAp = await ramalRepository.readRamalByUnidade('+PET APARECIDA');
 
     setState(() {
       ramalController.ramaisGyn = ramaisGyn;

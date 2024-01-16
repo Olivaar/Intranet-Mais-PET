@@ -28,7 +28,7 @@ class _RowAddAniversarianteState extends State<RowAddAniversariante> {
   String unidadeController = '';
 
   Future<void> _carregarDepartamentos() async {
-    final departamentos = await departamentoRepository.readListDepartamentos();
+    final departamentos = await departamentoRepository.readDepartamentos();
     final List<String> departamentosString = [];
     for(Departamento dep in departamentos){
       departamentosString.add(dep.nomeDepartamento);
@@ -127,7 +127,7 @@ class _RowAddAniversarianteState extends State<RowAddAniversariante> {
                 cargoController.text,
                 unidadeController,
               );
-              aniversarianteRepository.saveAniversariante(an);
+              aniversarianteRepository.createAniversariante(an);
               nomeController.clear();
               dataController.clear();
               cargoController.clear();

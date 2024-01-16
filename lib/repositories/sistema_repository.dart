@@ -10,16 +10,6 @@ class SistemaRepository{
     await firestore.collection(collectionKey).doc(sistema.id).set(sistemaJson);
   }
 
-  Future<List<Sistema>>readSistemas() async{
-    final sistemas = await firestore.collection(collectionKey).get();
-
-    final sistemasList = sistemas.docs
-      .map((doc) => Sistema.fromJson(doc.data() as Map<String, dynamic>))
-      .toList();
-
-    return sistemasList.isEmpty ? [] : sistemasList;
-  }
-
   void updateSistema(String id, Sistema updatedSistema){
     final updatedSistemaJson = updatedSistema.toJson();
     firestore.collection(collectionKey).doc(id).update(updatedSistemaJson);

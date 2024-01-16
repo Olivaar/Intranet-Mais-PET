@@ -26,7 +26,7 @@ class _BranchesViewState extends State<BranchesView>{
   }
 
   Future<void> _carregarRamais(String unidade) async{
-    final ramais = await ramalRepository.readListRamalByUnidade(unidade);
+    final ramais = await ramalRepository.readRamalByUnidade(unidade);
     setState(() {
       ramalController.ramais = ramais;
     });

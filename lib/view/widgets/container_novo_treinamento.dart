@@ -279,7 +279,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                 tr.linksVideos.add(link2Controller.text);
               }
               setState(() {
-                treinamentoRepository.saveTreinamento(tr);
+                treinamentoRepository.createTreinamento(tr);
                 _clearAllCampos();
               });
             } else if (_formKey.currentState!.validate() && update == true){

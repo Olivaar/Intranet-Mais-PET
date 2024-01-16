@@ -3,12 +3,13 @@ import 'package:intranet_maispet/model/entities/departamento.dart';
 
 class DepartamentoRepository{
   final db = FirebaseFirestore.instance;
+  final _collectionKey = 'departamentos';
 
-  Future<List<Departamento>> readListDepartamentos() async{
-    final departamentos = await db.collection('departamentos').get();
+  Future<List<Departamento>> readDepartamentos() async{
+    final departamentos = await db.collection(_collectionKey).get();
 
     final departamentosList = departamentos.docs
-      .map((doc) => Departamento.fromJson(doc.data() as Map<String, dynamic>))
+      .map((doc) => Departamento.fromJson(doc.data()))
       .toList();
 
     departamentosList.sort((a, b) => a.nomeDepartamento.compareTo(b.nomeDepartamento));

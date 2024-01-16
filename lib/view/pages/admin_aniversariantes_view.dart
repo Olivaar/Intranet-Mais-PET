@@ -92,7 +92,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
               TextButton.icon(
                 style: ThemeHelper().buttonStyle2(),
                 onPressed: () async{
-                  aniversarianteRepository.clearAniversariantes();
+                  aniversarianteRepository.deleteAllAniversariantes();
                 },
                 icon: const Icon(Icons.delete),
                 label: const Text('LIMPAR LISTA'),

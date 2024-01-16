@@ -26,7 +26,7 @@ class _AlertAniversarianteDoDiaBodyState extends State<AlertAniversarianteDoDiaB
   }
 
   Future<void> _carregarAniversariantesDoDia() async{
-    final aniversariantesDoDia = await aniversarianteRepository.getAniversariantesDoDia();
+    final aniversariantesDoDia = await aniversarianteRepository.readAniversariantesDoDia();
     setState(() {
       aniversarianteController.aniversariantesDoDia = aniversariantesDoDia;
       if(aniversariantesDoDia.length > 1){
