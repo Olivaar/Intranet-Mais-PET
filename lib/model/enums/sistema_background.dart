@@ -1,5 +1,5 @@
 enum SistemaBackground{
-  normal,
+  branco,
   telemed,
   maispet,
 }

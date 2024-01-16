@@ -11,7 +11,7 @@ class DepartamentoRepository{
       .map((doc) => Departamento.fromJson(doc.data() as Map<String, dynamic>))
       .toList();
 
-    departamentosList.sort((a, b) => a.nome.compareTo(b.nome));
+    departamentosList.sort((a, b) => a.nomeDepartamento.compareTo(b.nomeDepartamento));
 
     return departamentosList.isEmpty ? [] : departamentosList;
   }

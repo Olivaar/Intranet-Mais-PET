@@ -1,16 +1,16 @@
 class Departamento{
-  late String nome;
+  late String nomeDepartamento;
 
   Departamento({
-    required this.nome,
+    required this.nomeDepartamento,
   });
 
   Departamento.fromJson(Map<String, dynamic> json)
-    : nome = json['nome'];
+    : nomeDepartamento = json['nome'];
 
   Map<String, dynamic> toJson(){
     return{
-      'nome': nome
+      'nome': nomeDepartamento
     };
   }
 }

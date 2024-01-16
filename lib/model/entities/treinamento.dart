@@ -19,7 +19,8 @@ class Treinamento {
   Treinamento.fromJson(Map<String, dynamic> json)
     : titulo = json['titulo'],
       descricao = json['descricao'],
-      linksVideos = (json['linksVideos'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
+      linksVideos = (json['linksVideos'] as List<dynamic>?)?.map((e)
+          => e.toString()).toList() ?? [],
       id = json['id'],
       urlImage = json['urlImage'],
       urlPdf = json['urlPdf'];

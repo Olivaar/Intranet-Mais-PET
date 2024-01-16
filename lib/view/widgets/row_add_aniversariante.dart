@@ -31,7 +31,7 @@ class _RowAddAniversarianteState extends State<RowAddAniversariante> {
     final departamentos = await departamentoRepository.readListDepartamentos();
     final List<String> departamentosString = [];
     for(Departamento dep in departamentos){
-      departamentosString.add(dep.nome);
+      departamentosString.add(dep.nomeDepartamento);
     }
     setState(() {
       aniversarianteController.listaDeDepartamentos = departamentosString;

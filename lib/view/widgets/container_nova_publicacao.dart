@@ -38,7 +38,7 @@ class _ContainerNovaPublicacaoState extends State<ContainerNovaPublicacao> {
   void _updatePublicacao(){
     if(widget.updatePublicacao != null){
       _tituloController.text = widget.updatePublicacao!.titulo;
-      _textoController.text = widget.updatePublicacao!.descricao;
+      _textoController.text = widget.updatePublicacao!.texto;
       _urlImage = widget.updatePublicacao!.urlImage;
 
       auxPublicacao = widget.updatePublicacao!;
@@ -151,7 +151,7 @@ class _ContainerNovaPublicacaoState extends State<ContainerNovaPublicacao> {
                       if(widget.updatePublicacao != null){
 
                         auxPublicacao!.titulo = _tituloController.text;
-                        auxPublicacao!.descricao = _textoController.text;
+                        auxPublicacao!.texto = _textoController.text;
                         auxPublicacao!.urlImage = _urlImage!;
 
                         _publicacaoRepository.updatePublicacao(
@@ -164,7 +164,7 @@ class _ContainerNovaPublicacaoState extends State<ContainerNovaPublicacao> {
                       if(_formKey.currentState!.validate()){
                         Publicacao pub = Publicacao(
                           titulo: _tituloController.text,
-                          descricao: _textoController.text,
+                          texto: _textoController.text,
                           urlImage: _urlImage != null ? _urlImage! :
                           'https://firebasestorage.googleapis.com/v0/b/maispet-testes.appspot.com/o/treinamentos%2Fimages%2FLogo_Nova-removebg-preview.png?alt=media&token=32a9dceb-148f-4705-9cb7-85670a35cb05',
                           dataPublicacao: Timestamp.now()

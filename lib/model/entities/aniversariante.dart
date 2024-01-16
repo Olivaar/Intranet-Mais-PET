@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Aniversariante {
-  late String nomeSobrenome;
-  late Timestamp dataAniversario;
-  late String cargo;
-  late String departamento;
+  String nomeSobrenome;
+  Timestamp dataAniversario;
+  String cargo;
+  String departamento;
   late String id;
 
   Aniversariante({
@@ -35,25 +35,28 @@ class Aniversariante {
   }
 
   static Aniversariante fromStrings(
-      String nomeSobrenomeStr,
-      String dataAniversarioStr,
-      String cargoStr,
-      String unidadeStr) {
-    final dataAniversarioParts = dataAniversarioStr.split('/');
-    if (dataAniversarioParts.length == 3) {
-      final day = int.parse(dataAniversarioParts[0]);
-      final month = int.parse(dataAniversarioParts[1]);
-      final year = int.parse(dataAniversarioParts[2]);
-      final dataAniversario = Timestamp.fromDate(DateTime(year, month, day));
+    String nomeSobrenomeStr,
+    String dataAniversarioStr,
+    String cargoStr,
+    String unidadeStr) {
+      final dataAniversarioParts = dataAniversarioStr.split('/');
 
-      return Aniversariante(
-        nomeSobrenome: nomeSobrenomeStr,
-        dataAniversario: dataAniversario,
-        cargo: cargoStr,
-        departamento: unidadeStr,
-      );
-    } else {
-      throw const FormatException('Formato de data inválido. Use o formato DD/MM/AAAA.');
-    }
+      if (dataAniversarioParts.length == 3) {
+        final day = int.parse(dataAniversarioParts[0]);
+        final month = int.parse(dataAniversarioParts[1]);
+        final year = int.parse(dataAniversarioParts[2]);
+        final dataAniversario = Timestamp.fromDate(DateTime(year, month, day));
+
+        return Aniversariante(
+          nomeSobrenome: nomeSobrenomeStr,
+          dataAniversario: dataAniversario,
+          cargo: cargoStr,
+          departamento: unidadeStr,
+        );
+      } else {
+        throw const FormatException(
+          'Formato de data inválido. Use o formato DD/MM/AAAA.',
+        );
+      }
   }
 }

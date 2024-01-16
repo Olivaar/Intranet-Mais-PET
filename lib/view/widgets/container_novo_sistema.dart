@@ -24,7 +24,7 @@ class _ContainerNovoSistemaState extends State<ContainerNovoSistema> {
   TextEditingController linkController = TextEditingController();
   String? urlImage;
 
-  SistemaBackground? _sistemaBackground = SistemaBackground.normal;
+  SistemaBackground? _sistemaBackground = SistemaBackground.branco;
   SistemaPage? _sistemaPage = SistemaPage.home;
 
   Color colorIcons = vermelho;
@@ -114,7 +114,7 @@ class _ContainerNovoSistemaState extends State<ContainerNovoSistema> {
                   ListTile(
                     title: const Text('Branco'),
                     leading: Radio<SistemaBackground>(
-                      value: SistemaBackground.normal,
+                      value: SistemaBackground.branco,
                       groupValue: _sistemaBackground,
                       onChanged: (SistemaBackground? value) {
                         setState(() {

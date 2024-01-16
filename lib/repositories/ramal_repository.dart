@@ -29,7 +29,7 @@ class RamalRepository{
       .map((doc) => Departamento.fromJson(doc.data() as Map<String, dynamic>))
       .toList();
 
-    unidadesList.sort((a, b) => a.nome.compareTo(b.nome));
+    unidadesList.sort((a, b) => a.nomeDepartamento.compareTo(b.nomeDepartamento));
 
     return unidadesList.isEmpty ? [] : unidadesList;
   }

@@ -23,7 +23,7 @@ class CardAbrirSistemas extends StatelessWidget{
 
  Color _backGroundColor(){
     late Color backGroundColor;
-    if(sistemaBackground == SistemaBackground.normal) backGroundColor = branco;
+    if(sistemaBackground == SistemaBackground.branco) backGroundColor = branco;
     if(sistemaBackground == SistemaBackground.maispet) backGroundColor = amareloClaro;
     if(sistemaBackground == SistemaBackground.telemed) backGroundColor = azulClaro;
     return backGroundColor;

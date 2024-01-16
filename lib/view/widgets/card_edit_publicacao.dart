@@ -75,7 +75,7 @@ class CardEditPulicacao extends StatelessWidget {
                     child: ListView(
                       children: [
                         Text(
-                          publicacao.descricao,
+                          publicacao.texto,
                           style: const TextStyle(fontSize: 16),
                         ),
                       ],
