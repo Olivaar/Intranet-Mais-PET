@@ -50,6 +50,7 @@ class _DialogRamalState extends State<DialogRamal> {
               },
             ),
             const SizedBox(height: 10,),
+
             TextFormField(
               controller: numeroController,
               decoration: ThemeHelper().textInputDecoration(
@@ -63,6 +64,7 @@ class _DialogRamalState extends State<DialogRamal> {
               },
             ),
             const SizedBox(height: 10,),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -90,6 +92,7 @@ class _DialogRamalState extends State<DialogRamal> {
                   child: const Text('Salvar'),
                 ),
                 const SizedBox(width: 10,),
+
                 ElevatedButton(
                   onPressed: (){
                     Navigator.pop(context);

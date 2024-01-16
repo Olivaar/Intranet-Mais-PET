@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-
-class RowLogoMaisPet_NomeView extends StatelessWidget{
+class RowLogoMaisPetNomeView extends StatelessWidget{
 
   final String nomeDaView;
 
-  const RowLogoMaisPet_NomeView({
+  const RowLogoMaisPetNomeView({
     super.key,
     required this.nomeDaView,
   });

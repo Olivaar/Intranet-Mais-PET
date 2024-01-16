@@ -66,7 +66,6 @@ class _ListViewAdmTreinamentosState extends State<ListViewAdmTreinamentos> {
                   textScaleFactor: 2,
                   textAlign: TextAlign.center,
                 ),
-
                 const SizedBox(height: 20),
 
                 StreamBuilder<QuerySnapshot>(

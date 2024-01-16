@@ -5,7 +5,7 @@ import 'package:intranet_maispet/controller/publicacao_controller.dart';
 import 'package:intranet_maispet/model/entities/publicacao.dart';
 import 'package:intranet_maispet/view/colors.dart';
 import 'package:intranet_maispet/view/widgets/alert_aniversariante_do_dia_background.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/card_edit_publicacao.dart';
 import 'package:intranet_maispet/view/widgets/container_aniversariantes.dart';
 

@@ -26,7 +26,9 @@ class _AlertAniversarianteDoDiaBodyState extends State<AlertAniversarianteDoDiaB
   }
 
   Future<void> _carregarAniversariantesDoDia() async{
-    final aniversariantesDoDia = await aniversarianteRepository.readAniversariantesDoDia();
+    final aniversariantesDoDia = await aniversarianteRepository
+        .readAniversariantesDoDia();
+
     setState(() {
       aniversarianteController.aniversariantesDoDia = aniversariantesDoDia;
       if(aniversariantesDoDia.length > 1){
@@ -67,6 +69,7 @@ class _AlertAniversarianteDoDiaBodyState extends State<AlertAniversarianteDoDiaB
           ),
         ),
         const SizedBox(height: 20,),
+
         for(Aniversariante an in aniversarianteController.aniversariantesDoDia)
           CardAniversarianteDoDia(
             nome: an.nomeSobrenome,
@@ -74,6 +77,7 @@ class _AlertAniversarianteDoDiaBodyState extends State<AlertAniversarianteDoDiaB
             unidade: an.departamento,
           ),
         const SizedBox(height: 20,),
+
         Container(
           width: 410,
           alignment: Alignment.center,

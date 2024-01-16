@@ -4,6 +4,8 @@ import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/view/widgets/container_ramais.dart';
 
 class WidgetTodosRamais extends StatefulWidget{
+  const WidgetTodosRamais({super.key});
+
 
   @override
   State<WidgetTodosRamais> createState() => _WidgetTodosRamaisState();

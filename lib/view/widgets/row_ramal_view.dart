@@ -3,9 +3,9 @@ import '../../model/entities/ramal.dart';
 
 class RowRamalView extends StatelessWidget {
 
-  Ramal ramal;
+  final Ramal ramal;
 
-  RowRamalView({
+  const RowRamalView({
     super.key,
     required this.ramal,
   });
@@ -35,6 +35,7 @@ class RowRamalView extends StatelessWidget {
             ),
           ),
         ),
+
         Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(

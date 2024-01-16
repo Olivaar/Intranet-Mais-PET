@@ -5,9 +5,9 @@ import '../../repositories/aniversariante_repository.dart';
 
 class RowAdmAniversariantes extends StatelessWidget {
 
-  Aniversariante aniversariante;
-  AniversarianteController aniversarianteController = AniversarianteController();
-  AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
+  final Aniversariante aniversariante;
+  final AniversarianteController aniversarianteController = AniversarianteController();
+  final AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
 
   RowAdmAniversariantes({
     super.key,

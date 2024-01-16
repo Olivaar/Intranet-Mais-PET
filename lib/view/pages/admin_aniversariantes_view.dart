@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
 import 'package:intranet_maispet/repositories/aniversariante_repository.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/row_add_aniversariante.dart';
 import 'package:intranet_maispet/view/widgets/row_adm_aniversariantes.dart';
-import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_logo_maispet_nome_da_view.dart';
 import '../colors.dart';
 import '../widgets/theme_helper.dart';
 
@@ -47,7 +47,7 @@ class _AdminAniversariantesViewState extends State<AdminAniversariantesView> {
 
           Column(
             children: [
-              const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Aniversariantes'),
+              const RowLogoMaisPetNomeView(nomeDaView: 'ADM Aniversariantes'),
 
               ConstrainedBox(
                 constraints: const BoxConstraints(

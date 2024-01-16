@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/model/entities/treinamento.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/card_treinamento.dart';
-import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_logo_maispet_nome_da_view.dart';
 
 class TreinamentosView extends StatefulWidget {
   const TreinamentosView({super.key});
@@ -37,7 +37,7 @@ class _TreinamentosViewState extends State<TreinamentosView> {
           SingleChildScrollView(
             child: Column(
               children: [
-                const RowLogoMaisPet_NomeView(nomeDaView: 'TREINAMENTOS',),
+                const RowLogoMaisPetNomeView(nomeDaView: 'TREINAMENTOS',),
 
                 SizedBox(
                   width: 1200,

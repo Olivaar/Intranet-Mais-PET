@@ -9,10 +9,10 @@ class CardAbrirSistemas extends StatelessWidget{
   final String nomeDoSistema;
   final String urlDoSistema;
   final String urlImage;
-  SistemaBackground sistemaBackground;
-  SistemaPage sistemaPage;
+  final SistemaBackground sistemaBackground;
+  final SistemaPage sistemaPage;
 
-  CardAbrirSistemas ({
+  const CardAbrirSistemas ({
     super.key,
     required this.urlDoSistema,
     required this.urlImage,
@@ -21,7 +21,7 @@ class CardAbrirSistemas extends StatelessWidget{
     required this.sistemaPage,
   });
 
- Color _backGroundColor(){
+  Color _backGroundColor(){
     late Color backGroundColor;
     if(sistemaBackground == SistemaBackground.branco) backGroundColor = branco;
     if(sistemaBackground == SistemaBackground.maispet) backGroundColor = amareloClaro;
@@ -65,6 +65,7 @@ class CardAbrirSistemas extends StatelessWidget{
                   }
                 },
               ),
+
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxHeight: 20
@@ -86,6 +87,4 @@ class CardAbrirSistemas extends StatelessWidget{
       ),
     );
   }
-
-
 }

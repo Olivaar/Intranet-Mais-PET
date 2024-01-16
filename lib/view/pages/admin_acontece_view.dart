@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/model/entities/publicacao.dart';
 import 'package:intranet_maispet/view/colors.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/card_edit_publicacao.dart';
 import 'package:intranet_maispet/view/widgets/container_nova_publicacao.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
-import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_logo_maispet_nome_da_view.dart';
 
 class AdminAcontece extends StatefulWidget {
   const AdminAcontece({super.key});
@@ -41,7 +41,7 @@ class _AdminAconteceState extends State<AdminAcontece> {
 
           Column(
             children: [
-              const RowLogoMaisPet_NomeView(nomeDaView: 'ADM +PET'),
+              const RowLogoMaisPetNomeView(nomeDaView: 'ADM +PET'),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/colors.dart';
-import 'package:intranet_maispet/view/widgets/card_aniversariante.dart';
-
+import 'package:intranet_maispet/view/widgets/card_view_aniversariante.dart';
 import '../../model/entities/aniversariante.dart';
 
 class ContainerAniversariantes extends StatelessWidget {
@@ -56,7 +55,7 @@ class ContainerAniversariantes extends StatelessWidget {
                     Aniversariante aniversariante = Aniversariante.fromJson(data);
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: CardAniversariante(aniversariante: aniversariante)
+                      child: CardViewAniversariante(aniversariante: aniversariante)
                     );
                   }).toList().cast(),
                 );

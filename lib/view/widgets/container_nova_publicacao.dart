@@ -155,7 +155,7 @@ class _ContainerNovaPublicacaoState extends State<ContainerNovaPublicacao> {
                         auxPublicacao!.urlImage = _urlImage!;
 
                         _publicacaoRepository.updatePublicacao(
-                          auxPublicacao!.id!, auxPublicacao!
+                          auxPublicacao!.id, auxPublicacao!
                         );
                         Navigator.pop(context);
                         _clearAllCampos();

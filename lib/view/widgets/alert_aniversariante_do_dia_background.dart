@@ -1,8 +1,5 @@
-import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/widgets/alert_aniversariante_do_dia_body.dart';
-
-//TODO Corririgir bug de height do container
 
 class AlertAniversarianteDoDiaBackground extends StatefulWidget {
   const AlertAniversarianteDoDiaBackground({super.key});

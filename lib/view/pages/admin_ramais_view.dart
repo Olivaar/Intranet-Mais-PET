@@ -4,11 +4,11 @@ import 'package:intranet_maispet/controller/ramal_controller.dart';
 import 'package:intranet_maispet/model/entities/ramal.dart';
 import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/repositories/departamento_repository.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/dialog_ramal.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
-import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_logo_maispet_nome_da_view.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 import '../widgets/row_ramal_adm.dart';
 
@@ -61,7 +61,7 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Ramais'),
+              const RowLogoMaisPetNomeView(nomeDaView: 'ADM Ramais'),
 
               DropButtonIntranet(
                 color: const Color(0xff34B9D6),

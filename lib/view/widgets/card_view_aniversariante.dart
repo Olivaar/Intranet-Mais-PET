@@ -3,13 +3,12 @@ import 'package:intranet_maispet/controller/aniversariante_controller.dart';
 import 'package:intranet_maispet/model/entities/aniversariante.dart';
 import 'package:intranet_maispet/view/colors.dart';
 
-class CardAniversariante extends StatelessWidget {
+class CardViewAniversariante extends StatelessWidget {
 
-  Aniversariante aniversariante;
+  final Aniversariante aniversariante;
+  final AniversarianteController aniversarianteController = AniversarianteController();
 
-  AniversarianteController aniversarianteController = AniversarianteController();
-
-  CardAniversariante({
+  CardViewAniversariante({
     super.key,
     required this.aniversariante,
   });
@@ -33,6 +32,7 @@ class CardAniversariante extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+
           Text(
             aniversarianteController.converterDataAniversarioSemAnoToString(
               aniversariante.dataAniversario,
@@ -40,11 +40,13 @@ class CardAniversariante extends StatelessWidget {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 16),
           ),
+
           Text(
             aniversariante.cargo,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 16),
           ),
+
           Text(
             aniversariante.departamento,
             textAlign: TextAlign.center,

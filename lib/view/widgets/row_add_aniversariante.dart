@@ -157,7 +157,7 @@ class DataInputFormatter extends TextInputFormatter {
   }
 
   String _formatDate(String input) {
-    input = input.replaceAll(RegExp(r'[^0-9]'), ''); // remove caracteres não numéricos
+    input = input.replaceAll(RegExp(r'[^0-9]'), '');
 
     if (input.length > 2) {
       return '${input.substring(0, 2)}/${input.substring(2, min(4, input.length))}/${input.substring(4, min(8, input.length))}';

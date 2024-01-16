@@ -4,8 +4,8 @@ import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/view/widgets/container_ramais.dart';
 import 'package:intranet_maispet/view/widgets/dropButton.dart';
 import 'package:intranet_maispet/view/widgets/widget_todos_ramais.dart';
-import '../widgets/appBar_intranet.dart';
-import '../widgets/row_logoMaisPet_nomeDaView.dart';
+import '../widgets/appbar_intranet.dart';
+import '../widgets/row_logo_maispet_nome_da_view.dart';
 
 
 class BranchesView extends StatefulWidget{
@@ -58,7 +58,7 @@ class _BranchesViewState extends State<BranchesView>{
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const RowLogoMaisPet_NomeView(nomeDaView: 'Ramais'),
+                const RowLogoMaisPetNomeView(nomeDaView: 'Ramais'),
 
                 DropButtonIntranet(
                   onChanged: (value){

@@ -4,10 +4,10 @@ import '../../model/entities/ramal.dart';
 
 class ContainerRamais extends StatelessWidget {
 
-  String? unidade;
-  List<Ramal> ramais;
+  final String? unidade;
+  final List<Ramal> ramais;
 
-  ContainerRamais({
+  const ContainerRamais({
     super.key,
     required this.unidade,
     required this.ramais,

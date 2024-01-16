@@ -27,12 +27,14 @@ class DrawerTecnologia extends StatelessWidget {
                     fontSize: 24,
                   ),
                 ),
+
                 Image.asset('images/Logo_Nova-removebg-preview.png',
                   height: 100, width: 100,
                 ),
               ],
             ),
           ),
+
           ListTile(
             title: const Text(
               'ADM RAMAIS',
@@ -42,6 +44,7 @@ class DrawerTecnologia extends StatelessWidget {
               Navigator.pushNamed(context, '/admramais');
             },
           ),
+
           ListTile(
             title: const Text(
               'ADM ANIVERSARIANTES',
@@ -51,6 +54,7 @@ class DrawerTecnologia extends StatelessWidget {
               Navigator.pushNamed(context, '/rhaniversariantes');
             },
           ),
+
           ListTile(
             title: const Text(
               'ADM TREINAMENTOS',
@@ -60,6 +64,7 @@ class DrawerTecnologia extends StatelessWidget {
               Navigator.pushNamed(context, '/admtreinamentos');
             },
           ),
+
           ListTile(
             title: const Text(
               'ADM SISTEMAS',
@@ -69,6 +74,7 @@ class DrawerTecnologia extends StatelessWidget {
               Navigator.pushNamed(context, '/admsistemas');
             },
           ),
+
           ListTile(
             title: const Text(
               'ADM +PET',
@@ -78,6 +84,7 @@ class DrawerTecnologia extends StatelessWidget {
               Navigator.pushNamed(context, '/admacontece');
             },
           ),
+
           ListTile(
             title: const Text(
               'TECNOLOGIA',

@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/colors.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/card_abrir_sistemas.dart';
 import 'package:intranet_maispet/view/widgets/container_novo_sistema.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
-import 'package:intranet_maispet/view/widgets/row_logoMaisPet_nomeDaView.dart';
+import 'package:intranet_maispet/view/widgets/row_logo_maispet_nome_da_view.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 import '../../model/entities/sistema.dart';
 
@@ -44,7 +44,7 @@ class _AdminSistemasState extends State<AdminSistemas> {
             child: Column(
               children: [
 
-                const RowLogoMaisPet_NomeView(nomeDaView: 'ADM Sistemas'),
+                const RowLogoMaisPetNomeView(nomeDaView: 'ADM Sistemas'),
 
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

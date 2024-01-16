@@ -41,6 +41,7 @@ class _RowRamalAdmState extends State<RowRamalAdm> {
             ),
           ),
         ),
+
         SizedBox(
           width: 150,
           child: Text(

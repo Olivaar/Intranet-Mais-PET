@@ -9,9 +9,9 @@ import '../../repositories/treinamento_repository.dart';
 import '../colors.dart';
 
 class ContainerNovoTreinamento extends StatefulWidget {
-  Treinamento? updateTreinamento;
+  final Treinamento? updateTreinamento;
 
-  ContainerNovoTreinamento({
+  const ContainerNovoTreinamento({
     super.key,
     this.updateTreinamento,
   });
@@ -97,6 +97,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
+
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -110,6 +111,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                     ),
                   ),
                   const SizedBox(height: 10),
+
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -124,6 +126,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                     ),
                   ),
                   const SizedBox(height: 10),
+
                   Container(
                     padding: const EdgeInsets.fromLTRB(16, 10,16, 10),
                     decoration: BoxDecoration(
@@ -138,6 +141,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                           style: TextStyle(color: Colors.black),
                         ),
                         const SizedBox(height: 7),
+
                         TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -151,6 +155,7 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                           ),
                         ),
                         const SizedBox(height: 5),
+
                         TextFormField(
                           controller: link2Controller,
                           decoration: ThemeHelper().textInputDecoration(
@@ -196,8 +201,10 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                                 color: colorIconsImage,
                               ),
                               const SizedBox(width: 5,),
+
                               const Text('Escolher Imagem'),
                               const SizedBox(width: 5,),
+
                               Icon(
                                 Icons.check_circle_outline,
                                 color: colorIconsImage,
@@ -230,8 +237,10 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                                 color: colorIconsPdf,
                               ),
                               const SizedBox(width: 5,),
+
                               const Text('Escolher PDF'),
                               const SizedBox(width: 5,),
+
                               Icon(
                                 Icons.check_circle_outline,
                                 color: colorIconsPdf,
@@ -275,9 +284,11 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                 urlImage: urlImage,
                 urlPdf: urlPdf,
               );
+
               if(link2Controller.text != ''){
                 tr.linksVideos.add(link2Controller.text);
               }
+
               setState(() {
                 treinamentoRepository.createTreinamento(tr);
                 _clearAllCampos();
@@ -290,21 +301,25 @@ class _ContainerNovoTreinamentoState extends State<ContainerNovoTreinamento> {
                 urlImage: urlImage,
                 urlPdf: urlPdf,
               );
+
               if(link2Controller.text != ''){
                 tr.linksVideos.add(link2Controller.text);
               }
+
               setState(() {
                 treinamentoRepository.updateTreinamento(
                     widget.updateTreinamento!.id, tr
                 );
+
                 _clearAllCampos();
+
                 if(update){
                   Navigator.pop(context);
                 }
+
                 update = false;
               });
             }
-
           },
           icon: const Icon(Icons.save, color: preto,),
           label: const Text(

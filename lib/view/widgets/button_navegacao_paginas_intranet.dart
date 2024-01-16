@@ -4,9 +4,9 @@ class ButtonNavegacaoPaginasIntranet extends StatelessWidget{
   final String nomeDaPagina;
   final void Function() onPressed;
   final IconData? iconeDaPagina;
-  Color color;
+  final Color color;
 
-  ButtonNavegacaoPaginasIntranet({
+  const ButtonNavegacaoPaginasIntranet({
     super.key,
     required this.nomeDaPagina,
     required this.onPressed,
@@ -21,7 +21,7 @@ class ButtonNavegacaoPaginasIntranet extends StatelessWidget{
       label: Text(nomeDaPagina),
       icon: Icon(iconeDaPagina),
       style: ButtonStyle(
-        backgroundColor: color != null ? MaterialStateProperty.all<Color>(color) : null,
+        backgroundColor: MaterialStateProperty.all<Color>(color),
         foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(
           fontWeight: FontWeight.bold

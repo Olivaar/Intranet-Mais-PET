@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/view/colors.dart';
-import 'package:intranet_maispet/view/widgets/appBar_intranet.dart';
+import 'package:intranet_maispet/view/widgets/appbar_intranet.dart';
 import 'package:intranet_maispet/view/widgets/container_novo_treinamento.dart';
 import 'package:intranet_maispet/view/widgets/drawer_tecnologia.dart';
-import 'package:intranet_maispet/view/widgets/listView_adm_treinamentos.dart';
+import 'package:intranet_maispet/view/widgets/listview_adm_treinamentos.dart';
 
 class AdminTreinamentosView extends StatefulWidget {
   const AdminTreinamentosView({super.key});

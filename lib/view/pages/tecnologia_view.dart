@@ -5,7 +5,7 @@ import '../../controller/sistema_controller.dart';
 import '../../model/entities/sistema.dart';
 import '../../model/enums/sistema_page.dart';
 import '../../repositories/sistema_repository.dart';
-import '../widgets/appBar_intranet.dart';
+import '../widgets/appbar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
 class TecnologiaView extends StatefulWidget{

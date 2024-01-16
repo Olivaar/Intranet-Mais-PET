@@ -19,7 +19,7 @@ class ButtonImpressaoPdf extends StatelessWidget {
             if(await canLaunchUrl(Uri.parse(caminhoDoPdf))){
               await launchUrl(Uri.parse(caminhoDoPdf));
             } else {
-              throw 'Não foi possível abrir o vídeo, contate a equipe de T.I!';
+              throw 'Não foi possível baixar o arquivo, contate a equipe de T.I!';
             }
           },
           icon: const Icon(Icons.picture_as_pdf),
