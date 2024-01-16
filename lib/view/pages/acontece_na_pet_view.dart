@@ -28,7 +28,7 @@ class _AconteceNaPetState extends State<AconteceNaPet> {
   @override
   void initState() {
     super.initState();
-    aniversarianteController.carregarAniversariantes();
+    aniversarianteController.carregarAniversariantesDoMes();
     aniversarianteController.carregarAniversariantesDoDia();
 
     Future.delayed(const Duration(milliseconds: 3500)).then((_) {

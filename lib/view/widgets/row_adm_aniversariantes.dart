@@ -40,7 +40,7 @@ class RowAdmAniversariantes extends StatelessWidget {
             height: 20,
             width: 150,
             child: Text(
-              aniversarianteController.dataAniversarioToString(
+              aniversarianteController.converterDataAniversarioToString(
                 aniversariante.dataAniversario,
               ),
               textAlign: TextAlign.center,

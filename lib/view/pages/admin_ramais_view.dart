@@ -153,7 +153,7 @@ class _AdminRamaisViewState extends State<AdminRamaisView> {
                                   child: IconButton(
                                     alignment: Alignment.centerRight,
                                     onPressed: (){
-                                      ramalController.deleteRamal(
+                                      ramalRepository.deleteRamal(
                                         ramal.id,
                                         unidadeSelecionada!
                                       );

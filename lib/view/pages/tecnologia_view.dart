@@ -9,6 +9,7 @@ import '../widgets/appBar_intranet.dart';
 import '../widgets/card_abrir_sistemas.dart';
 
 class TecnologiaView extends StatefulWidget{
+  const TecnologiaView({super.key});
 
   @override
   _TecnologiaViewState createState() => _TecnologiaViewState();

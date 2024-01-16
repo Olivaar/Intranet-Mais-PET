@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    for(int i=0; i<aniversarianteController.nomes.length; i++)
+                    for(int i=0; i<aniversarianteController.nomesAniversariantes.length; i++)
                       Container(
                         padding: const EdgeInsets.all(16),
                         margin: const EdgeInsets.all(8),
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                             const SizedBox(width: 5,),
 
                             Text(
-                              aniversarianteController.nomes[i],
+                              aniversarianteController.nomesAniversariantes[i],
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,

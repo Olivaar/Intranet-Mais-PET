@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intranet_maispet/controller/ramal_controller.dart';
 import 'package:intranet_maispet/model/entities/ramal.dart';
+import 'package:intranet_maispet/repositories/ramal_repository.dart';
 import 'package:intranet_maispet/view/widgets/theme_helper.dart';
 
 class DialogRamal extends StatefulWidget {
 
   final String unidadeSelecionada;
 
-  DialogRamal({
+  const DialogRamal({
     super.key,
     required this.unidadeSelecionada,
   });
@@ -21,6 +22,7 @@ class _DialogRamalState extends State<DialogRamal> {
   TextEditingController numeroController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RamalController ramalController = RamalController();
+  RamalRepository ramalRepository = RamalRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,7 @@ class _DialogRamalState extends State<DialogRamal> {
                         local: localController.text,
                         numero: numeroController.text,
                       );
-                      ramalController.createRamal(ramal);
+                      ramalRepository.createRamal(ramal);
                       localController.clear();
                       numeroController.clear();
                       Navigator.pop(context);

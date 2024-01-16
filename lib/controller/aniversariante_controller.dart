@@ -5,12 +5,12 @@ import '../model/entities/aniversariante.dart';
 class AniversarianteController {
   AniversarianteRepository aniversarianteRepository = AniversarianteRepository();
 
-  List<Aniversariante> aniversariantes = [];
+  List<Aniversariante> aniversariantesDoMes = [];
   List<Aniversariante> aniversariantesDoDia = [];
   List<String> listaDeDepartamentos = [];
-  List<String> nomes = [];
+  List<String> nomesAniversariantes = [];
 
-  String dataAniversarioToString(Timestamp dataAniversario) {
+  String converterDataAniversarioToString(Timestamp dataAniversario) {
     final dateTime = dataAniversario.toDate();
     final day = dateTime.day.toString().padLeft(2, '0');
     final month = dateTime.month.toString().padLeft(2, '0');
@@ -19,7 +19,7 @@ class AniversarianteController {
     return '$day/$month/$year';
   }
 
-  String dataAniversario2ToString(Timestamp dataAniversario) {
+  String converterDataAniversarioSemAnoToString(Timestamp dataAniversario) {
     final dateTime = dataAniversario.toDate();
     final day = dateTime.day.toString().padLeft(2, '0');
     final month = dateTime.month.toString().padLeft(2, '0');
@@ -28,11 +28,11 @@ class AniversarianteController {
     return '$day/$month';
   }
 
-  Future<void> carregarAniversariantes() async {
+  Future<void> carregarAniversariantesDoMes() async {
     final aniversariantesDb =
       await aniversarianteRepository.getListAniversariantes();
-    aniversariantes.clear();
-    aniversariantes = aniversariantesDb;
+    aniversariantesDoMes.clear();
+    aniversariantesDoMes = aniversariantesDb;
   }
 
   Future<void> carregarAniversariantesDoDia() async {
@@ -42,7 +42,7 @@ class AniversarianteController {
     aniversariantesDoDia = aniversariantesDoDiaDb;
 
     for (Aniversariante an in aniversariantesDoDia) {
-      nomes.add(an.nomeSobrenome);
+      nomesAniversariantes.add(an.nomeSobrenome);
     }
   }
 

@@ -34,7 +34,7 @@ class CardAniversariante extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            aniversarianteController.dataAniversario2ToString(
+            aniversarianteController.converterDataAniversarioSemAnoToString(
               aniversariante.dataAniversario,
             ),
             textAlign: TextAlign.center,
